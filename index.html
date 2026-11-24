@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Once Gio+ is live: add <meta name="apple-itunes-app" content="app-id=XXXXXXXXXX"> -->
+    <title>Gio+ - Range of Motion Tracker for iPhone | Measure Elbow, Knee & Shoulder</title>
+    <meta name="description" content="Gio+ uses your iPhone camera to measure how far your elbow, knee or shoulder bends and straightens, and tracks your recovery over time. No account, no server - your data stays on your device and in your iCloud.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#18181d">
+    <link rel="canonical" href="https://gioplus.app/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Gio+">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://gioplus.app/">
+    <meta property="og:title" content="Gio+ - Measure your range of motion with your iPhone">
+    <meta property="og:description" content="Measure how far your elbow, knee or shoulder bends and straightens with the iPhone camera, and see your recovery week by week.">
+    <meta property="og:image" content="https://gioplus.app/gioplus-hero.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gio+ - Measure your range of motion with your iPhone">
+    <meta name="twitter:description" content="Measure how far your elbow, knee or shoulder bends and straightens with the iPhone camera, and see your recovery week by week.">
+    <meta name="twitter:image" content="https://gioplus.app/gioplus-hero.png">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+
+    <!-- Google Fonts: Outfit (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom Config for Tailwind Colors/Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        // Colours from the app screenshots: iOS system blue #0A84FF, fading into indigo #5E5CE6
+                        brand: {
+                            50:  '#EEF6FF',
+                            100: '#D6EAFF',
+                            400: '#4DA3FF',
+                            500: '#0A84FF', // Primary (system blue)
+                            600: '#0070E0',
+                            900: '#0B3A7A',
+                        },
+                        violet: {
+                            400: '#8E8CF0',
+                            500: '#5E5CE6',
+                        },
+                        // Accents from the app UI
+                        sky:   { 500: '#0A84FF' },
+                        mint:  { 500: '#34c759' },
+                        neutral: {
+                            100: '#f5f5f7',
+                            200: '#e3e3ea',
+                            300: '#c4c4ce',
+                            400: '#8e8e9a',
+                            500: '#6b6b78',
+                            700: '#34343f',
+                            800: '#24242c',
+                            900: '#18181d',
+                        }
+                    },
+                    aspectRatio: {
+                        '4/3': '4 / 3',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'float-slow': 'float 9s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '0.55', transform: 'scale(1)' },
+                            '50%': { opacity: '0.9', transform: 'scale(1.06)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Utilities */
+        .glass {
+            background: rgba(24, 24, 29, 0.72);
+            backdrop-filter: blur(16px) saturate(160%);
+            -webkit-backdrop-filter: blur(16px) saturate(160%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes gradient-pan {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #0A84FF, #5E5CE6, #4DA3FF, #0A84FF);
+            background-size: 300% 100%;
+            animation: gradient-pan 9s ease infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Primary gradient button with shine sweep */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0A84FF 0%, #3470F2 55%, #5E5CE6 100%);
+            background-size: 180% 180%;
+            animation: gradient-pan 7s ease infinite;
+            box-shadow: 0 10px 30px -8px rgba(10, 132, 255, 0.55),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 45px -10px rgba(94, 92, 230, 0.5),
+                        0 10px 25px -8px rgba(10, 132, 255, 0.55),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -80%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.6s ease;
+            pointer-events: none;
+        }
+        .btn-primary:hover::after {
+            left: 130%;
+        }
+
+        /* Subtle grid backdrop for the hero */
+        .bg-grid {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+            background-size: 56px 56px;
+            -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 10%, black 25%, transparent 72%);
+            mask-image: radial-gradient(ellipse 75% 65% at 50% 10%, black 25%, transparent 72%);
+        }
+
+        /* Feature cards: soft gradient surface + animated gradient border on hover */
+        .feature-card {
+            position: relative;
+            background: linear-gradient(180deg, rgba(44, 44, 54, 0.85) 0%, rgba(30, 30, 38, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: 0 10px 30px -16px rgba(0, 0, 0, 0.6),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(140deg, rgba(10, 132, 255, 0.7), transparent 38%, transparent 62%, rgba(94, 92, 230, 0.6));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -20px rgba(10, 132, 255, 0.3),
+                        0 18px 36px -18px rgba(0, 0, 0, 0.7),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+        }
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Gradient icon badges */
+        .icon-badge {
+            background: linear-gradient(135deg, rgba(10, 132, 255, 0.3), rgba(94, 92, 230, 0.14));
+            border: 1px solid rgba(77, 163, 255, 0.28);
+            box-shadow: 0 8px 22px -8px rgba(10, 132, 255, 0.45),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+        }
+        .group:hover .icon-badge {
+            transform: scale(1.08) rotate(-3deg);
+            box-shadow: 0 14px 30px -8px rgba(10, 132, 255, 0.6),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+        }
+
+        /* App-like surfaces used in the illustrations */
+        .app-screen {
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.8);
+        }
+        .app-card {
+            background: #1c1c1e;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .app-title {
+            background: linear-gradient(90deg, #0A84FF, #0A84FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* CTA panel */
+        .cta-panel {
+            background:
+                radial-gradient(120% 160% at 15% 0%, rgba(10, 132, 255, 0.35) 0%, transparent 55%),
+                radial-gradient(120% 160% at 90% 100%, rgba(94, 92, 230, 0.28) 0%, transparent 55%),
+                linear-gradient(180deg, rgba(44, 44, 54, 0.9), rgba(24, 24, 29, 0.95));
+            border: 1px solid rgba(77, 163, 255, 0.22);
+            box-shadow: 0 40px 80px -30px rgba(10, 132, 255, 0.35),
+                        0 20px 40px -20px rgba(0, 0, 0, 0.6),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        /* Measuring arm in the camera illustration */
+        @keyframes bend {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-58deg); }
+        }
+        .arm-swing {
+            transform-box: view-box;
+            transform-origin: 150px 150px;
+            animation: bend 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+
+        /* Fade In Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(36px) scale(0.985);
+            filter: blur(6px);
+            transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                        filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                filter: none;
+                transition: none;
+            }
+            .arm-swing, .text-gradient, .btn-primary, .animate-float, .animate-float-delayed, .animate-float-slow, .animate-pulse-glow {
+                animation: none !important;
+            }
+        }
+    </style>
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Gio+",
+        "operatingSystem": "iOS",
+        "applicationCategory": "HealthApplication",
+        "description": "Gio+ uses the iPhone camera to measure how far your elbow, knee or shoulder bends and straightens, and tracks your recovery over time.",
+        "url": "https://gioplus.app",
+        "screenshot": "https://gioplus.app/gioplus-hero.png",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free with optional Pro upgrade"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Sebastian Boldt",
+            "url": "https://sebastianboldt.io"
+        }
+    }
+    </script>
+
+    <!-- Structured Data: WebSite -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Gio+",
+        "url": "https://gioplus.app"
+    }
+    </script>
+</head>
+<body class="bg-neutral-900 text-neutral-100 font-sans selection:bg-brand-500 selection:text-white overflow-x-hidden">
+
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress" class="fixed top-0 left-0 h-[3px] w-0 z-[60] bg-gradient-to-r from-brand-500 via-brand-400 to-violet-500 rounded-r-full shadow-[0_0_12px_rgba(77,163,255,0.7)]"></div>
+
+<main>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-display font-bold text-neutral-100 flex items-center gap-2">
+                <img src="AppIcon.png"
+                     alt="Gio+ App Icon"
+                     class="w-8 h-8 rounded-lg shadow-lg shadow-brand-500/20 object-cover">
+                <span>Gio<span class="text-gradient">+</span></span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-300">
+                <a href="#features" class="hover:text-brand-400 transition-colors">Features</a>
+                <a href="#how" class="hover:text-brand-400 transition-colors">How it works</a>
+                <a href="#privacy" class="hover:text-brand-400 transition-colors">Privacy</a>
+                <a href="#pro" class="hover:text-brand-400 transition-colors">Pro</a>
+                <a href="#download" class="js-appstore btn-primary text-white px-5 py-2 rounded-full font-bold" data-label-live="Download" data-label-soon="Coming soon">
+                    Coming soon
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-2xl text-neutral-100" onclick="toggleMenu()" aria-label="Open menu">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-neutral-800 border-b border-neutral-700 p-6 flex-col gap-4 shadow-xl">
+            <a href="#features" class="block text-lg py-2 text-neutral-200 hover:text-brand-400" onclick="toggleMenu()">Features</a>
+            <a href="#how" class="block text-lg py-2 text-neutral-200 hover:text-brand-400" onclick="toggleMenu()">How it works</a>
+            <a href="#privacy" class="block text-lg py-2 text-neutral-200 hover:text-brand-400" onclick="toggleMenu()">Privacy</a>
+            <a href="#pro" class="block text-lg py-2 text-neutral-200 hover:text-brand-400" onclick="toggleMenu()">Pro</a>
+            <a href="#download" class="js-appstore w-full bg-brand-500 text-white py-3 rounded-xl font-bold mt-2 text-center shadow-lg shadow-brand-500/20" onclick="toggleMenu()" data-label-live="Download on the App Store" data-label-soon="Coming soon to the App Store">
+                Coming soon to the App Store
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+        <!-- Background Glows -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 pointer-events-none">
+            <div class="absolute inset-0 bg-grid"></div>
+            <div class="absolute top-[-10%] right-[-20%] w-[50rem] h-[50rem] bg-brand-900/50 rounded-full blur-[100px] animate-float-delayed"></div>
+            <div class="absolute bottom-[-10%] left-[-20%] w-[40rem] h-[40rem] bg-indigo-900/30 rounded-full blur-[100px] animate-float"></div>
+            <div class="absolute top-[20%] left-[35%] w-[24rem] h-[24rem] bg-brand-500/10 rounded-full blur-[90px] animate-float-slow"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Text Content -->
+            <div class="text-center lg:text-left reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-900/40 border border-brand-400/25 text-xs font-semibold text-brand-400 mb-6 uppercase tracking-wider shadow-lg shadow-brand-500/10 backdrop-blur-sm">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                    </span>
+                    <span class="js-badge" data-label-live="Now available for iPhone" data-label-soon="Coming soon for iPhone">Coming soon for iPhone</span>
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-display font-bold text-neutral-100 leading-[1.1] mb-6">
+                    Measure your range of motion. <br />
+                    <span class="text-gradient">See your recovery.</span>
+                </h1>
+                <p class="text-lg text-neutral-300 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                    Gio+ uses your iPhone camera to measure how far your elbow, knee or shoulder bends and straightens.
+                    Every measurement lands in your history, so you can see week by week how close you are to the range you need in everyday life.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#download" class="js-appstore btn-primary px-8 py-4 text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-3" data-label-live="Download on the App Store" data-label-soon="Coming soon to the App Store">
+                        <i class="ph ph-apple-logo font-bold"></i>
+                        <span class="js-label">Coming soon to the App Store</span>
+                    </a>
+                </div>
+
+                <div class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-neutral-400">
+                    <a href="https://sebastianboldt.io" class="text-m font-display font-bold text-neutral-200 flex items-center gap-2">
+                        Developed by Sebastian Boldt 👨🏻‍💻 <span class="text-brand-400"> (Website) </span>
+                    </a>
+                </div>
+
+                <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-neutral-400">
+                    <div class="flex items-center gap-2">
+                        <i class="ph ph-device-mobile-camera text-lg"></i> iPhone
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="ph ph-squares-four text-lg"></i> Widgets
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="ph ph-microphone text-lg"></i> Siri &amp; Shortcuts
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="relative lg:h-[700px] flex justify-center items-center reveal delay-200">
+                <!-- Glow behind the phones -->
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div class="w-[20rem] h-[20rem] lg:w-[30rem] lg:h-[30rem] rounded-full bg-gradient-to-tr from-brand-500/40 via-brand-400/20 to-violet-500/30 blur-[90px] animate-pulse-glow"></div>
+                </div>
+
+                <div class="relative w-full h-full flex justify-center">
+                    <img src="gioplus-hero.png" alt="Gio+ on iPhone: achievements, weekly trend and the functional range of the elbow" class="object-contain max-h-full drop-shadow-[0_35px_60px_rgba(0,0,0,0.6)] transform rotate-[-2deg]">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Joints strip -->
+    <div class="relative border-y border-neutral-800 bg-gradient-to-b from-neutral-800/60 to-neutral-800/30 py-10">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm font-semibold text-neutral-400 uppercase tracking-widest mb-8">
+                Made for rehab after injury or surgery
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="flex flex-col items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl icon-badge flex items-center justify-center text-brand-400 text-xl group-hover:text-white transition-colors duration-300">
+                        <i class="ph ph-hand-fist"></i>
+                    </div>
+                    <span class="text-neutral-200 font-medium">Elbow</span>
+                </div>
+                <div class="flex flex-col items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl icon-badge flex items-center justify-center text-brand-400 text-xl group-hover:text-white transition-colors duration-300">
+                        <i class="ph ph-person-simple-walk"></i>
+                    </div>
+                    <span class="text-neutral-200 font-medium">Knee</span>
+                </div>
+                <div class="flex flex-col items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl icon-badge flex items-center justify-center text-brand-400 text-xl group-hover:text-white transition-colors duration-300">
+                        <i class="ph ph-person-arms-spread"></i>
+                    </div>
+                    <span class="text-neutral-200 font-medium">Shoulder</span>
+                </div>
+                <div class="flex flex-col items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl icon-badge flex items-center justify-center text-brand-400 text-xl group-hover:text-white transition-colors duration-300">
+                        <i class="ph ph-arrows-left-right"></i>
+                    </div>
+                    <span class="text-neutral-200 font-medium">Left &amp; right side</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Grid -->
+    <section id="features" class="py-24 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[60rem] h-[30rem] bg-brand-900/25 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 relative">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-display font-bold text-neutral-100 mb-4">Measure. Compare. Keep going.</h2>
+                <p class="text-neutral-300 text-lg">No goniometer, no spreadsheet. Your iPhone measures the angle, and Gio+ shows you what it means.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1: Measure -->
+                <div class="group relative feature-card rounded-3xl p-6 reveal delay-100 flex flex-col">
+                    <div class="w-12 h-12 icon-badge rounded-2xl flex items-center justify-center text-brand-400 text-2xl mb-6">
+                        <i class="ph ph-camera"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-neutral-100 mb-2">Measure with the camera</h3>
+                    <div class="text-brand-400 font-bold text-sm mb-3">Three reps, one average</div>
+                    <p class="text-neutral-300 text-sm leading-relaxed mb-6 flex-grow">
+                        Prop up your iPhone, stand sideways and bend and straighten the joint three times. Gio+ detects the angle in the camera image and saves the average.
+                    </p>
+                    <!-- Illustration: camera view with tracked arm -->
+                    <div class="app-screen rounded-2xl aspect-4/3 overflow-hidden relative" aria-hidden="true">
+                        <svg viewBox="0 0 300 225" class="w-full h-full">
+                            <defs>
+                                <linearGradient id="armGrad" gradientUnits="userSpaceOnUse" x1="150" y1="150" x2="240" y2="150">
+                                    <stop offset="0" stop-color="#5E5CE6"/>
+                                    <stop offset="1" stop-color="#0A84FF"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- viewfinder corners -->
+                            <g stroke="#ffffff" stroke-opacity="0.35" stroke-width="2.5" fill="none" stroke-linecap="round">
+                                <path d="M18 40 V22 H36"/><path d="M264 22 H282 V40"/>
+                                <path d="M18 185 V203 H36"/><path d="M264 203 H282 V185"/>
+                            </g>
+                            <!-- upper arm (fixed) -->
+                            <line x1="60" y1="150" x2="150" y2="150" stroke="#d6d6d6" stroke-width="12" stroke-linecap="round"/>
+                            <!-- forearm (bending) -->
+                            <g class="arm-swing">
+                                <line x1="150" y1="150" x2="240" y2="150" stroke="url(#armGrad)" stroke-width="12" stroke-linecap="round"/>
+                                <circle cx="240" cy="150" r="7" fill="#fff"/>
+                            </g>
+                            <circle cx="60" cy="150" r="7" fill="#fff"/>
+                            <circle cx="150" cy="150" r="9" fill="#fff" stroke="#0A84FF" stroke-width="4"/>
+                            <!-- readout -->
+                            <rect x="40" y="34" width="92" height="40" rx="20" fill="#1c1c1e" stroke="#ffffff" stroke-opacity="0.08"/>
+                            <text x="86" y="61" text-anchor="middle" fill="#fff" font-family="Outfit, sans-serif" font-weight="700" font-size="20">128°</text>
+                            <text x="150" y="200" text-anchor="middle" fill="#8e8e9a" font-family="Inter, sans-serif" font-size="11">Rep 2 of 3</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Feature 2: History -->
+                <div class="group relative feature-card rounded-3xl p-6 reveal delay-200 flex flex-col">
+                    <div class="w-12 h-12 icon-badge rounded-2xl flex items-center justify-center text-brand-400 text-2xl mb-6">
+                        <i class="ph ph-chart-line-up"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-neutral-100 mb-2">See your progress</h3>
+                    <div class="text-brand-400 font-bold text-sm mb-3">History &amp; weekly trend</div>
+                    <p class="text-neutral-300 text-sm leading-relaxed mb-6 flex-grow">
+                        Every measurement lands in your history, with a week-over-week comparison and the distance to the functional range.
+                    </p>
+                    <!-- Illustration: weekly trend bars -->
+                    <div class="app-screen rounded-2xl aspect-4/3 overflow-hidden p-4 flex flex-col" aria-hidden="true">
+                        <div class="text-sm font-semibold text-neutral-200 mb-2">Weekly trend</div>
+                        <svg viewBox="0 0 260 150" class="w-full flex-grow">
+                            <defs>
+                                <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0" stop-color="#0A84FF"/>
+                                    <stop offset="1" stop-color="#0A84FF"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- functional band -->
+                            <rect x="0" y="22" width="260" height="88" fill="#34c759" fill-opacity="0.14"/>
+                            <line x1="0" y1="22" x2="260" y2="22" stroke="#34c759" stroke-opacity="0.7" stroke-dasharray="4 4"/>
+                            <line x1="0" y1="110" x2="260" y2="110" stroke="#34c759" stroke-opacity="0.7" stroke-dasharray="4 4"/>
+                            <!-- bars: range from extension (bottom) to flexion (top) -->
+                            <g fill="url(#barGrad)">
+                                <rect x="18"  y="62" width="16" height="64" rx="8"/>
+                                <rect x="62"  y="52" width="16" height="70" rx="8"/>
+                                <rect x="106" y="42" width="16" height="78" rx="8"/>
+                                <rect x="150" y="34" width="16" height="84" rx="8"/>
+                                <rect x="194" y="28" width="16" height="88" rx="8"/>
+                                <rect x="238" y="24" width="16" height="90" rx="8" fill-opacity="0.5"/>
+                            </g>
+                            <g fill="#8e8e9a" font-family="Inter, sans-serif" font-size="10" text-anchor="middle">
+                                <text x="26" y="144">Wk 40</text><text x="70" y="144">Wk 41</text><text x="114" y="144">Wk 42</text>
+                                <text x="158" y="144">Wk 43</text><text x="202" y="144">Wk 44</text><text x="246" y="144">Now</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Achievements -->
+                <div class="group relative feature-card rounded-3xl p-6 reveal delay-300 flex flex-col">
+                    <div class="w-12 h-12 icon-badge rounded-2xl flex items-center justify-center text-brand-400 text-2xl mb-6">
+                        <i class="ph ph-trophy"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-neutral-100 mb-2">Everyday achievements</h3>
+                    <div class="text-brand-400 font-bold text-sm mb-3">Goals you can feel</div>
+                    <p class="text-neutral-300 text-sm leading-relaxed mb-6 flex-grow">
+                        Degrees turn into things you can do again. For the elbow, around 115° is enough to bring a spoon to your mouth.
+                    </p>
+                    <!-- Illustration: achievements list -->
+                    <div class="app-screen rounded-2xl aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-3" aria-hidden="true">
+                        <div class="flex items-center gap-3">
+                            <div class="relative w-9 h-9 rounded-full bg-brand-500 flex items-center justify-center text-white"><i class="ph ph-fork-knife"></i>
+                                <span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-mint-500 flex items-center justify-center text-[10px] text-white"><i class="ph-bold ph-check"></i></span></div>
+                            <div class="flex-grow"><div class="text-sm text-neutral-100">Spoon to mouth</div><div class="text-xs text-neutral-400">115° · reached</div></div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full border-2 border-sky-500 flex items-center justify-center text-neutral-300"><i class="ph ph-coffee"></i></div>
+                            <div class="flex-grow"><div class="text-sm text-neutral-100">Cup to mouth</div><div class="text-xs text-neutral-400">130° · <span class="text-sky-500">5° to go</span></div>
+                                <div class="mt-1 h-1 rounded-full bg-neutral-700"><div class="h-1 rounded-full bg-sky-500 w-[88%]"></div></div></div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full border-2 border-sky-500/50 flex items-center justify-center text-neutral-400"><i class="ph ph-phone"></i></div>
+                            <div class="flex-grow"><div class="text-sm text-neutral-100">Phone to ear</div><div class="text-xs text-neutral-400">136° · <span class="text-sky-500">11° to go</span></div>
+                                <div class="mt-1 h-1 rounded-full bg-neutral-700"><div class="h-1 rounded-full bg-sky-500 w-[76%]"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="py-24 relative bg-neutral-800/40 border-y border-neutral-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-display font-bold text-neutral-100 mb-4">A measurement in under a minute.</h2>
+                <p class="text-neutral-300 text-lg">Your first measurement is your baseline. Every later one is compared with it.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="reveal delay-100 text-center md:text-left">
+                    <div class="text-5xl font-display font-black text-gradient mb-4">1</div>
+                    <h3 class="text-lg font-bold text-neutral-100 mb-2">Set up your iPhone</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Lean it against something or use a stand. Pick the joint and the side you want to measure.</p>
+                </div>
+                <div class="reveal delay-200 text-center md:text-left">
+                    <div class="text-5xl font-display font-black text-gradient mb-4">2</div>
+                    <h3 class="text-lg font-bold text-neutral-100 mb-2">Stand sideways</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Bend and straighten the joint three times. Gio+ follows the movement in the camera image.</p>
+                </div>
+                <div class="reveal delay-300 text-center md:text-left">
+                    <div class="text-5xl font-display font-black text-gradient mb-4">3</div>
+                    <h3 class="text-lg font-bold text-neutral-100 mb-2">Check your result</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Flexion, extension and range are saved as the average of your reps. You can also enter values by hand.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase -->
+    <section id="showcase" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Item 1: Functional range -->
+            <div class="flex flex-col lg:flex-row items-center gap-16 reveal mb-32">
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="w-[22rem] h-[22rem] rounded-full bg-brand-500/20 blur-[90px]"></div>
+                    </div>
+                    <div class="relative app-screen rounded-3xl p-6 max-w-md mx-auto" aria-hidden="true">
+                        <div class="app-card rounded-2xl p-5">
+                            <div class="text-lg font-semibold app-title">Functional range</div>
+                            <div class="text-xs text-neutral-400 mb-2">Average of the last 3 measurement days</div>
+                            <svg viewBox="0 0 400 270" class="w-full">
+                                <defs>
+                                    <linearGradient id="youGrad" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0" stop-color="#0A84FF"/>
+                                        <stop offset="1" stop-color="#0A84FF"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M40.5 233.1 A162 162 0 1 1 360.1 180.4" fill="none" stroke="#6b6b78" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M62.1 229.3 A140 140 0 1 1 337.9 229.3" fill="none" stroke="#2c2c2e" stroke-width="20" stroke-linecap="round"/>
+                                <path d="M75.8 140.4 A140 140 0 0 1 324.2 140.4" fill="none" stroke="#30a14e" stroke-width="20" stroke-linecap="round"/>
+                                <path d="M89.9 175.5 A114 114 0 0 1 294.8 141.7" fill="none" stroke="url(#youGrad)" stroke-width="18" stroke-linecap="round"/>
+                                <g fill="#8e8e9a" font-family="Inter, sans-serif" font-size="13" text-anchor="middle">
+                                    <text x="22" y="248">0°</text><text x="40" y="118">30°</text><text x="236" y="22">90°</text>
+                                    <text x="364" y="118">130°</text><text x="384" y="248">160°</text>
+                                </g>
+                                <text x="200" y="215" text-anchor="middle" fill="#fff" font-family="Outfit, sans-serif" font-weight="700" font-size="56">106°</text>
+                                <text x="200" y="244" text-anchor="middle" fill="#8e8e9a" font-family="Inter, sans-serif" font-size="14">of 100° functional</text>
+                            </svg>
+                            <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-400 mt-1 mb-4">
+                                <span class="flex items-center gap-1.5"><span class="w-3 h-1.5 rounded-full bg-sky-500"></span>Your arc</span>
+                                <span class="flex items-center gap-1.5"><span class="w-3 h-1.5 rounded-full bg-[#30a14e]"></span>Functional 30–130°</span>
+                                <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 rounded-full bg-neutral-500"></span>Normal 0–145°</span>
+                            </div>
+                            <div class="border-t border-white/5 pt-3 space-y-2 text-sm">
+                                <div class="flex justify-between"><span><b class="text-neutral-100">Extension</b> <span class="text-neutral-400">20°</span></span><span class="text-mint-500 text-xs">✓ functional reached</span></div>
+                                <div class="flex justify-between"><span><b class="text-neutral-100">Flexion</b> <span class="text-neutral-400">125°</span></span><span class="text-sky-500 text-xs">5° to functional</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <h3 class="text-3xl font-display font-bold text-neutral-100 mb-4">Know what you need. <br><span class="text-gradient">Not just what you have.</span></h3>
+                    <p class="text-neutral-300 text-lg mb-8 leading-relaxed">
+                        Most everyday tasks don't need the full range of a healthy joint. Gio+ shows your current arc next to the functional range, so you can see at a glance how many degrees are still missing for bending and for straightening.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-neutral-200"><i class="ph ph-check-circle text-brand-400 text-xl"></i> Flexion, extension and total range</li>
+                        <li class="flex items-center gap-3 text-neutral-200"><i class="ph ph-check-circle text-brand-400 text-xl"></i> Separate history for each joint and side</li>
+                        <li class="flex items-center gap-3 text-neutral-200"><i class="ph ph-check-circle text-brand-400 text-xl"></i> Photo history: compare start and end positions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 2: Widgets & Shortcuts -->
+            <div class="flex flex-col-reverse lg:flex-row items-center gap-16 reveal">
+                <div class="w-full lg:w-1/2">
+                    <h3 class="text-3xl font-display font-bold text-neutral-100 mb-4">Measure every day. <br><span class="text-gradient">Without thinking about it.</span></h3>
+                    <p class="text-neutral-300 text-lg mb-6 leading-relaxed">
+                        Rehab works best with regular check-ins. Widgets keep your progress on the Home and Lock Screen, and a tap in Control Center or a quick word to Siri starts the next measurement.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mt-8">
+                        <div class="px-4 py-2 rounded-lg bg-neutral-800 border border-neutral-700 text-xs font-medium text-neutral-300 flex items-center gap-2">
+                            <i class="ph ph-squares-four text-lg text-brand-400"></i> Home &amp; Lock Screen widgets
+                        </div>
+                        <div class="px-4 py-2 rounded-lg bg-neutral-800 border border-neutral-700 text-xs font-medium text-neutral-300 flex items-center gap-2">
+                            <i class="ph ph-toggle-right text-lg text-brand-400"></i> Control Center
+                        </div>
+                        <div class="px-4 py-2 rounded-lg bg-neutral-800 border border-neutral-700 text-xs font-medium text-neutral-300 flex items-center gap-2">
+                            <i class="ph ph-microphone text-lg text-brand-400"></i> Siri &amp; Shortcuts
+                        </div>
+                        <div class="px-4 py-2 rounded-lg bg-neutral-800 border border-neutral-700 text-xs font-medium text-neutral-300 flex items-center gap-2">
+                            <i class="ph ph-bell-simple text-lg text-brand-400"></i> Reminders
+                        </div>
+                        <div class="px-4 py-2 rounded-lg bg-neutral-800 border border-neutral-700 text-xs font-medium text-neutral-300 flex items-center gap-2">
+                            <i class="ph ph-users text-lg text-brand-400"></i> Multiple people
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="w-[22rem] h-[22rem] rounded-full bg-violet-500/15 blur-[90px]"></div>
+                    </div>
+                    <div class="relative grid grid-cols-2 gap-5 max-w-md mx-auto" aria-hidden="true">
+                        <!-- Today widget -->
+                        <div class="app-card rounded-[1.6rem] p-4 aspect-square flex flex-col justify-between shadow-2xl animate-float-slow">
+                            <div class="flex items-center gap-2 text-xs text-neutral-400"><img src="AppIcon.png" alt="" class="w-4 h-4 rounded"> Today</div>
+                            <div>
+                                <div class="w-9 h-9 rounded-full bg-mint-500 flex items-center justify-center text-white text-lg mb-2"><i class="ph-bold ph-check"></i></div>
+                                <div class="text-sm font-semibold text-neutral-100">Measured today</div>
+                                <div class="text-xs text-neutral-400">5 days in a row</div>
+                            </div>
+                        </div>
+                        <!-- Functional range widget -->
+                        <div class="app-card rounded-[1.6rem] p-4 aspect-square flex flex-col justify-between shadow-2xl animate-float-delayed">
+                            <div class="text-xs text-neutral-400">Elbow · right</div>
+                            <svg viewBox="0 0 400 270" class="w-full -my-1">
+                                <path d="M62.1 229.3 A140 140 0 1 1 337.9 229.3" fill="none" stroke="#2c2c2e" stroke-width="34" stroke-linecap="round"/>
+                                <path d="M75.8 140.4 A140 140 0 0 1 324.2 140.4" fill="none" stroke="#30a14e" stroke-width="34" stroke-linecap="round"/>
+                                <path d="M89.9 175.5 A114 114 0 0 1 294.8 141.7" fill="none" stroke="#0A84FF" stroke-width="26" stroke-linecap="round"/>
+                                <text x="200" y="225" text-anchor="middle" fill="#fff" font-family="Outfit, sans-serif" font-weight="700" font-size="80">106°</text>
+                            </svg>
+                            <div class="text-xs text-sky-500">5° to functional</div>
+                        </div>
+                        <!-- History widget (wide) -->
+                        <div class="col-span-2 app-card rounded-[1.6rem] p-4 shadow-2xl animate-float">
+                            <div class="flex justify-between text-xs text-neutral-400 mb-2"><span>Range · last 6 weeks</span><span class="text-mint-500">+18°</span></div>
+                            <svg viewBox="0 0 300 70" class="w-full">
+                                <defs>
+                                    <linearGradient id="lineFill" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0" stop-color="#0A84FF" stop-opacity="0.35"/>
+                                        <stop offset="1" stop-color="#0A84FF" stop-opacity="0"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M0 60 L30 52 L55 56 L80 44 L110 46 L135 34 L160 38 L190 24 L215 28 L245 16 L270 18 L300 8 L300 70 L0 70 Z" fill="url(#lineFill)"/>
+                                <path d="M0 60 L30 52 L55 56 L80 44 L110 46 L135 34 L160 38 L190 24 L215 28 L245 16 L270 18 L300 8" fill="none" stroke="#0A84FF" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy -->
+    <section id="privacy" class="py-24 relative bg-neutral-800/40 border-y border-neutral-800 overflow-hidden">
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[50rem] h-[24rem] bg-brand-900/30 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 relative">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-display font-bold text-neutral-100 mb-4">Your health data stays yours.</h2>
+                <p class="text-neutral-300 text-lg">Measurements say a lot about your body. That's why Gio+ keeps them where only you can reach them.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group feature-card rounded-3xl p-6 reveal delay-100">
+                    <div class="w-12 h-12 icon-badge rounded-2xl flex items-center justify-center text-brand-400 text-2xl mb-6"><i class="ph ph-device-mobile"></i></div>
+                    <h3 class="text-xl font-bold text-neutral-100 mb-2">On your device</h3>
+                    <p class="text-neutral-300 text-sm leading-relaxed">Measurements, photos and profiles live in a database on your iPhone. Gio+ works offline, too.</p>
+                </div>
+                <div class="group feature-card rounded-3xl p-6 reveal delay-200">
+                    <div class="w-12 h-12 icon-badge rounded-2xl flex items-center justify-center text-brand-400 text-2xl mb-6"><i class="ph ph-cloud"></i></div>
+                    <h3 class="text-xl font-bold text-neutral-100 mb-2">In your iCloud</h3>
+                    <p class="text-neutral-300 text-sm leading-relaxed">Your devices sync through your private iCloud. You can turn that off in the settings at any time.</p>
+                </div>
+                <div class="group feature-card rounded-3xl p-6 reveal delay-300">
+                    <div class="w-12 h-12 icon-badge rounded-2xl flex items-center justify-center text-brand-400 text-2xl mb-6"><i class="ph ph-hand"></i></div>
+                    <h3 class="text-xl font-bold text-neutral-100 mb-2">No account, no server</h3>
+                    <p class="text-neutral-300 text-sm leading-relaxed">Gio+ doesn't send data to its own or anyone else's servers. Camera images are analysed right on the device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pro -->
+    <section id="pro" class="py-24 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-display font-bold text-neutral-100 mb-4">Free to measure. <span class="text-gradient">Pro for the long run.</span></h2>
+                <p class="text-neutral-300 text-lg">Measuring, the last 4 weeks of history and achievements are free. Pro is available as a subscription or a one-time purchase.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="feature-card rounded-3xl p-8 reveal delay-100">
+                    <div class="text-sm font-semibold uppercase tracking-widest text-neutral-400 mb-2">Free</div>
+                    <h3 class="text-2xl font-display font-bold text-neutral-100 mb-6">Gio+</h3>
+                    <ul class="space-y-3 text-sm text-neutral-300">
+                        <li class="flex items-start gap-3"><i class="ph ph-check text-brand-400 text-lg"></i> Camera measurement and manual entry</li>
+                        <li class="flex items-start gap-3"><i class="ph ph-check text-brand-400 text-lg"></i> Elbow, knee and shoulder, left and right</li>
+                        <li class="flex items-start gap-3"><i class="ph ph-check text-brand-400 text-lg"></i> History of the last 4 weeks</li>
+                        <li class="flex items-start gap-3"><i class="ph ph-check text-brand-400 text-lg"></i> Functional range and achievements</li>
+                        <li class="flex items-start gap-3"><i class="ph ph-check text-brand-400 text-lg"></i> iCloud sync between your devices</li>
+                    </ul>
+                </div>
+                <div class="cta-panel rounded-3xl p-8 reveal delay-200">
+                    <div class="text-sm font-semibold uppercase tracking-widest text-brand-400 mb-2">Pro</div>
+                    <h3 class="text-2xl font-display font-bold text-neutral-100 mb-6">Gio<span class="text-gradient">+</span> Pro</h3>
+                    <ul class="space-y-3 text-sm text-neutral-200">
+                        <li class="flex items-start gap-3"><i class="ph ph-chart-line text-brand-400 text-lg"></i> Your full history instead of only 4 weeks</li>
+                        <li class="flex items-start gap-3"><i class="ph ph-chart-bar text-brand-400 text-lg"></i> Weekly trend with functional range</li>
+                        <li class="flex items-start gap-3"><i class="ph ph-images text-brand-400 text-lg"></i> Photo history: start and end position side by side</li>
+                        <li class="flex items-start gap-3"><i class="ph ph-users text-brand-400 text-lg"></i> Multiple people, e.g. for your family or practice</li>
+                        <li class="flex items-start gap-3"><i class="ph ph-squares-four text-brand-400 text-lg"></i> Widgets for the Home and Lock Screen</li>
+                        <li class="flex items-start gap-3"><i class="ph ph-palette text-brand-400 text-lg"></i> All colour themes</li>
+                        <li class="flex items-start gap-3"><i class="ph ph-heart text-brand-400 text-lg"></i> Support an independent developer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div id="download" class="max-w-4xl mx-auto px-6 mt-24 reveal delay-300 scroll-mt-28">
+            <div class="cta-panel relative overflow-hidden rounded-3xl px-8 py-12 md:px-16 md:py-16 text-center">
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-brand-500/20 rounded-full blur-[80px] animate-float-slow pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-indigo-500/15 rounded-full blur-[80px] animate-float pointer-events-none"></div>
+
+                <div class="relative">
+                    <img src="AppIcon.png" alt="Gio+ App Icon" class="w-20 h-20 rounded-[1.25rem] mx-auto mb-6 shadow-2xl shadow-brand-500/30">
+                    <h3 class="text-3xl md:text-4xl font-display font-bold text-neutral-100 mb-4">Every degree <span class="text-gradient">counts.</span></h3>
+                    <p class="text-neutral-300 mb-8 max-w-xl mx-auto">Free to download, no account needed, and your data stays on your device and in your iCloud.</p>
+                    <a href="#download" class="js-appstore btn-primary inline-flex px-10 py-4 text-white rounded-full font-bold text-lg items-center justify-center gap-3" data-label-live="Download on the App Store" data-label-soon="Coming soon to the App Store">
+                        <i class="ph ph-apple-logo font-bold"></i>
+                        <span class="js-label">Coming soon to the App Store</span>
+                    </a>
+                    <div class="mt-6 flex flex-wrap items-center justify-center gap-6 text-sm text-neutral-400">
+                        <div class="flex items-center gap-2"><i class="ph ph-shield-check text-brand-400"></i> Privacy-first</div>
+                        <div class="flex items-center gap-2"><i class="ph ph-user-circle-minus text-brand-400"></i> No account</div>
+                        <div class="flex items-center gap-2"><i class="ph ph-wifi-slash text-brand-400"></i> Works offline</div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-xs text-neutral-500 mt-8 max-w-2xl mx-auto leading-relaxed">
+                Gio+ is not a medical device. The measurements help you follow your own progress and do not replace a diagnosis or advice from your doctor or physiotherapist.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative bg-neutral-900 border-t border-neutral-800 pt-16 pb-8">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="#" class="text-2xl font-display font-bold text-neutral-100 flex items-center gap-2 mb-4">
+                        <img src="AppIcon.png"
+                             alt="Gio+ App Icon"
+                             class="w-8 h-8 rounded-lg shadow-lg shadow-brand-500/20 object-cover">
+                        <span>Gio<span class="text-gradient">+</span></span>
+                    </a>
+                    <p class="text-neutral-400 max-w-sm text-sm leading-relaxed">
+                        Measure your range of motion with your iPhone.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-neutral-100 font-bold mb-4 text-sm uppercase tracking-wider">App</h4>
+                    <ul class="space-y-3 text-neutral-400 text-sm">
+                        <li><a href="#features" class="hover:text-brand-400 transition-colors">Features</a></li>
+                        <li><a href="#privacy" class="hover:text-brand-400 transition-colors">Privacy</a></li>
+                        <li><a href="#pro" class="hover:text-brand-400 transition-colors">Pro</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-neutral-100 font-bold mb-4 text-sm uppercase tracking-wider">Legal</h4>
+                    <ul class="space-y-3 text-neutral-400 text-sm">
+                        <li><a href="terms.html#privacy-policy" class="hover:text-brand-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html#terms" class="hover:text-brand-400 transition-colors">Terms</a></li>
+                        <li><a href="terms.html#imprint" class="hover:text-brand-400 transition-colors">Imprint</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-neutral-400 text-xs">© 2026 Gio+. All rights reserved.</p>
+                <a href="https://sebastianboldt.io" class="text-neutral-500 hover:text-brand-400 transition-colors text-xs">sebastianboldt.io</a>
+            </div>
+        </div>
+    </footer>
+</main>
+
+    <!-- Scripts -->
+    <script>
+        // App Store link: set this once Gio+ is live, e.g. 'https://apps.apple.com/app/id1234567890'.
+        // Until then every download button points to #download and says "Coming soon".
+        const APP_STORE_URL = '';
+
+        if (APP_STORE_URL) {
+            document.querySelectorAll('.js-appstore').forEach(link => {
+                link.href = APP_STORE_URL;
+                link.target = '_blank';
+                link.rel = 'noopener';
+                const label = link.querySelector('.js-label') || link;
+                if (label === link) {
+                    link.textContent = link.dataset.labelLive;
+                } else {
+                    label.textContent = link.dataset.labelLive;
+                }
+            });
+            document.querySelectorAll('.js-badge').forEach(badge => {
+                badge.textContent = badge.dataset.labelLive;
+            });
+        }
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+
+        // Navbar Blur Effect + Scroll Progress Bar
+        const progressBar = document.getElementById('scroll-progress');
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('glass', 'shadow-sm');
+            } else {
+                nav.classList.remove('glass', 'shadow-sm');
+            }
+
+            const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+            progressBar.style.width = progress + '%';
+        }, { passive: true });
+
+        // Intersection Observer for Fade-in Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { root: null, rootMargin: '0px', threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Fallback: show everything already in view right away, even if the observer fires late
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
