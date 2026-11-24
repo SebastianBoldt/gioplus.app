@@ -148,8 +148,6 @@ const I18N = (() => {
         'app.rangeWeeks': 'Umfang · letzte 6 Wochen',
 
         // 03 Features
-        'feat.h2': 'Messung, Verlauf und Erfolge',
-        'feat.p': 'Gio+ speichert jeden Wert, vergleicht ihn mit deiner ersten Messung und hält jede Alltagsbewegung, die wieder geht, als Erfolg fest.',
         'feat.aLabel': 'A · Kamera',
         'feat.aH': 'Mit der Kamera messen',
         'feat.aP': 'Winkelbogen und Gradzahl liegen direkt auf dem Kamerabild, wie bei einem Goniometer.',
@@ -158,6 +156,8 @@ const I18N = (() => {
         'feat.bH': 'Verlauf und Wochenverlauf',
         'feat.bP': 'Eine Kurve zeigt deinen Umfang Tag für Tag. Pro ergänzt den Wochenverlauf und den Fotoverlauf.',
         'feat.cLabel': 'C · Erfolge',
+        'feat.dLabel': 'D · Fotos',
+        'feat.eLabel': 'E · Widgets',
         'feat.cH': 'Meilensteine aus dem Alltag',
         'feat.cP': 'Erfolge hängen an Alltagsbewegungen: Etwa 115° Beugung im Ellbogen reichen, um einen Löffel zum Mund zu führen.',
 
@@ -171,28 +171,12 @@ const I18N = (() => {
         'tl.avg': 'Ø',
         'tl.delta': '+{d}° Beugung in {n} Tagen',
         'tl.sliderLabel': 'Position im Zeitraffer',
-        'tl.fig': 'Abb. 3 · Beispielwerte. Drück auf Abspielen.',
         'tl.h3': 'Fotoverlauf und Zeitraffer',
         'tl.p': 'Zu jeder Messung gehört ein Foto der Start- und Endposition. Der Zeitraffer spielt sie der Reihe nach ab und zeigt deinen Fortschritt als Bewegung.',
-        'tl.dt1': 'Vergleich',
-        'tl.dd1': 'Erste Messung neben einer späteren, mit dem Unterschied in Grad und Tagen',
-        'tl.dd2': 'Abspielen oder mit dem Regler durchgehen',
-        'tl.dt3': 'Übersicht',
-        'tl.dd3': 'Alle Fotos als Raster',
-        'tl.dt4': 'Speicherung',
-        'tl.dd4': 'Das Speichern von Fotos lässt sich abschalten',
 
         // Widgets
         'w.h3': 'Widgets, Kontrollzentrum und Siri',
-        'w.p': 'Widgets zeigen, ob du heute schon gemessen hast und wie sich dein Umfang entwickelt. Ein Steuerelement oder Siri startet die nächste Messung.',
-        'w.dd1': 'Funktioneller Bereich, Verlauf und Heute messen, auf Home- und Sperrbildschirm',
-        'w.dt2': 'Steuerelement',
-        'w.dd2': 'Kontrollzentrum, Sperrbildschirm oder Action-Taste',
-        'w.dt3': 'Siri &amp; Kurzbefehle',
-        'w.dd3': 'Messung starten oder Fortschritt anzeigen',
-        'w.dt4': 'Erinnerung',
-        'w.dd4': 'Täglich, zu einer Uhrzeit deiner Wahl',
-        'w.fig': 'Abb. 4 · Widgets, Beispielwerte',
+        'w.p': 'Widgets (Pro) zeigen, ob du heute schon gemessen hast und wie sich dein Umfang entwickelt. Ein Steuerelement im Kontrollzentrum oder Siri startet die nächste Messung.',
 
         // Planned
         'dev.label': 'In Arbeit',
