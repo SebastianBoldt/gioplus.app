@@ -652,6 +652,69 @@
                 </div>
             </div>
 
+            <!-- Photo history and time-lapse (PhotoHistoryView in the app) -->
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center mt-20">
+                <div class="lg:col-span-6 reveal">
+                    <div id="timelapse" class="app-screen p-4 max-w-md mx-auto lg:mx-0 space-y-3">
+                        <div class="app-card rounded-xl p-4">
+                            <div class="grid grid-cols-2 gap-3 text-center">
+                                <div>
+                                    <svg id="tl-first" viewBox="0 0 120 150" class="w-full rounded-lg bg-black border border-white/5">
+                                        <circle cx="62" cy="22" r="9" fill="#2c2c2e"/>
+                                        <path d="M62 33 V132" stroke="#2c2c2e" stroke-width="22" stroke-linecap="round"/>
+                                        <line class="tl-upper" x1="62" y1="42" x2="62" y2="92" stroke="#30D158" stroke-width="4" stroke-linecap="round"/>
+                                        <line class="tl-fore" x1="62" y1="92" x2="62" y2="138" stroke="#30D158" stroke-width="4" stroke-linecap="round"/>
+                                        <circle cx="62" cy="42" r="3.5" fill="#fff"/>
+                                        <circle class="tl-wrist" cx="62" cy="138" r="3.5" fill="#fff"/>
+                                        <circle cx="62" cy="92" r="5" fill="#fff" stroke="#30D158" stroke-width="2.5"/>
+                                    </svg>
+                                    <div class="text-xs font-semibold text-white mt-2">First measurement</div>
+                                    <div class="text-xs text-muted font-mono" id="tl-first-label"></div>
+                                </div>
+                                <div>
+                                    <svg id="tl-current" viewBox="0 0 120 150" class="w-full rounded-lg bg-black border border-white/5">
+                                        <circle cx="62" cy="22" r="9" fill="#2c2c2e"/>
+                                        <path d="M62 33 V132" stroke="#2c2c2e" stroke-width="22" stroke-linecap="round"/>
+                                        <line class="tl-upper" x1="62" y1="42" x2="62" y2="92" stroke="#30D158" stroke-width="4" stroke-linecap="round"/>
+                                        <line class="tl-fore" x1="62" y1="92" x2="62" y2="138" stroke="#30D158" stroke-width="4" stroke-linecap="round"/>
+                                        <circle cx="62" cy="42" r="3.5" fill="#fff"/>
+                                        <circle class="tl-wrist" cx="62" cy="138" r="3.5" fill="#fff"/>
+                                        <circle cx="62" cy="92" r="5" fill="#fff" stroke="#30D158" stroke-width="2.5"/>
+                                    </svg>
+                                    <div class="text-xs font-semibold text-white mt-2" id="tl-current-caption">Current</div>
+                                    <div class="text-xs text-muted font-mono" id="tl-current-label"></div>
+                                </div>
+                            </div>
+                            <div class="mt-3 text-sm font-semibold text-mint flex items-center justify-center gap-2"><i class="ph-fill ph-arrow-circle-up-right text-base"></i><span id="tl-delta"></span></div>
+                        </div>
+                        <div class="app-card rounded-xl p-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="text-sm font-semibold text-white">Time-lapse</div>
+                                <button type="button" id="tl-play" class="text-xs text-brand border border-white/10 bg-white/5 hover:bg-white/10 rounded-md px-3 py-1.5 flex items-center gap-1.5 transition-colors">
+                                    <i class="ph-fill ph-play"></i><span>Play</span>
+                                </button>
+                            </div>
+                            <input type="range" id="tl-slider" min="0" max="7" step="1" value="7" class="w-full accent-[#0A84FF]" aria-label="Position in the time-lapse">
+                            <div class="flex justify-between text-xs text-muted font-mono mt-1"><span id="tl-start"></span><span id="tl-end"></span></div>
+                        </div>
+                    </div>
+                    <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim mt-4">Fig. 3 · Photo history, example values. Press play or drag the slider.</p>
+                </div>
+                <div class="lg:col-span-6 reveal">
+                    <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-white mb-5">Photo history and time-lapse <span class="font-mono text-xs uppercase tracking-[0.14em] text-brand align-middle ml-1">Pro</span></h3>
+                    <p class="text-muted text-lg leading-relaxed mb-8 max-w-xl">
+                        Every saved measurement keeps a photo of the start and of the end position.
+                        The time-lapse plays these photos in order, one every 0.6 s, and shows the change between your first and your latest measurement as movement.
+                    </p>
+                    <dl class="border-t border-line text-sm">
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim pt-0.5">Comparison</dt><dd class="text-text">First measurement next to any later one, with the change in degrees and the number of days between them</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim pt-0.5">Time-lapse</dt><dd class="text-text">Play and stop, or step through the measurements with the slider</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim pt-0.5">Overview</dt><dd class="text-text">All photos in a grid, for flexion and for extension</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim pt-0.5">Storage</dt><dd class="text-text">Photos are saved without the overlay, which is redrawn when shown. Saving photos can be switched off.</dd></div>
+                    </dl>
+                </div>
+            </div>
+
             <!-- Widgets, Control Center, Siri -->
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center mt-20">
                 <div class="lg:col-span-6 reveal">
@@ -704,8 +767,16 @@
                             </svg>
                         </div>
                     </div>
-                    <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim mt-4 max-w-md mx-auto lg:ml-auto lg:mr-0">Fig. 3 · Widgets, example values</p>
+                    <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim mt-4 max-w-md mx-auto lg:ml-auto lg:mr-0">Fig. 4 · Widgets, example values</p>
                 </div>
+            </div>
+            <!-- Planned -->
+            <div class="mt-20 border border-dashed border-white/15 rounded-lg p-6 grid md:grid-cols-[9rem_1fr] gap-3 md:gap-8 reveal">
+                <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">In development</div>
+                <ul class="text-sm text-text space-y-1.5">
+                    <li>A report of your measurements</li>
+                    <li>Notes and a pain scale for each measurement</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -913,6 +984,60 @@
             }, { threshold: 0.35 });
             document.querySelectorAll('video.js-autoplay').forEach(video => videoObserver.observe(video));
         }
+
+        // Photo history demo: first measurement next to the selected one, time-lapse at 0.6 s per photo
+        (() => {
+            const entries = [
+                ['Oct 18', 78], ['Oct 22', 81], ['Oct 27', 85], ['Nov 1', 88],
+                ['Nov 6', 92], ['Nov 11', 95], ['Nov 17', 99], ['Nov 23', 102],
+            ];
+            const days = [0, 4, 9, 14, 19, 24, 30, 36];
+            const slider = document.getElementById('tl-slider');
+            const play = document.getElementById('tl-play');
+            if (!slider || !play) return;
+
+            // Flexion: 0 degrees = forearm in line with the upper arm, larger = more bent
+            const pose = (svg, flexion) => {
+                const rad = flexion * Math.PI / 180;
+                const x = 62 - 46 * Math.sin(rad), y = 92 + 46 * Math.cos(rad);
+                svg.querySelector('.tl-fore').setAttribute('x2', x);
+                svg.querySelector('.tl-fore').setAttribute('y2', y);
+                svg.querySelector('.tl-wrist').setAttribute('cx', x);
+                svg.querySelector('.tl-wrist').setAttribute('cy', y);
+            };
+            const show = (i) => {
+                const [date, value] = entries[i];
+                pose(document.getElementById('tl-current'), value);
+                document.getElementById('tl-current-label').textContent = `${date} · avg ${value}°`;
+                document.getElementById('tl-current-caption').textContent = i === entries.length - 1 ? 'Current' : 'Selected';
+                document.getElementById('tl-delta').textContent = `+${value - entries[0][1]}° flexion in ${days[i]} days`;
+                slider.value = i;
+            };
+            pose(document.getElementById('tl-first'), entries[0][1]);
+            document.getElementById('tl-first-label').textContent = `${entries[0][0]} · avg ${entries[0][1]}°`;
+            document.getElementById('tl-start').textContent = entries[0][0];
+            document.getElementById('tl-end').textContent = entries[entries.length - 1][0];
+            show(entries.length - 1);
+
+            let timer = null;
+            const stop = () => {
+                clearInterval(timer);
+                timer = null;
+                play.innerHTML = '<i class="ph-fill ph-play"></i><span>Play</span>';
+            };
+            const start = () => {
+                let i = 0;
+                show(i);
+                play.innerHTML = '<i class="ph-fill ph-stop"></i><span>Stop</span>';
+                timer = setInterval(() => {
+                    i += 1;
+                    if (i >= entries.length) { stop(); return; }
+                    show(i);
+                }, 600);
+            };
+            play.addEventListener('click', () => (timer ? stop() : start()));
+            slider.addEventListener('input', () => { stop(); show(Number(slider.value)); });
+        })();
 
         // Fallback next to the observer: reveal whatever is in view on load and while scrolling
         const revealInView = () => {
