@@ -262,7 +262,7 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Three staggered screens in one thin frame: in the hero (video in front) and in the features header */
+        /* Hero: three staggered screens in one thin frame, the video in front */
         .hero-demo {
             aspect-ratio: 100 / 108;
         }
@@ -277,6 +277,11 @@
             left: 0;
             top: 0;
             z-index: 1;
+        }
+        /* A single screenshot in the same frame, used side by side in the features header */
+        .shot {
+            border-radius: 9% / 4.2%;
+            box-shadow: 0 20px 36px -22px var(--phone-shadow);
         }
 
         /* Photo placeholders in the time-lapse demo */
@@ -784,12 +789,12 @@
                 <p class="text-muted text-lg leading-relaxed" data-i18n="feat.p">Gio+ speichert jeden Wert, vergleicht ihn mit deiner ersten Messung und hält jede Alltagsbewegung, die wieder geht, als Erfolg fest.</p>
                 </div>
                 <div class="lg:col-span-7 reveal">
-                    <div class="hero-demo relative w-full max-w-[520px] mx-auto lg:ml-auto lg:mr-0" role="img"
+                    <div class="grid grid-cols-3 gap-4 sm:gap-5 w-full max-w-[460px] mx-auto lg:ml-auto lg:mr-0" role="img"
                          aria-label="Gio+ Goniometer-App auf dem iPhone: Erfolge, Wochenverlauf und der funktionelle Bereich des Ellbogens"
                          data-i18n-attr="aria-label:hero.alt">
-                        <div class="video-card hero-shot" style="left: 0; top: 7%"><img data-screen="achievements" src="/media/screens/light-de-achievements.jpg" alt="" width="603" height="1311" loading="lazy"></div>
-                        <div class="video-card hero-shot" style="left: 27%; top: 3.5%"><img data-screen="history" src="/media/screens/light-de-history.jpg" alt="" width="603" height="1311" loading="lazy"></div>
-                        <div class="video-card hero-shot" style="left: 54%; top: 0"><img data-screen="progress" src="/media/screens/light-de-progress.jpg" alt="" width="603" height="1311" loading="lazy"></div>
+                        <div class="video-card shot"><img data-screen="achievements" src="/media/screens/light-de-achievements.jpg" alt="" width="603" height="1311" loading="lazy"></div>
+                        <div class="video-card shot"><img data-screen="history" src="/media/screens/light-de-history.jpg" alt="" width="603" height="1311" loading="lazy"></div>
+                        <div class="video-card shot"><img data-screen="progress" src="/media/screens/light-de-progress.jpg" alt="" width="603" height="1311" loading="lazy"></div>
                     </div>
                 </div>
             </div>
