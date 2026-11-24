@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Once Gio+ is live: add <meta name="apple-itunes-app" content="app-id=XXXXXXXXXX"> -->
-    <title>Gio+ - Range of Motion Tracker for iPhone | Measure Elbow, Knee & Shoulder</title>
-    <meta name="description" content="Gio+ uses your iPhone camera to measure how far your elbow, knee or shoulder bends and straightens, and tracks your recovery over time. No account, no server - your data stays on your device and in your iCloud.">
+    <title>Gio+ - Goniometer App for iPhone | Measure Elbow, Knee & Shoulder Range of Motion</title>
+    <meta name="description" content="Gio+ turns your iPhone into a goniometer: the camera measures how far your elbow, knee or shoulder bends and straightens, and tracks your range of motion during rehab. No account, no server - your data stays on your device and in your iCloud.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#18181d">
     <link rel="canonical" href="https://gioplus.app/">
@@ -15,14 +15,14 @@
     <meta property="og:site_name" content="Gio+">
     <meta property="og:locale" content="en_US">
     <meta property="og:url" content="https://gioplus.app/">
-    <meta property="og:title" content="Gio+ - Measure your range of motion with your iPhone">
-    <meta property="og:description" content="Measure how far your elbow, knee or shoulder bends and straightens with the iPhone camera, and see your recovery week by week.">
+    <meta property="og:title" content="Gio+ - The goniometer app for iPhone">
+    <meta property="og:description" content="A goniometer in your pocket: measure how far your elbow, knee or shoulder bends and straightens with the iPhone camera, and see your recovery week by week.">
     <meta property="og:image" content="https://gioplus.app/gioplus-hero.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Gio+ - Measure your range of motion with your iPhone">
-    <meta name="twitter:description" content="Measure how far your elbow, knee or shoulder bends and straightens with the iPhone camera, and see your recovery week by week.">
+    <meta name="twitter:title" content="Gio+ - The goniometer app for iPhone">
+    <meta name="twitter:description" content="A goniometer in your pocket: measure how far your elbow, knee or shoulder bends and straightens with the iPhone camera, and see your recovery week by week.">
     <meta name="twitter:image" content="https://gioplus.app/gioplus-hero.png">
 
     <!-- Favicons -->
@@ -249,6 +249,23 @@
                         inset 0 1px 0 rgba(255, 255, 255, 0.08);
         }
 
+        /* Screen recording of a measurement: rounded corners, no device frame */
+        .video-card {
+            overflow: hidden;
+            border-radius: 2rem;
+            background: #000;
+            aspect-ratio: 1206 / 2622;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 40px 70px -25px rgba(0, 0, 0, 0.75),
+                        0 20px 50px -20px rgba(10, 132, 255, 0.3);
+        }
+        .video-card > video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         /* Measuring arm in the camera illustration */
         @keyframes bend {
             0%, 100% { transform: rotate(0deg); }
@@ -295,7 +312,8 @@
         "name": "Gio+",
         "operatingSystem": "iOS",
         "applicationCategory": "HealthApplication",
-        "description": "Gio+ uses the iPhone camera to measure how far your elbow, knee or shoulder bends and straightens, and tracks your recovery over time.",
+        "description": "Gio+ is a goniometer app for iPhone. It uses the camera to measure how far your elbow, knee or shoulder bends and straightens, and tracks your range of motion over time.",
+        "keywords": "goniometer, goniometer app, range of motion, ROM, elbow flexion, knee flexion, shoulder, physiotherapy, rehab",
         "url": "https://gioplus.app",
         "screenshot": "https://gioplus.app/gioplus-hero.png",
         "offers": {
@@ -430,11 +448,63 @@
                 </div>
 
                 <div class="relative w-full h-full flex justify-center">
-                    <img src="gioplus-hero.png" alt="Gio+ on iPhone: achievements, weekly trend and the functional range of the elbow" class="object-contain max-h-full drop-shadow-[0_35px_60px_rgba(0,0,0,0.6)] transform rotate-[-2deg]">
+                    <img src="gioplus-hero.png" alt="Gio+ goniometer app on iPhone: achievements, weekly trend and the functional range of the elbow" class="object-contain max-h-full drop-shadow-[0_35px_60px_rgba(0,0,0,0.6)] transform rotate-[-2deg]">
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- How it works -->
+    <section id="how" class="py-24 relative bg-neutral-800/40 border-t border-neutral-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <p class="text-sm font-semibold text-brand-400 uppercase tracking-widest mb-3">See it in action</p>
+                <h2 class="text-3xl md:text-5xl font-display font-bold text-neutral-100 mb-4">Your iPhone as a goniometer.</h2>
+                <p class="text-neutral-300 text-lg">A physiotherapist measures joint angles with a goniometer. Gio+ does the same with the camera, in under a minute. Your first measurement is your baseline, every later one is compared with it.</p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
+                <!-- Video of a real measurement -->
+                <div class="relative flex justify-center reveal">
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="w-[18rem] h-[18rem] rounded-full bg-brand-500/25 blur-[90px] animate-pulse-glow"></div>
+                    </div>
+                    <div class="video-card relative w-[260px] sm:w-[300px]">
+                        <video class="js-autoplay" muted loop playsinline preload="metadata"
+                               poster="media/measurement-poster.jpg"
+                               aria-label="Screen recording of the Gio+ goniometer measuring the right elbow: the arm is bent and straightened three times, then the result is shown">
+                            <source src="media/measurement.webm" type="video/webm">
+                            <source src="media/measurement.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Steps -->
+                <div class="space-y-10">
+                    <div class="reveal delay-100 flex gap-6">
+                        <div class="text-5xl font-display font-black text-gradient w-10 shrink-0">1</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-neutral-100 mb-2">Set up your iPhone</h3>
+                            <p class="text-neutral-400 text-sm leading-relaxed">Lean it against something or use a stand. Pick the joint and the side you want to measure.</p>
+                        </div>
+                    </div>
+                    <div class="reveal delay-200 flex gap-6">
+                        <div class="text-5xl font-display font-black text-gradient w-10 shrink-0">2</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-neutral-100 mb-2">Stand sideways</h3>
+                            <p class="text-neutral-400 text-sm leading-relaxed">Bend and straighten the joint three times. Gio+ follows the movement in the camera image and locks each value once you hold still.</p>
+                        </div>
+                    </div>
+                    <div class="reveal delay-300 flex gap-6">
+                        <div class="text-5xl font-display font-black text-gradient w-10 shrink-0">3</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-neutral-100 mb-2">Check your result</h3>
+                            <p class="text-neutral-400 text-sm leading-relaxed">Flexion, extension and range are saved as the average of your reps, with a photo of each end position. You can also enter values by hand.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Joints strip -->
     <div class="relative border-y border-neutral-800 bg-gradient-to-b from-neutral-800/60 to-neutral-800/30 py-10">
@@ -479,7 +549,7 @@
         <div class="max-w-7xl mx-auto px-6 relative">
             <div class="text-center max-w-2xl mx-auto mb-16 reveal">
                 <h2 class="text-3xl md:text-5xl font-display font-bold text-neutral-100 mb-4">Measure. Compare. Keep going.</h2>
-                <p class="text-neutral-300 text-lg">No goniometer, no spreadsheet. Your iPhone measures the angle, and Gio+ shows you what it means.</p>
+                <p class="text-neutral-300 text-lg">No plastic goniometer, no spreadsheet. Your iPhone measures the angle, and Gio+ shows you what it means.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
@@ -491,7 +561,7 @@
                     <h3 class="text-xl font-bold text-neutral-100 mb-2">Measure with the camera</h3>
                     <div class="text-brand-400 font-bold text-sm mb-3">Three reps, one average</div>
                     <p class="text-neutral-300 text-sm leading-relaxed mb-6 flex-grow">
-                        Prop up your iPhone, stand sideways and bend and straighten the joint three times. Gio+ detects the angle in the camera image and saves the average.
+                        Prop up your iPhone, stand sideways and bend and straighten the joint three times. Like a goniometer, Gio+ reads the joint angle, only from the camera image, and saves the average.
                     </p>
                     <!-- Illustration: camera view with tracked arm -->
                     <div class="app-screen rounded-2xl aspect-4/3 overflow-hidden relative" aria-hidden="true">
@@ -598,32 +668,6 @@
         </div>
     </section>
 
-    <!-- How it works -->
-    <section id="how" class="py-24 relative bg-neutral-800/40 border-y border-neutral-800">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-display font-bold text-neutral-100 mb-4">A measurement in under a minute.</h2>
-                <p class="text-neutral-300 text-lg">Your first measurement is your baseline. Every later one is compared with it.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="reveal delay-100 text-center md:text-left">
-                    <div class="text-5xl font-display font-black text-gradient mb-4">1</div>
-                    <h3 class="text-lg font-bold text-neutral-100 mb-2">Set up your iPhone</h3>
-                    <p class="text-neutral-400 text-sm leading-relaxed">Lean it against something or use a stand. Pick the joint and the side you want to measure.</p>
-                </div>
-                <div class="reveal delay-200 text-center md:text-left">
-                    <div class="text-5xl font-display font-black text-gradient mb-4">2</div>
-                    <h3 class="text-lg font-bold text-neutral-100 mb-2">Stand sideways</h3>
-                    <p class="text-neutral-400 text-sm leading-relaxed">Bend and straighten the joint three times. Gio+ follows the movement in the camera image.</p>
-                </div>
-                <div class="reveal delay-300 text-center md:text-left">
-                    <div class="text-5xl font-display font-black text-gradient mb-4">3</div>
-                    <h3 class="text-lg font-bold text-neutral-100 mb-2">Check your result</h3>
-                    <p class="text-neutral-400 text-sm leading-relaxed">Flexion, extension and range are saved as the average of your reps. You can also enter values by hand.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Showcase -->
     <section id="showcase" class="py-24 relative overflow-hidden">
@@ -671,7 +715,7 @@
                 <div class="w-full lg:w-1/2">
                     <h3 class="text-3xl font-display font-bold text-neutral-100 mb-4">Know what you need. <br><span class="text-gradient">Not just what you have.</span></h3>
                     <p class="text-neutral-300 text-lg mb-8 leading-relaxed">
-                        Most everyday tasks don't need the full range of a healthy joint. Gio+ shows your current arc next to the functional range, so you can see at a glance how many degrees are still missing for bending and for straightening.
+                        Most everyday tasks don't need the full range of a healthy joint. Instead of just a goniometer reading, Gio+ shows your current arc next to the functional range, so you can see at a glance how many degrees are still missing for bending and for straightening.
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-center gap-3 text-neutral-200"><i class="ph ph-check-circle text-brand-400 text-xl"></i> Flexion, extension and total range</li>
@@ -854,7 +898,7 @@
                         <span>Gio<span class="text-gradient">+</span></span>
                     </a>
                     <p class="text-neutral-400 max-w-sm text-sm leading-relaxed">
-                        Measure your range of motion with your iPhone.
+                        The goniometer app for your iPhone.
                     </p>
                 </div>
                 <div>
@@ -939,6 +983,22 @@
         document.querySelectorAll('.reveal').forEach(el => {
             observer.observe(el);
         });
+
+        // Measurement video: play only while visible, never with reduced motion (the poster stays)
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const videos = document.querySelectorAll('video.js-autoplay');
+        if (!reduceMotion) {
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.play().catch(() => {});
+                    } else {
+                        entry.target.pause();
+                    }
+                });
+            }, { threshold: 0.35 });
+            videos.forEach(video => videoObserver.observe(video));
+        }
 
         // Fallback: show everything already in view right away, even if the observer fires late
         window.addEventListener('load', () => {
