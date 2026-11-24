@@ -499,8 +499,9 @@
                     <span class="inline-block w-2 h-2 rounded-full bg-brand shrink-0"></span>
                     <span class="js-badge" data-i18n="hero.badge" data-i18n-live="hero.badgeLive">Goniometer app · Coming soon for iPhone, iPad and Mac</span>
                 </p>
-                <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold tracking-tight text-strong leading-[1.08] mb-6" data-i18n="hero.h1">Document your recovery with your iPhone camera.</h1>
-                <p class="text-lg text-muted mb-8 max-w-xl leading-relaxed" data-i18n="hero.p">Gio+ measures how far your elbow, knee or shoulder bends and straightens. Every measurement is saved with its date and photos, so you can see week by week how your rehab is going.</p>
+                <p class="text-brand font-semibold text-lg mb-3">The most advanced goniometer app.</p>
+                <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold tracking-tight text-strong leading-[1.08] mb-6" data-i18n="hero.h1">Document your recovery with your iPhone.</h1>
+                <p class="text-lg text-muted mb-8 max-w-xl leading-relaxed" data-i18n="hero.p">Gio+ measures 38 joint movements from the cervical spine to the great toe: with the camera, with the motion sensor of your iPhone, from a photo or entered by hand. Every measurement is saved with its date, so you can see week by week how your rehab is going.</p>
                 <div class="flex flex-col sm:flex-row sm:items-center gap-5">
                     <a href="#download" class="js-appstore btn px-6 py-3.5">
                         <i class="ph ph-apple-logo text-lg"></i>
@@ -784,6 +785,40 @@
                 <span class="h-px flex-1 bg-line"></span>
             </div>
 
+
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-16" id="joints">
+                <div class="lg:col-span-5 reveal">
+                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="joints.h2">38 movements, four ways to measure</h2>
+                    <p class="text-muted text-lg leading-relaxed mb-4" data-i18n="joints.p1">The camera works well for large joints seen from the side. For rotations, the spine, the wrist or the ankle, hold your iPhone against the body part: its motion sensor reads the angle like an inclinometer.</p>
+                    <p class="text-muted leading-relaxed" data-i18n="joints.p2">Every sensor measurement has its own animated guide that shows the position, where the iPhone goes and how to move. Voice prompts lead through three repetitions, so you never need to look at the screen. Movements through the neutral position are also shown in neutral-zero notation, for example 80–0–70.</p>
+                </div>
+                <div class="lg:col-span-7 reveal">
+                    <div class="border border-line rounded-lg overflow-x-auto bg-ink">
+                        <table class="data-table">
+                            <caption class="sr-only" data-i18n="joints.caption">Joints, movements and measuring methods in Gio+</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" data-i18n="joints.thRegion">Region</th>
+                                    <th scope="col" data-i18n="joints.thMoves">Movements</th>
+                                    <th scope="col" data-i18n="joints.thMethods">Methods</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="text-strong" data-i18n="joints.neck">Cervical spine</td><td class="text-text" data-i18n="joints.neck.m">Flexion/extension, lateral flexion, rotation</td><td class="font-mono text-xs text-muted" data-i18n="joints.neck.w">Sensor · Photo · Manual</td></tr>
+                                <tr><td class="text-strong" data-i18n="joints.trunk">Trunk</td><td class="text-text" data-i18n="joints.trunk.m">Flexion/extension, lateral flexion, rotation</td><td class="font-mono text-xs text-muted" data-i18n="joints.trunk.w">Sensor · Photo · Manual</td></tr>
+                                <tr><td class="text-strong" data-i18n="joints.shoulder">Shoulder</td><td class="text-text" data-i18n="joints.shoulder.m">Flexion, extension, abduction, external/internal rotation, horizontal abduction/adduction</td><td class="font-mono text-xs text-muted" data-i18n="joints.shoulder.w">Camera · Sensor · Photo · Manual</td></tr>
+                                <tr><td class="text-strong" data-i18n="joints.elbow">Elbow</td><td class="text-text" data-i18n="joints.elbow.m">Flexion/extension</td><td class="font-mono text-xs text-muted" data-i18n="joints.elbow.w">Camera · Sensor · Photo · Manual</td></tr>
+                                <tr><td class="text-strong" data-i18n="joints.forearm">Forearm</td><td class="text-text" data-i18n="joints.forearm.m">Pronation/supination</td><td class="font-mono text-xs text-muted" data-i18n="joints.forearm.w">Sensor · Manual</td></tr>
+                                <tr><td class="text-strong" data-i18n="joints.wrist">Wrist</td><td class="text-text" data-i18n="joints.wrist.m">Flexion/extension, radial/ulnar deviation</td><td class="font-mono text-xs text-muted" data-i18n="joints.wrist.w">Sensor · Photo · Manual</td></tr>
+                                <tr><td class="text-strong" data-i18n="joints.hand">Hand and fingers</td><td class="text-text" data-i18n="joints.hand.m">Thumb (abduction, MCP, IP), fingers 2–5 (MCP, PIP, DIP each)</td><td class="font-mono text-xs text-muted" data-i18n="joints.hand.w">Camera · Photo · Manual</td></tr>
+                                <tr><td class="text-strong" data-i18n="joints.hip">Hip</td><td class="text-text" data-i18n="joints.hip.m">Flexion, extension, abduction/adduction, external/internal rotation</td><td class="font-mono text-xs text-muted" data-i18n="joints.hip.w">Camera · Sensor · Photo · Manual</td></tr>
+                                <tr><td class="text-strong" data-i18n="joints.knee">Knee</td><td class="text-text" data-i18n="joints.knee.m">Flexion/extension</td><td class="font-mono text-xs text-muted" data-i18n="joints.knee.w">Camera · Sensor · Photo · Manual</td></tr>
+                                <tr><td class="text-strong" data-i18n="joints.ankle">Ankle and foot</td><td class="text-text" data-i18n="joints.ankle.m">Dorsiflexion/plantarflexion, inversion/eversion, great toe</td><td class="font-mono text-xs text-muted" data-i18n="joints.ankle.w">Sensor · Photo · Manual</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
                 <div class="lg:col-span-5 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="feat.h2">Measurement, history and achievements</h2>
@@ -1079,7 +1114,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td class="text-text" data-i18n="pro.r1">Measuring with the camera or by hand</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
+                                <tr><td class="text-text" data-i18n="pro.r1">Measuring with camera, sensor, photo or by hand</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
+                                <tr><td class="text-text" data-i18n="pro.r1b">All 38 movements in 10 body regions</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r2">Progress with functional range</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r3">History of values</td><td class="font-mono text-xs text-muted" data-i18n="pro.r3free">4 weeks</td><td class="font-mono text-xs text-strong" data-i18n="pro.r3pro">Complete</td></tr>
                                 <tr><td class="text-text" data-i18n="app.weeklyTrend">Weekly trend</td><td class="text-dim">–</td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
