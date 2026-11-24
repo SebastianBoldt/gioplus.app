@@ -785,9 +785,9 @@
             </div>
             <h2 class="sr-only" data-i18n="nav.features">Funktionen</h2>
 
-            <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-ink">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-px bg-line border border-line rounded-lg overflow-hidden">
                 <!-- Measure -->
-                <div class="p-6 flex flex-col reveal">
+                <div class="p-6 flex flex-col bg-ink reveal">
                     <div class="lbl mb-4" data-i18n="feat.aLabel">A · Kamera</div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.aH">Mit der Kamera messen</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.aP">Winkelbogen und Gradzahl liegen direkt auf dem Kamerabild, wie bei einem Goniometer.</p>
@@ -822,7 +822,7 @@
                 </div>
 
                 <!-- History -->
-                <div class="p-6 flex flex-col reveal">
+                <div class="p-6 flex flex-col bg-ink reveal">
                     <div class="lbl mb-4" data-i18n="feat.bLabel">B · Verlauf</div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.bH">Verlauf und Wochenverlauf</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.bP">Eine Kurve zeigt deinen Umfang Tag für Tag. Pro ergänzt den Wochenverlauf und den Fotoverlauf.</p>
@@ -855,7 +855,7 @@
                 </div>
 
                 <!-- Achievements -->
-                <div class="p-6 flex flex-col reveal">
+                <div class="p-6 flex flex-col bg-ink reveal">
                     <div class="lbl mb-4" data-i18n="feat.cLabel">C · Erfolge</div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.cH">Meilensteine aus dem Alltag</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.cP">Erfolge hängen an Alltagsbewegungen: Etwa 115° Beugung im Ellbogen reichen, um einen Löffel zum Mund zu führen.</p>
@@ -877,99 +877,105 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="grid md:grid-cols-2 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-ink mt-6">
                 <!-- Photo history and time-lapse (PhotoHistoryView in the app) -->
-                <div class="p-6 flex flex-col reveal">
+                <div class="p-6 flex flex-col bg-ink reveal">
                     <div class="lbl mb-4"><span data-i18n="feat.dLabel">D · Fotos</span> <span class="text-brand">· Pro</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="tl.h3">Fotoverlauf und Zeitraffer</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6" data-i18n="tl.p">Zu jeder Messung gehört ein Foto der Start- und Endposition. Der Zeitraffer spielt sie der Reihe nach ab und zeigt deinen Fortschritt als Bewegung.</p>
-                    <div id="timelapse" class="app-screen p-4 space-y-3 w-full max-w-md mx-auto my-auto">
-                        <div class="app-card rounded-xl p-4">
-                            <div class="grid grid-cols-2 gap-3 text-center">
-                                <div>
-                                    <svg id="tl-first" viewBox="0 0 120 150" class="w-full rounded-lg tl-photo">
-                                        <circle class="tl-body" cx="62" cy="22" r="9" stroke="none"/>
-                                        <path class="tl-body" d="M62 33 V132" fill="none" stroke-width="22" stroke-linecap="round"/>
-                                        <line class="g-func" x1="62" y1="42" x2="62" y2="92" stroke-width="4" stroke-linecap="round"/>
-                                        <line class="tl-fore g-func" x1="62" y1="92" x2="62" y2="138" stroke-width="4" stroke-linecap="round"/>
-                                        <circle class="tl-joint" cx="62" cy="42" r="3.5" stroke-width="1.5"/>
-                                        <circle class="tl-wrist tl-joint" cx="62" cy="138" r="3.5" stroke-width="1.5"/>
-                                        <circle class="tl-joint" cx="62" cy="92" r="5" stroke-width="2.5"/>
-                                    </svg>
-                                    <div class="text-xs font-semibold text-strong mt-2" data-i18n="tl.first">Erste Messung</div>
-                                    <div class="text-xs text-muted font-mono" id="tl-first-label"></div>
-                                </div>
-                                <div>
-                                    <svg id="tl-current" viewBox="0 0 120 150" class="w-full rounded-lg tl-photo">
-                                        <circle class="tl-body" cx="62" cy="22" r="9" stroke="none"/>
-                                        <path class="tl-body" d="M62 33 V132" fill="none" stroke-width="22" stroke-linecap="round"/>
-                                        <line class="g-func" x1="62" y1="42" x2="62" y2="92" stroke-width="4" stroke-linecap="round"/>
-                                        <line class="tl-fore g-func" x1="62" y1="92" x2="62" y2="138" stroke-width="4" stroke-linecap="round"/>
-                                        <circle class="tl-joint" cx="62" cy="42" r="3.5" stroke-width="1.5"/>
-                                        <circle class="tl-wrist tl-joint" cx="62" cy="138" r="3.5" stroke-width="1.5"/>
-                                        <circle class="tl-joint" cx="62" cy="92" r="5" stroke-width="2.5"/>
-                                    </svg>
-                                    <div class="text-xs font-semibold text-strong mt-2" id="tl-current-caption"></div>
-                                    <div class="text-xs text-muted font-mono" id="tl-current-label"></div>
-                                </div>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="tl.p">Zu jeder Messung gehört ein Foto. Der Zeitraffer spielt sie der Reihe nach ab und zeigt deinen Fortschritt als Bewegung.</p>
+                    <div id="timelapse" class="app-screen aspect-4/3 overflow-hidden p-3 flex flex-col gap-1.5">
+                        <div class="grid grid-cols-2 gap-2 flex-1 min-h-0 text-center">
+                            <div class="flex flex-col min-h-0">
+                                <svg id="tl-first" viewBox="0 0 120 150" class="w-full flex-1 min-h-0 rounded-lg tl-photo">
+                                    <circle class="tl-body" cx="62" cy="22" r="9" stroke="none"/>
+                                    <path class="tl-body" d="M62 33 V132" fill="none" stroke-width="22" stroke-linecap="round"/>
+                                    <line class="g-func" x1="62" y1="42" x2="62" y2="92" stroke-width="4" stroke-linecap="round"/>
+                                    <line class="tl-fore g-func" x1="62" y1="92" x2="62" y2="138" stroke-width="4" stroke-linecap="round"/>
+                                    <circle class="tl-joint" cx="62" cy="42" r="3.5" stroke-width="1.5"/>
+                                    <circle class="tl-wrist tl-joint" cx="62" cy="138" r="3.5" stroke-width="1.5"/>
+                                    <circle class="tl-joint" cx="62" cy="92" r="5" stroke-width="2.5"/>
+                                </svg>
+                                <div class="text-[11px] leading-tight font-semibold text-strong mt-1" data-i18n="tl.first">Erste Messung</div>
+                                <div class="text-[10px] leading-tight text-muted font-mono" id="tl-first-label"></div>
                             </div>
-                            <div class="mt-3 text-sm font-semibold text-mint flex items-center justify-center gap-2"><i class="ph-fill ph-arrow-circle-up-right text-base"></i><span id="tl-delta"></span></div>
-                        </div>
-                        <div class="app-card rounded-xl p-4">
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="text-sm font-semibold text-strong" data-i18n="tl.title">Zeitraffer</div>
-                                <button type="button" id="tl-play" class="text-xs text-brand border border-line bg-track/50 hover:bg-track rounded-md px-3 py-1.5 flex items-center gap-1.5 transition-colors"></button>
+                            <div class="flex flex-col min-h-0">
+                                <svg id="tl-current" viewBox="0 0 120 150" class="w-full flex-1 min-h-0 rounded-lg tl-photo">
+                                    <circle class="tl-body" cx="62" cy="22" r="9" stroke="none"/>
+                                    <path class="tl-body" d="M62 33 V132" fill="none" stroke-width="22" stroke-linecap="round"/>
+                                    <line class="g-func" x1="62" y1="42" x2="62" y2="92" stroke-width="4" stroke-linecap="round"/>
+                                    <line class="tl-fore g-func" x1="62" y1="92" x2="62" y2="138" stroke-width="4" stroke-linecap="round"/>
+                                    <circle class="tl-joint" cx="62" cy="42" r="3.5" stroke-width="1.5"/>
+                                    <circle class="tl-wrist tl-joint" cx="62" cy="138" r="3.5" stroke-width="1.5"/>
+                                    <circle class="tl-joint" cx="62" cy="92" r="5" stroke-width="2.5"/>
+                                </svg>
+                                <div class="text-[11px] leading-tight font-semibold text-strong mt-1" id="tl-current-caption"></div>
+                                <div class="text-[10px] leading-tight text-muted font-mono" id="tl-current-label"></div>
                             </div>
-                            <input type="range" id="tl-slider" min="0" max="7" step="1" value="7" class="w-full" style="accent-color: rgb(var(--arc))" aria-label="Position im Zeitraffer" data-i18n-attr="aria-label:tl.sliderLabel">
-                            <div class="flex justify-between text-xs text-muted font-mono mt-1"><span id="tl-start"></span><span id="tl-end"></span></div>
                         </div>
+                        <div class="text-[11px] leading-tight font-semibold text-mint text-center" id="tl-delta"></div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" id="tl-play" class="shrink-0 text-[11px] text-brand border border-line bg-track/50 hover:bg-track rounded-md px-2 py-1 flex items-center gap-1 transition-colors"></button>
+                            <input type="range" id="tl-slider" min="0" max="7" step="1" value="7" class="w-full min-w-0" style="accent-color: rgb(var(--arc))" aria-label="Position im Zeitraffer" data-i18n-attr="aria-label:tl.sliderLabel">
+                        </div>
+                        <div class="hidden"><span id="tl-start"></span><span id="tl-end"></span></div>
                     </div>
                 </div>
 
-                <!-- Widgets, Control Center, Siri -->
-                <div class="p-6 flex flex-col reveal">
-                    <div class="lbl mb-4" data-i18n="feat.eLabel">E · Widgets</div>
-                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="w.h3">Widgets, Kontrollzentrum und Siri</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6" data-i18n="w.p">Widgets (Pro) zeigen, ob du heute schon gemessen hast und wie sich dein Umfang entwickelt. Ein Steuerelement im Kontrollzentrum oder Siri startet die nächste Messung.</p>
-                    <div class="app-screen p-4 w-full max-w-md mx-auto my-auto" aria-hidden="true">
-                        <div class="grid grid-cols-2 gap-4">
-                            <!-- Today widget -->
-                            <div class="app-card rounded-[1.4rem] p-4 aspect-square flex flex-col justify-between">
-                                <div class="flex items-center gap-2 text-xs text-muted"><img src="/AppIcon.png" alt="" class="w-4 h-4 rounded"> <span data-i18n="app.today">Heute</span></div>
-                                <div>
-                                    <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-lg mb-2" style="background: rgb(var(--func))"><i class="ph-bold ph-check"></i></div>
-                                    <div class="text-sm font-semibold text-strong" data-i18n="app.measuredToday">Heute gemessen</div>
-                                    <div class="text-xs text-muted" data-i18n="app.streak">5 Tage in Folge</div>
-                                </div>
-                            </div>
-                            <!-- Functional range widget -->
-                            <div class="app-card rounded-[1.4rem] p-4 aspect-square flex flex-col justify-between">
-                                <div class="text-xs text-muted" data-i18n="app.elbowRight">Ellbogen · rechts</div>
-                                <svg viewBox="0 0 400 270" class="w-full -my-1">
-                                    <path class="g-track" d="M62.1 229.3 A140 140 0 1 1 337.9 229.3" fill="none" stroke-width="24" stroke-linecap="round"/>
-                                    <path class="g-func" d="M75.8 140.4 A140 140 0 0 1 324.2 140.4" fill="none" stroke-width="24" stroke-linecap="round"/>
-                                    <path class="g-arc" d="M89.9 175.5 A114 114 0 0 1 294.8 141.7" fill="none" stroke-width="20" stroke-linecap="round"/>
-                                    <text class="f-strong" x="200" y="240" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="58">106°</text>
-                                </svg>
-                                <div class="text-xs text-brand" data-i18n="app.toFunctional">noch 5° bis funktionell</div>
-                            </div>
-                            <!-- History widget (wide) -->
-                            <div class="col-span-2 app-card rounded-[1.4rem] p-4">
-                                <div class="flex justify-between text-xs text-muted mb-2"><span data-i18n="app.rangeWeeks">Umfang · letzte 6 Wochen</span><span class="text-mint font-mono">+18°</span></div>
-                                <svg viewBox="0 0 300 70" class="w-full">
-                                    <defs>
-                                        <linearGradient id="lineFill" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="0" stop-color="#0A84FF" stop-opacity="0.3"/>
-                                            <stop offset="1" stop-color="#0A84FF" stop-opacity="0"/>
-                                        </linearGradient>
-                                    </defs>
-                                    <path d="M0 60 L30 52 L55 56 L80 44 L110 46 L135 34 L160 38 L190 24 L215 28 L245 16 L270 18 L300 8 L300 70 L0 70 Z" fill="url(#lineFill)"/>
-                                    <path class="g-arc" d="M0 60 L30 52 L55 56 L80 44 L110 46 L135 34 L160 38 L190 24 L215 28 L245 16 L270 18 L300 8" fill="none" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-                                </svg>
-                            </div>
-                        </div>
+                <!-- Widgets -->
+                <div class="p-6 flex flex-col bg-ink reveal">
+                    <div class="lbl mb-4"><span data-i18n="feat.eLabel">E · Widgets</span> <span class="text-brand">· Pro</span></div>
+                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="w.h3">Widgets</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="w.p">Auf Home- und Sperrbildschirm zeigen Widgets, ob du heute schon gemessen hast und wie sich dein Umfang entwickelt.</p>
+                    <div class="app-screen aspect-4/3 overflow-hidden" aria-hidden="true">
+                        <svg viewBox="0 0 300 225" class="w-full h-full" font-family="IBM Plex Sans, sans-serif">
+                            <rect class="cam-pill" x="14" y="47" width="130" height="130" rx="22"/>
+                            <text class="f-muted" x="28" y="70" font-size="9.5" data-i18n="app.today">Heute</text>
+                            <circle cx="42" cy="112" r="14" style="fill: rgb(var(--func))"/>
+                            <path d="M35.5 112.5 l4.5 4.5 l8.5 -9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <text class="f-strong" x="28" y="148" font-size="11.5" font-weight="600" data-i18n="app.measuredToday">Heute gemessen</text>
+                            <text class="f-muted" x="28" y="162" font-size="9.5" data-i18n="app.streak">5 Tage in Folge</text>
+
+                            <rect class="cam-pill" x="156" y="47" width="130" height="130" rx="22"/>
+                            <text class="f-muted" x="170" y="70" font-size="9.5" data-i18n="app.elbowRight">Ellbogen · rechts</text>
+                            <svg x="169" y="76" width="104" height="70" viewBox="0 0 400 270">
+                                <path class="g-track" d="M62.1 229.3 A140 140 0 1 1 337.9 229.3" fill="none" stroke-width="24" stroke-linecap="round"/>
+                                <path class="g-func" d="M75.8 140.4 A140 140 0 0 1 324.2 140.4" fill="none" stroke-width="24" stroke-linecap="round"/>
+                                <path class="g-arc" d="M89.9 175.5 A114 114 0 0 1 294.8 141.7" fill="none" stroke-width="20" stroke-linecap="round"/>
+                                <text class="f-strong" x="200" y="240" text-anchor="middle" font-weight="600" font-size="58">106°</text>
+                            </svg>
+                            <text x="170" y="162" font-size="9.5" style="fill: rgb(var(--arc))" data-i18n="app.toFunctional">noch 5° bis funktionell</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Control Center, Siri -->
+                <div class="p-6 flex flex-col bg-ink reveal">
+                    <div class="lbl mb-4" data-i18n="feat.fLabel">F · Schnellstart</div>
+                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="q.h3">Kontrollzentrum und Siri</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="q.p">Starte die nächste Messung über ein Steuerelement im Kontrollzentrum, mit der Action-Taste oder mit Siri.</p>
+                    <div class="app-screen aspect-4/3 overflow-hidden" aria-hidden="true">
+                        <svg viewBox="0 0 300 225" class="w-full h-full" font-family="IBM Plex Sans, sans-serif">
+                            <defs>
+                                <linearGradient id="ctlGrad" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0" stop-color="#5E5CE6"/>
+                                    <stop offset="1" stop-color="#0A84FF"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="72" cy="100" r="38" fill="url(#ctlGrad)"/>
+                            <g fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M88 112 H58 L79 84"/>
+                            </g>
+                            <path d="M73 112 A15 15 0 0 0 67 100" fill="none" stroke="#fff" stroke-opacity="0.7" stroke-width="2.5" stroke-linecap="round"/>
+                            <text class="f-muted" x="72" y="166" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1" data-i18n="q.control">STEUERELEMENT</text>
+
+                            <rect class="cam-pill" x="132" y="64" width="154" height="32" rx="16"/>
+                            <circle cx="150" cy="80" r="5" fill="url(#ctlGrad)"/>
+                            <text class="f-strong" x="163" y="84" font-size="11" data-i18n="q.start">Messung starten</text>
+                            <rect class="cam-pill" x="132" y="104" width="154" height="32" rx="16"/>
+                            <circle cx="150" cy="120" r="5" fill="url(#ctlGrad)"/>
+                            <text class="f-strong" x="163" y="124" font-size="11" data-i18n="q.progress">Fortschritt anzeigen</text>
+                            <text class="f-muted" x="209" y="166" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1" data-i18n="q.siri">SIRI · KURZBEFEHLE</text>
+                        </svg>
                     </div>
                 </div>
             </div>

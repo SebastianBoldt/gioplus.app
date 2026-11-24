@@ -158,6 +158,13 @@ const I18N = (() => {
         'feat.cLabel': 'C · Erfolge',
         'feat.dLabel': 'D · Fotos',
         'feat.eLabel': 'E · Widgets',
+        'feat.fLabel': 'F · Schnellstart',
+        'q.h3': 'Kontrollzentrum und Siri',
+        'q.p': 'Starte die nächste Messung über ein Steuerelement im Kontrollzentrum, mit der Action-Taste oder mit Siri.',
+        'q.control': 'STEUERELEMENT',
+        'q.start': 'Messung starten',
+        'q.progress': 'Fortschritt anzeigen',
+        'q.siri': 'SIRI · KURZBEFEHLE',
         'feat.cH': 'Meilensteine aus dem Alltag',
         'feat.cP': 'Erfolge hängen an Alltagsbewegungen: Etwa 115° Beugung im Ellbogen reichen, um einen Löffel zum Mund zu führen.',
 
@@ -172,11 +179,11 @@ const I18N = (() => {
         'tl.delta': '+{d}° Beugung in {n} Tagen',
         'tl.sliderLabel': 'Position im Zeitraffer',
         'tl.h3': 'Fotoverlauf und Zeitraffer',
-        'tl.p': 'Zu jeder Messung gehört ein Foto der Start- und Endposition. Der Zeitraffer spielt sie der Reihe nach ab und zeigt deinen Fortschritt als Bewegung.',
+        'tl.p': 'Zu jeder Messung gehört ein Foto. Der Zeitraffer spielt sie der Reihe nach ab und zeigt deinen Fortschritt als Bewegung.',
 
         // Widgets
-        'w.h3': 'Widgets, Kontrollzentrum und Siri',
-        'w.p': 'Widgets (Pro) zeigen, ob du heute schon gemessen hast und wie sich dein Umfang entwickelt. Ein Steuerelement im Kontrollzentrum oder Siri startet die nächste Messung.',
+        'w.h3': 'Widgets',
+        'w.p': 'Auf Home- und Sperrbildschirm zeigen Widgets, ob du heute schon gemessen hast und wie sich dein Umfang entwickelt.',
 
         // Planned
         'dev.label': 'In Arbeit',
