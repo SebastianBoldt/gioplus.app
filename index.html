@@ -242,7 +242,7 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Gio+",
-        "operatingSystem": "iOS",
+        "operatingSystem": "iOS, iPadOS, macOS",
         "applicationCategory": "HealthApplication",
         "description": "Gio+ is a goniometer app for iPhone. It uses the camera to measure how far your elbow, knee or shoulder bends and straightens, and tracks your range of motion over time.",
         "keywords": "goniometer, goniometer app, range of motion, ROM, elbow flexion, knee flexion, shoulder, physiotherapy, rehab",
@@ -319,7 +319,7 @@
             <div class="lg:col-span-6 reveal">
                 <p class="font-mono text-xs uppercase tracking-[0.18em] text-muted mb-6 flex items-center gap-3">
                     <span class="inline-block w-2 h-2 rounded-full bg-brand"></span>
-                    <span class="js-badge" data-label-live="Goniometer app · Available for iPhone" data-label-soon="Goniometer app · Coming soon for iPhone">Goniometer app · Coming soon for iPhone</span>
+                    <span class="js-badge" data-label-live="Goniometer app · iPhone, iPad and Mac" data-label-soon="Goniometer app · Coming soon for iPhone, iPad and Mac">Goniometer app · Coming soon for iPhone, iPad and Mac</span>
                 </p>
                 <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold tracking-tight text-white leading-[1.08] mb-6">
                     Measure joint range of motion with your iPhone camera.
@@ -413,21 +413,21 @@
                             <span class="font-mono text-sm text-brand pt-0.5">01</span>
                             <div>
                                 <h3 class="font-semibold text-white mb-1.5">Set up your iPhone</h3>
-                                <p class="text-muted text-sm leading-relaxed">Lean it against something or use a stand. Pick the joint and the side you want to measure.</p>
+                                <p class="text-muted text-sm leading-relaxed">Lean it against something or use a stand and step back 1 to 2 m. A checklist confirms four things: the device is upright (at most 8° tilt), the joint is detected, you are side-on to the camera, and the distance fits. Once all four have been green for 1.5 s, the measurement starts by itself.</p>
                             </div>
                         </li>
                         <li class="reveal grid grid-cols-[3rem_1fr] gap-4 py-6 border-b border-line">
                             <span class="font-mono text-sm text-brand pt-0.5">02</span>
                             <div>
-                                <h3 class="font-semibold text-white mb-1.5">Stand sideways and move</h3>
-                                <p class="text-muted text-sm leading-relaxed">Bend and straighten the joint three times. Gio+ follows the movement in the camera image and records each end position once you hold still.</p>
+                                <h3 class="font-semibold text-white mb-1.5">Straighten and bend three times</h3>
+                                <p class="text-muted text-sm leading-relaxed">A value counts when you hold the joint at its limit for 2 s and it moves by no more than 3°. Voice prompts, sound and haptics tell you what comes next, so you do not have to look at the screen.</p>
                             </div>
                         </li>
                         <li class="reveal grid grid-cols-[3rem_1fr] gap-4 py-6 border-b border-line">
                             <span class="font-mono text-sm text-brand pt-0.5">03</span>
                             <div>
                                 <h3 class="font-semibold text-white mb-1.5">Check the result</h3>
-                                <p class="text-muted text-sm leading-relaxed">Flexion, extension and range of motion are saved as the average of your repetitions, with a photo of each end position. You can also enter values by hand.</p>
+                                <p class="text-muted text-sm leading-relaxed">Extension deficit, flexion and range of motion are saved as the average of the three rounds, with a photo of each end position. You can also enter a measurement by hand or from two photos; Gio+ detects the angle in the photo and lets you adjust it.</p>
                             </div>
                         </li>
                     </ol>
@@ -557,7 +557,7 @@
                     <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim mb-4">A · Camera</div>
                     <h3 class="text-lg font-semibold text-white mb-2">Measure with the camera</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow">
-                        Prop up your iPhone, stand sideways and bend and straighten the joint three times. Gio+ reads the joint angle from the camera image and saves the average of the three repetitions.
+                        The overlay works like a goniometer: a dashed 0° line, the angle arc, the reading in degrees and a hold ring, drawn on the camera image. A live view shows the current angle without saving anything.
                     </p>
                     <div class="app-screen aspect-4/3 overflow-hidden relative" aria-hidden="true">
                         <svg viewBox="0 0 300 225" class="w-full h-full">
@@ -595,7 +595,7 @@
                     <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim mb-4">B · History</div>
                     <h3 class="text-lg font-semibold text-white mb-2">History and weekly trend</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow">
-                        Every measurement goes into your history, with a week-over-week comparison and the distance to the functional range.
+                        A curve shows range, flexion or extension deficit day by day, with the change since your first measurement. Pro adds the weekly trend and a photo history with comparison and time-lapse.
                     </p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col" aria-hidden="true">
                         <div class="text-sm font-semibold text-text mb-2">Weekly trend</div>
@@ -630,7 +630,7 @@
                     <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim mb-4">C · Achievements</div>
                     <h3 class="text-lg font-semibold text-white mb-2">Milestones from daily life</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow">
-                        Each achievement is tied to an everyday task. For the elbow, about 115° of flexion is enough to bring a spoon to your mouth; a phone at your ear takes about 136°.
+                        Most achievements are tied to an everyday task: for the elbow, about 115° of flexion is enough to bring a spoon to your mouth. Others mark gains in range (+10°, +25°, +50°) and measuring streaks of 3 to 30 days.
                     </p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-3" aria-hidden="true">
                         <div class="flex items-center gap-3">
@@ -658,14 +658,13 @@
                     <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-white mb-5">Widgets, Control Center and Siri</h3>
                     <p class="text-muted text-lg leading-relaxed mb-8 max-w-xl">
                         Widgets show whether you have measured today and how your range has changed over the last weeks.
-                        A button in Control Center or a Siri shortcut opens the camera measurement directly.
+                        A control or a Siri shortcut opens the camera measurement directly.
                     </p>
                     <dl class="border-t border-line text-sm">
-                        <div class="grid grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim pt-0.5">Widgets <span class="text-brand">Pro</span></dt><dd class="text-text">Measure today, Functional range, History; Home and Lock Screen</dd></div>
-                        <div class="grid grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim pt-0.5">Control Center</dt><dd class="text-text">Opens Gio+ in the camera measurement</dd></div>
-                        <div class="grid grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim pt-0.5">Siri &amp; Shortcuts</dt><dd class="text-text">Start a measurement, show the functional range of a joint</dd></div>
-                        <div class="grid grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim pt-0.5">Reminders</dt><dd class="text-text">Local notifications on your device</dd></div>
-                        <div class="grid grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim pt-0.5">People <span class="text-brand">Pro</span></dt><dd class="text-text">Separate measurements, photos and achievements per person</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim pt-0.5">Widgets <span class="text-brand">Pro</span></dt><dd class="text-text">Functional range, History and Measure today, on the Home and Lock Screen; set per person, joint, side and value</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim pt-0.5">Control</dt><dd class="text-text">Starts a measurement from Control Center, the Lock Screen or the Action button</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim pt-0.5">Siri &amp; Shortcuts</dt><dd class="text-text">Start a measurement or show progress, with person, joint and side</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="font-mono text-[11px] uppercase tracking-[0.14em] text-dim pt-0.5">Reminder</dt><dd class="text-text">Daily at a fixed time, as a local notification</dd></div>
                     </dl>
                 </div>
                 <div class="lg:col-span-6 reveal" aria-hidden="true">
@@ -683,10 +682,10 @@
                         <div class="app-card rounded-[1.4rem] p-4 aspect-square flex flex-col justify-between">
                             <div class="text-xs text-muted">Elbow · right</div>
                             <svg viewBox="0 0 400 270" class="w-full -my-1">
-                                <path d="M62.1 229.3 A140 140 0 1 1 337.9 229.3" fill="none" stroke="#2c2c2e" stroke-width="34" stroke-linecap="round"/>
-                                <path d="M75.8 140.4 A140 140 0 0 1 324.2 140.4" fill="none" stroke="#30a14e" stroke-width="34" stroke-linecap="round"/>
-                                <path d="M89.9 175.5 A114 114 0 0 1 294.8 141.7" fill="none" stroke="#0A84FF" stroke-width="26" stroke-linecap="round"/>
-                                <text x="200" y="225" text-anchor="middle" fill="#fff" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="80">106°</text>
+                                <path d="M62.1 229.3 A140 140 0 1 1 337.9 229.3" fill="none" stroke="#2c2c2e" stroke-width="24" stroke-linecap="round"/>
+                                <path d="M75.8 140.4 A140 140 0 0 1 324.2 140.4" fill="none" stroke="#30a14e" stroke-width="24" stroke-linecap="round"/>
+                                <path d="M89.9 175.5 A114 114 0 0 1 294.8 141.7" fill="none" stroke="#0A84FF" stroke-width="20" stroke-linecap="round"/>
+                                <text x="200" y="240" text-anchor="middle" fill="#fff" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="58">106°</text>
                             </svg>
                             <div class="text-xs text-brand">5° to functional</div>
                         </div>
@@ -758,7 +757,7 @@
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-5 reveal">
                     <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-5">What is free and what Pro adds</h2>
-                    <p class="text-muted text-lg leading-relaxed">Measuring, the history of the last 4 weeks and achievements stay free. Pro is available as a subscription or as a one-time purchase and supports an independent developer.</p>
+                    <p class="text-muted text-lg leading-relaxed">Measuring, progress, achievements and the history of the last 4 weeks stay free, for one person. Pro is available as a monthly or 6-month subscription or as a one-time purchase, and supports an independent developer.</p>
                 </div>
                 <div class="lg:col-span-7 reveal">
                     <div class="border border-line rounded-lg overflow-x-auto bg-panel/60">
@@ -772,14 +771,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td class="text-text">Camera measurement</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
+                                <tr><td class="text-text">Measuring: camera, live view, manual entry</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
+                                <tr><td class="text-text">Progress with functional range</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
+                                <tr><td class="text-text">History of values</td><td class="font-mono text-xs text-muted">4 weeks</td><td class="font-mono text-xs text-white">Complete</td></tr>
+                                <tr><td class="text-text">Weekly trend</td><td class="text-dim" aria-label="not included">–</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
+                                <tr><td class="text-text">Photo history with comparison and time-lapse</td><td class="text-dim" aria-label="not included">–</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
+                                <tr><td class="text-text">List of all measurements</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
                                 <tr><td class="text-text">Achievements</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
-                                <tr><td class="text-text">History</td><td class="font-mono text-xs text-muted">4 weeks</td><td class="font-mono text-xs text-white">Complete</td></tr>
-                                <tr><td class="text-text">Weekly trend with functional range</td><td class="text-dim" aria-label="not included">–</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
-                                <tr><td class="text-text">Photo history: start and end position side by side</td><td class="text-dim" aria-label="not included">–</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
-                                <tr><td class="text-text">Several people, e.g. for a family or a practice</td><td class="text-dim" aria-label="not included">–</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
-                                <tr><td class="text-text">Widgets for Home and Lock Screen</td><td class="text-dim" aria-label="not included">–</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
-                                <tr><td class="text-text">All colour themes</td><td class="text-dim" aria-label="not included">–</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
+                                <tr><td class="text-text">People</td><td class="font-mono text-xs text-muted">One</td><td class="font-mono text-xs text-white">Any number</td></tr>
+                                <tr><td class="text-text">Export, import and iCloud sync</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
+                                <tr><td class="text-text">Widgets</td><td class="text-dim" aria-label="not included">–</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
+                                <tr><td class="text-text">Control, Shortcuts and Siri</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
+                                <tr><td class="text-text">Colour themes</td><td class="font-mono text-xs text-muted">Default</td><td class="font-mono text-xs text-white">All</td></tr>
+                                <tr><td class="text-text">Light and dark mode, reminder, voice prompts</td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td><td class="text-mint"><i class="ph-bold ph-check" aria-label="included"></i></td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -794,7 +798,7 @@
             <div class="border border-line rounded-lg bg-panel/60 p-8 md:p-12 grid md:grid-cols-[auto_1fr_auto] gap-8 items-center reveal">
                 <img src="AppIcon.png" alt="Gio+ app icon" class="w-20 h-20 rounded-[1.1rem]">
                 <div>
-                    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-white mb-2">Gio+ for iPhone</h2>
+                    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-white mb-2">Gio+ for iPhone, iPad and Mac</h2>
                     <p class="text-muted">Free to download. No account. Your data stays on your device and in your iCloud.</p>
                 </div>
                 <a href="#download" class="js-appstore btn px-6 py-3.5 whitespace-nowrap" data-label-live="Download on the App Store" data-label-soon="Coming soon to the App Store">
@@ -823,7 +827,7 @@
                         <span>Gio<span class="text-brand">+</span></span>
                     </a>
                     <p class="text-muted max-w-sm text-sm leading-relaxed">
-                        The goniometer app for your iPhone.
+                        The goniometer app for iPhone, iPad and Mac.
                     </p>
                 </div>
                 <div>
@@ -910,14 +914,16 @@
             document.querySelectorAll('video.js-autoplay').forEach(video => videoObserver.observe(video));
         }
 
-        // Fallback: show everything already in view right away, even if the observer fires late
-        window.addEventListener('load', () => {
-            document.querySelectorAll('.reveal').forEach(el => {
+        // Fallback next to the observer: reveal whatever is in view on load and while scrolling
+        const revealInView = () => {
+            document.querySelectorAll('.reveal:not(.active)').forEach(el => {
                 if (el.getBoundingClientRect().top < window.innerHeight) {
                     el.classList.add('active');
                 }
             });
-        });
+        };
+        window.addEventListener('load', revealInView);
+        window.addEventListener('scroll', revealInView, { passive: true });
     </script>
 </body>
 </html>
