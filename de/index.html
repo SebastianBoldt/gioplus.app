@@ -114,7 +114,6 @@
             --gauge-normal: 142 142 147;
             --func: 52 199 89;
             --arc: 0 122 255;
-            --edge: #c5c8ce;
             --phone-shadow: rgba(15, 23, 42, 0.4);
         }
         html.dark {
@@ -139,7 +138,6 @@
             --gauge-normal: 107 107 120;
             --func: 48 161 78;
             --arc: 10 132 255;
-            --edge: #3a3d43;
             --phone-shadow: rgba(0, 0, 0, 0.8);
         }
 
@@ -264,7 +262,7 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Hero: three screens in the same thin frame, staggered. The video is in front. */
+        /* Three staggered screens in one thin frame: in the hero (video in front) and in the features header */
         .hero-demo {
             aspect-ratio: 100 / 108;
         }
@@ -279,26 +277,6 @@
             left: 0;
             top: 0;
             z-index: 1;
-        }
-
-        /* Three iPhone 17 screenshots (1206 x 2622) in a thin frame */
-        .hero-phones {
-            aspect-ratio: 100 / 106;
-        }
-        .phone {
-            position: absolute;
-            width: 46%;
-            padding: 1.4%;
-            border-radius: 17.5% / 8.3%;
-            background: #0b0c0e;
-            box-shadow: 0 0 0 2px var(--edge),
-                        0 28px 50px -26px var(--phone-shadow);
-        }
-        .phone img {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 15.4% / 7.1%;
         }
 
         /* Photo placeholders in the time-lapse demo */
@@ -518,7 +496,7 @@
                     <span class="js-badge" data-i18n="hero.badge" data-i18n-live="hero.badgeLive">Goniometer-App · Demnächst für iPhone, iPad und Mac</span>
                 </p>
                 <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold tracking-tight text-strong leading-[1.08] mb-6" data-i18n="hero.h1">Dokumentiere deinen Heilungsverlauf mit der iPhone-Kamera.</h1>
-                <p class="text-lg text-muted mb-8 max-w-xl leading-relaxed" data-i18n="hero.p">Nach einer Verletzung oder Operation misst Gio+, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen. Jede Messung wird mit Datum und Fotos gespeichert. Über die Wochen der Reha entsteht so ein Protokoll deiner Heilung: wo du angefangen hast, was sich verändert hat und welche Alltagsbewegungen wieder gehen.</p>
+                <p class="text-lg text-muted mb-8 max-w-xl leading-relaxed" data-i18n="hero.p">Gio+ misst, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen. Jede Messung wird mit Datum und Fotos gespeichert. So siehst du Woche für Woche, wie deine Reha vorankommt.</p>
                 <div class="flex flex-col sm:flex-row sm:items-center gap-5">
                     <a href="#download" class="js-appstore btn px-6 py-3.5">
                         <i class="ph ph-apple-logo text-lg"></i>
@@ -593,32 +571,44 @@
             </div>
 
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-                <div class="lg:col-span-5">
-                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5 reveal" data-i18n="how.h2">Dein iPhone als Goniometer</h2>
-                    <p class="text-muted text-lg leading-relaxed max-w-xl reveal" data-i18n="how.p">In der Physiotherapie wird der Gelenkwinkel mit einem Goniometer abgelesen. Gio+ liest ihn aus dem Kamerabild. Deine erste Messung ist der Ausgangswert deiner Reha, jede spätere wird damit verglichen.</p>
-                </div>
+                <!-- Video of a real measurement (the same recording as in the hero) -->
+                <figure class="lg:col-span-5 reveal">
+                    <div class="video-card w-[260px] sm:w-[300px] mx-auto lg:mx-0">
+                        <video class="js-autoplay" muted loop playsinline preload="metadata"
+                               poster="/media/measurement-poster.jpg"
+                               aria-label="Bildschirmaufnahme: Gio+ misst den rechten Ellbogen. Der Arm wird gebeugt und gestreckt, jeder Wert wird gehalten, dann erscheint das Ergebnis."
+                               data-i18n-attr="aria-label:how.videoLabel">
+                            <source src="/media/measurement.webm" type="video/webm">
+                            <source src="/media/measurement.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <figcaption class="lbl mt-4 w-[260px] sm:w-[300px] mx-auto lg:mx-0" data-i18n="how.fig">Abb. 1 · Bildschirmaufnahme, rechter Ellbogen (App auf Englisch)</figcaption>
+                </figure>
 
                 <div class="lg:col-span-7">
+                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5 reveal" data-i18n="how.h2">Dein iPhone als Goniometer</h2>
+                    <p class="text-muted text-lg leading-relaxed mb-10 max-w-xl reveal" data-i18n="how.p">In der Physiotherapie liest man den Winkel am Goniometer ab. Gio+ liest ihn aus dem Kamerabild.</p>
+
                     <ol class="border-t border-line">
                         <li class="reveal grid grid-cols-[3rem_1fr] gap-4 py-6 border-b border-line">
                             <span class="font-mono text-sm text-brand pt-0.5">01</span>
                             <div>
                                 <h3 class="font-semibold text-strong mb-1.5" data-i18n="how.s1h">iPhone aufstellen</h3>
-                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s1p">Lehn es an oder nutz einen Ständer und geh 1 bis 2 m zurück. Eine Checkliste prüft vier Punkte: Das Gerät steht senkrecht (höchstens 8° Neigung), das Gelenk ist erkannt, du stehst seitlich zur Kamera, und der Abstand passt. Sind alle vier 1,5 s lang grün, startet die Messung von selbst.</p>
+                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s1p">Lehn es an und geh 1 bis 2 m zurück. Steht das Gerät gerade und ist dein Gelenk von der Seite zu sehen, startet die Messung von selbst.</p>
                             </div>
                         </li>
                         <li class="reveal grid grid-cols-[3rem_1fr] gap-4 py-6 border-b border-line">
                             <span class="font-mono text-sm text-brand pt-0.5">02</span>
                             <div>
                                 <h3 class="font-semibold text-strong mb-1.5" data-i18n="how.s2h">Dreimal strecken und beugen</h3>
-                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s2p">Ein Wert zählt, wenn du das Gelenk 2 s am Anschlag hältst und es sich dabei um höchstens 3° bewegt. Sprachansagen, Ton und Haptik sagen dir, was als Nächstes kommt. Du musst also nicht auf den Bildschirm schauen.</p>
+                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s2p">Halte jede Endposition 2 Sekunden. Sprachansagen sagen dir, was als Nächstes kommt.</p>
                             </div>
                         </li>
                         <li class="reveal grid grid-cols-[3rem_1fr] gap-4 py-6 border-b border-line">
                             <span class="font-mono text-sm text-brand pt-0.5">03</span>
                             <div>
                                 <h3 class="font-semibold text-strong mb-1.5" data-i18n="how.s3h">Ergebnis prüfen</h3>
-                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s3p">Streckdefizit, Beugung und Bewegungsumfang werden als Mittelwert der drei Runden gespeichert, dazu je ein Foto der Endpositionen. Du kannst eine Messung auch von Hand oder aus zwei Fotos eintragen. Gio+ erkennt den Winkel im Foto, und du kannst ihn anpassen.</p>
+                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s3p">Gio+ speichert den Mittelwert der drei Runden und je ein Foto der Endpositionen. Werte kannst du auch von Hand eintragen.</p>
                             </div>
                         </li>
                     </ol>
@@ -672,12 +662,12 @@
                             </div>
                         </div>
                     </div>
-                    <p class="lbl mt-4" data-i18n="range.fig">Abb. 1 · Fortschritt, Ellbogen</p>
+                    <p class="lbl mt-4" data-i18n="range.fig">Abb. 2 · Fortschritt, Ellbogen</p>
                 </div>
 
                 <div class="lg:col-span-7">
                     <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5 reveal" data-i18n="range.h2">Wie weit du vom Alltagsbereich entfernt bist</h2>
-                    <p class="text-muted text-lg leading-relaxed mb-10 max-w-xl reveal" data-i18n="range.p">Die meisten Alltagsbewegungen brauchen weniger als den vollen Umfang eines gesunden Gelenks. Die Reha hat damit ein Ziel, das du Schritt für Schritt erreichen kannst. Gio+ zeichnet deinen aktuellen Bogen neben den funktionellen und den normalen Bereich, und du liest ab, wie viele Grad dir beim Beugen und beim Strecken fehlen.</p>
+                    <p class="text-muted text-lg leading-relaxed mb-10 max-w-xl reveal" data-i18n="range.p">Im Alltag brauchst du weniger als den vollen Umfang eines gesunden Gelenks. Gio+ zeigt deinen Bogen neben diesem funktionellen Bereich und wie viele Grad dir noch fehlen.</p>
 
                     <!-- Reference ranges as used in the app (JointReference.swift) -->
                     <div class="border border-line rounded-lg overflow-x-auto bg-ink reveal">
@@ -734,7 +724,7 @@
 
             <div class="max-w-2xl mb-12 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="for.h2">Bei welchen Verletzungen und Operationen sich das Messen lohnt</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="for.p">Nach vielen Verletzungen und Operationen ist das Gelenk zunächst steif. Beugung und Streckung zurückzugewinnen ist dann ein zentrales Ziel der Reha. Gio+ lohnt sich überall dort, wo dieser Umfang über Wochen immer wieder gemessen wird.</p>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="for.p">Nach vielen Verletzungen und Operationen ist das Gelenk zunächst steif. Gio+ hilft überall dort, wo Beugung und Streckung über Wochen immer wieder gemessen werden.</p>
             </div>
 
             <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-panel/60">
@@ -745,7 +735,7 @@
                         <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow2">Ellenbogenluxation (ausgekugelter Ellbogen)</li>
                         <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow3">Bänderriss und Bandoperation</li>
                         <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow4">Ellenbogensteife nach Gips oder Ruhigstellung</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow5">Nach einer Arthrolyse (operatives Lösen eines steifen Ellbogens)</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow5">Nach einer Arthrolyse</li>
                     </ul>
                 </div>
                 <div class="p-6 reveal">
@@ -768,13 +758,13 @@
                         <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder4">Schulterluxation (ausgekugelte Schulter)</li>
                         <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder5">Schulterprothese</li>
                     </ul>
-                    <p class="text-xs text-dim mt-4 leading-relaxed" data-i18n="for.shoulderNote">Gio+ misst, wie weit du den Arm nach vorn anheben kannst, von der Seite gesehen.</p>
+                    <p class="text-xs text-dim mt-4 leading-relaxed" data-i18n="for.shoulderNote">Gemessen wird das Anheben des Arms nach vorn.</p>
                 </div>
             </div>
 
             <div class="mt-6 border border-line rounded-lg p-6 grid md:grid-cols-[9rem_1fr] gap-3 md:gap-8 reveal">
                 <div class="lbl flex items-start gap-2"><i class="ph ph-info text-base text-brand"></i> <span data-i18n="notice.label">Hinweis</span></div>
-                <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="for.notice">Gio+ misst deinen Bewegungsumfang. Wie weit du das Gelenk bewegen darfst, legen deine Ärztin, dein Arzt oder deine Physiotherapie fest, besonders in den ersten Wochen nach einer Operation.</p>
+                <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="for.notice">Gio+ misst nur. Wie weit du das Gelenk bewegen darfst, entscheiden deine Ärztin, dein Arzt oder deine Physiotherapie, besonders in den ersten Wochen nach einer Operation.</p>
             </div>
         </div>
     </section>
@@ -791,15 +781,15 @@
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
                 <div class="lg:col-span-5 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="feat.h2">Messung, Verlauf und Erfolge</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="feat.p">Gio+ begleitet deine Reha ab der ersten Messung. Es speichert jeden Wert, vergleicht ihn mit deinem Ausgangswert und mit dem funktionellen Bereich und hält jede Alltagsbewegung, die wieder geht, als Erfolg fest.</p>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="feat.p">Gio+ speichert jeden Wert, vergleicht ihn mit deiner ersten Messung und hält jede Alltagsbewegung, die wieder geht, als Erfolg fest.</p>
                 </div>
                 <div class="lg:col-span-7 reveal">
-                    <div class="hero-phones relative w-full max-w-[520px] mx-auto lg:ml-auto lg:mr-0" role="img"
+                    <div class="hero-demo relative w-full max-w-[520px] mx-auto lg:ml-auto lg:mr-0" role="img"
                          aria-label="Gio+ Goniometer-App auf dem iPhone: Erfolge, Wochenverlauf und der funktionelle Bereich des Ellbogens"
                          data-i18n-attr="aria-label:hero.alt">
-                        <div class="phone" style="left: 0; top: 7%"><img data-screen="achievements" src="/media/screens/light-de-achievements.jpg" alt="" width="603" height="1311" loading="lazy"></div>
-                        <div class="phone" style="left: 27%; top: 3.5%"><img data-screen="history" src="/media/screens/light-de-history.jpg" alt="" width="603" height="1311" loading="lazy"></div>
-                        <div class="phone" style="left: 54%; top: 0"><img data-screen="progress" src="/media/screens/light-de-progress.jpg" alt="" width="603" height="1311" loading="lazy"></div>
+                        <div class="video-card hero-shot" style="left: 0; top: 7%"><img data-screen="achievements" src="/media/screens/light-de-achievements.jpg" alt="" width="603" height="1311" loading="lazy"></div>
+                        <div class="video-card hero-shot" style="left: 27%; top: 3.5%"><img data-screen="history" src="/media/screens/light-de-history.jpg" alt="" width="603" height="1311" loading="lazy"></div>
+                        <div class="video-card hero-shot" style="left: 54%; top: 0"><img data-screen="progress" src="/media/screens/light-de-progress.jpg" alt="" width="603" height="1311" loading="lazy"></div>
                     </div>
                 </div>
             </div>
@@ -809,7 +799,7 @@
                 <div class="p-6 flex flex-col reveal">
                     <div class="lbl mb-4" data-i18n="feat.aLabel">A · Kamera</div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.aH">Mit der Kamera messen</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.aP">Das Overlay funktioniert wie ein Goniometer: Gestrichelte 0°-Linie, Winkelbogen, Gradzahl und Halte-Ring liegen direkt auf dem Kamerabild. Die Live-Ansicht zeigt nur den aktuellen Winkel und speichert nichts.</p>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.aP">Winkelbogen und Gradzahl liegen direkt auf dem Kamerabild, wie bei einem Goniometer.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden relative" aria-hidden="true">
                         <svg viewBox="0 0 300 225" class="w-full h-full">
                             <defs>
@@ -844,7 +834,7 @@
                 <div class="p-6 flex flex-col reveal">
                     <div class="lbl mb-4" data-i18n="feat.bLabel">B · Verlauf</div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.bH">Verlauf und Wochenverlauf</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.bP">Eine Kurve zeigt Umfang, Beugung oder Streckdefizit Tag für Tag, mit der Veränderung seit deiner ersten Messung. Pro ergänzt den Wochenverlauf und den Fotoverlauf mit Vergleich und Zeitraffer.</p>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.bP">Eine Kurve zeigt deinen Umfang Tag für Tag. Pro ergänzt den Wochenverlauf und den Fotoverlauf.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col" aria-hidden="true">
                         <div class="text-sm font-semibold text-strong mb-2" data-i18n="app.weeklyTrend">Wochenverlauf</div>
                         <svg viewBox="0 0 260 150" class="w-full flex-grow">
@@ -877,7 +867,7 @@
                 <div class="p-6 flex flex-col reveal">
                     <div class="lbl mb-4" data-i18n="feat.cLabel">C · Erfolge</div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.cH">Meilensteine aus dem Alltag</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.cP">Die meisten Erfolge hängen an einer Alltagsbewegung: Beim Ellbogen reichen etwa 115° Beugung, um einen Löffel zum Mund zu führen. Andere gibt es für mehr Umfang (+10°, +25°, +50°) und für Serien von 3 bis 30 Messtagen.</p>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.cP">Erfolge hängen an Alltagsbewegungen: Etwa 115° Beugung im Ellbogen reichen, um einen Löffel zum Mund zu führen.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-3" aria-hidden="true">
                         <div class="flex items-center gap-3">
                             <div class="relative w-9 h-9 rounded-full flex items-center justify-center text-white" style="background: rgb(var(--arc))"><i class="ph ph-fork-knife"></i>
@@ -942,16 +932,16 @@
                             <div class="flex justify-between text-xs text-muted font-mono mt-1"><span id="tl-start"></span><span id="tl-end"></span></div>
                         </div>
                     </div>
-                    <p class="lbl mt-4" data-i18n="tl.fig">Abb. 2 · Fotoverlauf, Beispielwerte. Drück auf Abspielen oder zieh den Regler.</p>
+                    <p class="lbl mt-4" data-i18n="tl.fig">Abb. 3 · Beispielwerte. Drück auf Abspielen.</p>
                 </div>
                 <div class="lg:col-span-6 reveal">
                     <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-strong mb-5"><span data-i18n="tl.h3">Fotoverlauf und Zeitraffer</span> <span class="font-mono text-xs uppercase tracking-[0.14em] text-brand align-middle ml-1">Pro</span></h3>
-                    <p class="text-muted text-lg leading-relaxed mb-8 max-w-xl" data-i18n="tl.p">Zu jeder gespeicherten Messung gehört je ein Foto der Start- und der Endposition. Der Zeitraffer spielt diese Fotos der Reihe nach ab, alle 0,6 s eines, und macht die Veränderung zwischen deiner ersten und deiner letzten Messung als Bewegung sichtbar.</p>
+                    <p class="text-muted text-lg leading-relaxed mb-8 max-w-xl" data-i18n="tl.p">Zu jeder Messung gehört ein Foto der Start- und Endposition. Der Zeitraffer spielt sie der Reihe nach ab und zeigt deinen Fortschritt als Bewegung.</p>
                     <dl class="border-t border-line text-sm">
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.dt1">Vergleich</dt><dd class="text-text" data-i18n="tl.dd1">Erste Messung neben einer beliebigen späteren, mit der Veränderung in Grad und der Zahl der Tage dazwischen</dd></div>
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.title">Zeitraffer</dt><dd class="text-text" data-i18n="tl.dd2">Abspielen und stoppen oder mit dem Regler Messung für Messung durchgehen</dd></div>
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.dt3">Übersicht</dt><dd class="text-text" data-i18n="tl.dd3">Alle Fotos als Raster, für Beugung und für Streckung</dd></div>
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.dt4">Speicherung</dt><dd class="text-text" data-i18n="tl.dd4">Fotos werden ohne Overlay gespeichert, das Overlay wird beim Anzeigen neu gezeichnet. Das Speichern lässt sich abschalten.</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.dt1">Vergleich</dt><dd class="text-text" data-i18n="tl.dd1">Erste Messung neben einer späteren, mit dem Unterschied in Grad und Tagen</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.title">Zeitraffer</dt><dd class="text-text" data-i18n="tl.dd2">Abspielen oder mit dem Regler durchgehen</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.dt3">Übersicht</dt><dd class="text-text" data-i18n="tl.dd3">Alle Fotos als Raster</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.dt4">Speicherung</dt><dd class="text-text" data-i18n="tl.dd4">Das Speichern von Fotos lässt sich abschalten</dd></div>
                     </dl>
                 </div>
             </div>
@@ -960,12 +950,12 @@
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center mt-20">
                 <div class="lg:col-span-6 reveal">
                     <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-strong mb-5" data-i18n="w.h3">Widgets, Kontrollzentrum und Siri</h3>
-                    <p class="text-muted text-lg leading-relaxed mb-8 max-w-xl" data-i18n="w.p">Widgets zeigen, ob du heute schon gemessen hast und wie sich dein Umfang in den letzten Wochen verändert hat. Ein Steuerelement oder ein Siri-Kurzbefehl öffnet direkt die Kameramessung.</p>
+                    <p class="text-muted text-lg leading-relaxed mb-8 max-w-xl" data-i18n="w.p">Widgets zeigen, ob du heute schon gemessen hast und wie sich dein Umfang entwickelt. Ein Steuerelement oder Siri startet die nächste Messung.</p>
                     <dl class="border-t border-line text-sm">
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5">Widgets <span class="text-brand">Pro</span></dt><dd class="text-text" data-i18n="w.dd1">Funktioneller Bereich, Verlauf und Heute messen, auf Home- und Sperrbildschirm; einstellbar nach Person, Gelenk, Seite und Messwert</dd></div>
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="w.dt2">Steuerelement</dt><dd class="text-text" data-i18n="w.dd2">Startet eine Messung aus dem Kontrollzentrum, vom Sperrbildschirm oder mit der Action-Taste</dd></div>
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="w.dt3">Siri &amp; Kurzbefehle</dt><dd class="text-text" data-i18n="w.dd3">Messung starten oder Fortschritt anzeigen, mit Person, Gelenk und Seite</dd></div>
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="w.dt4">Erinnerung</dt><dd class="text-text" data-i18n="w.dd4">Täglich zur festen Uhrzeit, als lokale Mitteilung</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5">Widgets <span class="text-brand">Pro</span></dt><dd class="text-text" data-i18n="w.dd1">Funktioneller Bereich, Verlauf und Heute messen, auf Home- und Sperrbildschirm</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="w.dt2">Steuerelement</dt><dd class="text-text" data-i18n="w.dd2">Kontrollzentrum, Sperrbildschirm oder Action-Taste</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="w.dt3">Siri &amp; Kurzbefehle</dt><dd class="text-text" data-i18n="w.dd3">Messung starten oder Fortschritt anzeigen</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="w.dt4">Erinnerung</dt><dd class="text-text" data-i18n="w.dd4">Täglich, zu einer Uhrzeit deiner Wahl</dd></div>
                     </dl>
                 </div>
                 <div class="lg:col-span-6 reveal" aria-hidden="true">
@@ -1007,7 +997,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="lbl mt-4 max-w-md mx-auto lg:ml-auto lg:mr-0" data-i18n="w.fig">Abb. 3 · Widgets, Beispielwerte</p>
+                    <p class="lbl mt-4 max-w-md mx-auto lg:ml-auto lg:mr-0" data-i18n="w.fig">Abb. 4 · Widgets, Beispielwerte</p>
                 </div>
             </div>
 
@@ -1033,24 +1023,24 @@
 
             <div class="max-w-2xl mb-12 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="priv.h2">Wo deine Daten liegen</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="priv.p">Messwerte zur Beweglichkeit sind Gesundheitsdaten. Gio+ speichert sie an zwei Orten: auf deinem iPhone und, wenn du den Abgleich eingeschaltet lässt, in deiner privaten iCloud.</p>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="priv.p">Deine Messwerte sind Gesundheitsdaten. Sie bleiben auf deinem iPhone und, wenn du willst, in deiner privaten iCloud.</p>
             </div>
 
             <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-panel/60">
                 <div class="p-6 reveal">
                     <div class="flex items-center gap-3 mb-4"><i class="ph ph-device-mobile text-xl text-brand"></i><span class="lbl" data-i18n="priv.aLabel">Lokal</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="priv.aH">Auf deinem Gerät</h3>
-                    <p class="text-muted text-sm leading-relaxed" data-i18n="priv.aP">Messungen, Fotos und Profile liegen in einer Datenbank auf dem Gerät. Gio+ funktioniert auch offline.</p>
+                    <p class="text-muted text-sm leading-relaxed" data-i18n="priv.aP">Messungen, Fotos und Profile liegen auf deinem iPhone. Gio+ funktioniert auch offline.</p>
                 </div>
                 <div class="p-6 reveal">
                     <div class="flex items-center gap-3 mb-4"><i class="ph ph-cloud text-xl text-brand"></i><span class="lbl" data-i18n="priv.bLabel">Abgleich</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="priv.bH">In deiner iCloud</h3>
-                    <p class="text-muted text-sm leading-relaxed" data-i18n="priv.bP">Deine Geräte gleichen sich über deine private iCloud ab. Abschalten kannst du das jederzeit in den Einstellungen.</p>
+                    <p class="text-muted text-sm leading-relaxed" data-i18n="priv.bP">Deine Geräte gleichen sich über deine private iCloud ab. Das lässt sich abschalten.</p>
                 </div>
                 <div class="p-6 reveal">
                     <div class="flex items-center gap-3 mb-4"><i class="ph ph-hand text-xl text-brand"></i><span class="lbl" data-i18n="priv.cLabel">Kein Server</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="priv.cH">Ohne Konto und Server</h3>
-                    <p class="text-muted text-sm leading-relaxed" data-i18n="priv.cP">Gio+ schickt keine Daten an eigene oder fremde Server. Die Kamerabilder werden auf dem Gerät ausgewertet.</p>
+                    <p class="text-muted text-sm leading-relaxed" data-i18n="priv.cP">Gio+ schickt keine Daten an Server. Die Kamerabilder werden auf dem Gerät ausgewertet.</p>
                 </div>
             </div>
             <p class="text-sm text-muted mt-6 reveal" data-i18n="priv.more">Details in der <a href="/terms.html#privacy-policy" class="text-text underline underline-offset-4 decoration-line hover:text-strong">Datenschutzerklärung</a> (auf Englisch).</p>
@@ -1069,7 +1059,7 @@
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-5 reveal">
                     <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="pro.h2">Was kostenlos ist und was Pro ergänzt</h2>
-                    <p class="text-muted text-lg leading-relaxed" data-i18n="pro.p">Messen, Fortschritt, Erfolge und der Verlauf der letzten 4 Wochen bleiben kostenlos, für eine Person. Pro gibt es als Monatsabo, als 6-Monats-Abo oder als einmaligen Kauf. Damit unterstützt du einen unabhängigen Entwickler.</p>
+                    <p class="text-muted text-lg leading-relaxed" data-i18n="pro.p">Messen, Fortschritt, Erfolge und der Verlauf der letzten 4 Wochen sind kostenlos. Pro gibt es als Abo oder als einmaligen Kauf.</p>
                 </div>
                 <div class="lg:col-span-7 reveal">
                     <div class="border border-line rounded-lg overflow-x-auto bg-ink">
@@ -1083,11 +1073,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td class="text-text" data-i18n="pro.r1">Messen: Kamera, Live-Ansicht, manuell</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
+                                <tr><td class="text-text" data-i18n="pro.r1">Messen mit der Kamera oder von Hand</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r2">Fortschritt mit funktionellem Bereich</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r3">Verlauf der Werte</td><td class="font-mono text-xs text-muted" data-i18n="pro.r3free">4 Wochen</td><td class="font-mono text-xs text-strong" data-i18n="pro.r3pro">Gesamt</td></tr>
                                 <tr><td class="text-text" data-i18n="app.weeklyTrend">Wochenverlauf</td><td class="text-dim">–</td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
-                                <tr><td class="text-text" data-i18n="pro.r5">Fotoverlauf mit Vergleich und Zeitraffer</td><td class="text-dim">–</td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
+                                <tr><td class="text-text" data-i18n="pro.r5">Fotoverlauf und Zeitraffer</td><td class="text-dim">–</td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r6">Liste aller Messungen</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r7">Erfolge</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r8">Personen</td><td class="font-mono text-xs text-muted" data-i18n="pro.r8free">Eine</td><td class="font-mono text-xs text-strong" data-i18n="pro.r8pro">Beliebig viele</td></tr>
@@ -1095,7 +1085,7 @@
                                 <tr><td class="text-text">Widgets</td><td class="text-dim">–</td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r11">Steuerelement, Kurzbefehle und Siri</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r12">Farbthemen</td><td class="font-mono text-xs text-muted" data-i18n="pro.r12free">Standard</td><td class="font-mono text-xs text-strong" data-i18n="pro.r12pro">Alle</td></tr>
-                                <tr><td class="text-text" data-i18n="pro.r13">Hell und Dunkel, Erinnerung, Sprachansagen</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
+                                <tr><td class="text-text" data-i18n="pro.r13">Dunkelmodus, Erinnerung, Sprachansagen</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1111,7 +1101,7 @@
                 <img src="/AppIcon.png" alt="Gio+" class="w-20 h-20 rounded-[1.1rem]">
                 <div>
                     <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-strong mb-2" data-i18n="dl.h2">Gio+ für iPhone, iPad und Mac</h2>
-                    <p class="text-muted" data-i18n="dl.p">Kostenlos laden. Kein Konto. Das Protokoll deiner Heilung bleibt auf deinem Gerät und in deiner iCloud.</p>
+                    <p class="text-muted" data-i18n="dl.p">Kostenlos laden. Kein Konto nötig.</p>
                 </div>
                 <a href="#download" class="js-appstore btn px-6 py-3.5 whitespace-nowrap">
                     <i class="ph ph-apple-logo text-lg"></i>
@@ -1122,7 +1112,7 @@
             <!-- Notice -->
             <div class="mt-6 border border-line rounded-lg p-6 grid md:grid-cols-[9rem_1fr] gap-3 md:gap-8 reveal">
                 <div class="lbl flex items-start gap-2"><i class="ph ph-info text-base text-brand"></i> <span data-i18n="notice.label">Hinweis</span></div>
-                <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="notice.p">Gio+ ist kein Medizinprodukt. Die Messwerte sind Schätzungen aus dem Kamerabild. Sie helfen dir, deinen eigenen Fortschritt zu verfolgen, und ersetzen weder eine Diagnose noch den Rat deiner Ärztin, deines Arztes oder deiner Physiotherapie.</p>
+                <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="notice.p">Gio+ ist kein Medizinprodukt. Die Messwerte sind Schätzungen aus dem Kamerabild und ersetzen weder eine Diagnose noch den Rat deiner Ärztin, deines Arztes oder deiner Physiotherapie.</p>
             </div>
         </div>
     </section>

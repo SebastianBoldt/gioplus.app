@@ -113,7 +113,6 @@
             --gauge-normal: 142 142 147;
             --func: 52 199 89;
             --arc: 0 122 255;
-            --edge: #c5c8ce;
             --phone-shadow: rgba(15, 23, 42, 0.4);
         }
         html.dark {
@@ -138,7 +137,6 @@
             --gauge-normal: 107 107 120;
             --func: 48 161 78;
             --arc: 10 132 255;
-            --edge: #3a3d43;
             --phone-shadow: rgba(0, 0, 0, 0.8);
         }
 
@@ -263,7 +261,7 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Hero: three screens in the same thin frame, staggered. The video is in front. */
+        /* Three staggered screens in one thin frame: in the hero (video in front) and in the features header */
         .hero-demo {
             aspect-ratio: 100 / 108;
         }
@@ -278,26 +276,6 @@
             left: 0;
             top: 0;
             z-index: 1;
-        }
-
-        /* Three iPhone 17 screenshots (1206 x 2622) in a thin frame */
-        .hero-phones {
-            aspect-ratio: 100 / 106;
-        }
-        .phone {
-            position: absolute;
-            width: 46%;
-            padding: 1.4%;
-            border-radius: 17.5% / 8.3%;
-            background: #0b0c0e;
-            box-shadow: 0 0 0 2px var(--edge),
-                        0 28px 50px -26px var(--phone-shadow);
-        }
-        .phone img {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 15.4% / 7.1%;
         }
 
         /* Photo placeholders in the time-lapse demo */
@@ -517,7 +495,7 @@
                     <span class="js-badge" data-i18n="hero.badge" data-i18n-live="hero.badgeLive">Goniometer app · Coming soon for iPhone, iPad and Mac</span>
                 </p>
                 <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold tracking-tight text-strong leading-[1.08] mb-6" data-i18n="hero.h1">Document your recovery with your iPhone camera.</h1>
-                <p class="text-lg text-muted mb-8 max-w-xl leading-relaxed" data-i18n="hero.p">After an injury or surgery, Gio+ measures how far your elbow, knee or shoulder bends and straightens. Every measurement is saved with its date and photos. Over the weeks of rehab this becomes a record of your recovery: where you started, what has changed, and which everyday movements are possible again.</p>
+                <p class="text-lg text-muted mb-8 max-w-xl leading-relaxed" data-i18n="hero.p">Gio+ measures how far your elbow, knee or shoulder bends and straightens. Every measurement is saved with its date and photos, so you can see week by week how your rehab is going.</p>
                 <div class="flex flex-col sm:flex-row sm:items-center gap-5">
                     <a href="#download" class="js-appstore btn px-6 py-3.5">
                         <i class="ph ph-apple-logo text-lg"></i>
@@ -592,32 +570,44 @@
             </div>
 
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-                <div class="lg:col-span-5">
-                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5 reveal" data-i18n="how.h2">Your iPhone as a goniometer</h2>
-                    <p class="text-muted text-lg leading-relaxed max-w-xl reveal" data-i18n="how.p">A physiotherapist reads joint angles off a goniometer. Gio+ reads them from the camera image. Your first measurement is the baseline of your recovery, and every later one is compared with it.</p>
-                </div>
+                <!-- Video of a real measurement (the same recording as in the hero) -->
+                <figure class="lg:col-span-5 reveal">
+                    <div class="video-card w-[260px] sm:w-[300px] mx-auto lg:mx-0">
+                        <video class="js-autoplay" muted loop playsinline preload="metadata"
+                               poster="/media/measurement-poster.jpg"
+                               aria-label="Screen recording of the Gio+ goniometer measuring the right elbow: the arm is bent and straightened, each value is held, then the result is shown"
+                               data-i18n-attr="aria-label:how.videoLabel">
+                            <source src="/media/measurement.webm" type="video/webm">
+                            <source src="/media/measurement.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <figcaption class="lbl mt-4 w-[260px] sm:w-[300px] mx-auto lg:mx-0" data-i18n="how.fig">Fig. 1 · Screen recording, right elbow</figcaption>
+                </figure>
 
                 <div class="lg:col-span-7">
+                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5 reveal" data-i18n="how.h2">Your iPhone as a goniometer</h2>
+                    <p class="text-muted text-lg leading-relaxed mb-10 max-w-xl reveal" data-i18n="how.p">A physiotherapist reads the angle off a goniometer. Gio+ reads it from the camera image.</p>
+
                     <ol class="border-t border-line">
                         <li class="reveal grid grid-cols-[3rem_1fr] gap-4 py-6 border-b border-line">
                             <span class="font-mono text-sm text-brand pt-0.5">01</span>
                             <div>
                                 <h3 class="font-semibold text-strong mb-1.5" data-i18n="how.s1h">Set up your iPhone</h3>
-                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s1p">Lean it against something or use a stand and step back 1 to 2 m. A checklist confirms four things: the device is upright (at most 8° tilt), the joint is detected, you are side-on to the camera, and the distance fits. Once all four have been green for 1.5 s, the measurement starts by itself.</p>
+                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s1p">Lean it against something and step back 1 to 2 m. Once the device is upright and your joint is in view from the side, the measurement starts by itself.</p>
                             </div>
                         </li>
                         <li class="reveal grid grid-cols-[3rem_1fr] gap-4 py-6 border-b border-line">
                             <span class="font-mono text-sm text-brand pt-0.5">02</span>
                             <div>
                                 <h3 class="font-semibold text-strong mb-1.5" data-i18n="how.s2h">Straighten and bend three times</h3>
-                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s2p">A value counts when you hold the joint at its limit for 2 s and it moves by no more than 3°. Voice prompts, sound and haptics tell you what comes next, so you do not have to look at the screen.</p>
+                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s2p">Hold each end position for 2 seconds. Voice prompts tell you what comes next.</p>
                             </div>
                         </li>
                         <li class="reveal grid grid-cols-[3rem_1fr] gap-4 py-6 border-b border-line">
                             <span class="font-mono text-sm text-brand pt-0.5">03</span>
                             <div>
                                 <h3 class="font-semibold text-strong mb-1.5" data-i18n="how.s3h">Check the result</h3>
-                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s3p">Extension deficit, flexion and range of motion are saved as the average of the three rounds, with a photo of each end position. You can also enter a measurement by hand or from two photos; Gio+ detects the angle in the photo and lets you adjust it.</p>
+                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s3p">Gio+ saves the average of the three rounds, with a photo of each end position. You can also enter values by hand.</p>
                             </div>
                         </li>
                     </ol>
@@ -671,12 +661,12 @@
                             </div>
                         </div>
                     </div>
-                    <p class="lbl mt-4" data-i18n="range.fig">Fig. 1 · Progress view, elbow</p>
+                    <p class="lbl mt-4" data-i18n="range.fig">Fig. 2 · Progress view, elbow</p>
                 </div>
 
                 <div class="lg:col-span-7">
                     <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5 reveal" data-i18n="range.h2">How far you are from the range everyday tasks need</h2>
-                    <p class="text-muted text-lg leading-relaxed mb-10 max-w-xl reveal" data-i18n="range.p">Most everyday tasks need less than the full range of a healthy joint, so recovery has a goal you can reach step by step. Gio+ draws your current arc next to the functional and the normal range, and you can read off how many degrees are missing in flexion and in extension.</p>
+                    <p class="text-muted text-lg leading-relaxed mb-10 max-w-xl reveal" data-i18n="range.p">Everyday tasks need less than the full range of a healthy joint. Gio+ shows your arc next to this functional range, and how many degrees are still missing.</p>
 
                     <!-- Reference ranges as used in the app (JointReference.swift) -->
                     <div class="border border-line rounded-lg overflow-x-auto bg-ink reveal">
@@ -735,7 +725,7 @@
 
             <div class="max-w-2xl mb-12 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="for.h2">Injuries and operations where measuring pays off</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="for.p">After many injuries and operations the joint is stiff at first, and getting flexion and extension back is a central goal of rehab. Gio+ is useful wherever that range is measured again and again over weeks.</p>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="for.p">After many injuries and operations the joint is stiff at first. Gio+ helps wherever flexion and extension are measured again and again over weeks.</p>
             </div>
 
             <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-panel/60">
@@ -746,7 +736,7 @@
                         <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow2">Elbow dislocation</li>
                         <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow3">Ligament tear and ligament surgery</li>
                         <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow4">Stiff elbow after a cast or immobilisation</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow5">After arthrolysis (surgical release of a stiff elbow)</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow5">After arthrolysis</li>
                     </ul>
                 </div>
                 <div class="p-6 reveal">
@@ -769,13 +759,13 @@
                         <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder4">Shoulder dislocation</li>
                         <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder5">Shoulder replacement</li>
                     </ul>
-                    <p class="text-xs text-dim mt-4 leading-relaxed" data-i18n="for.shoulderNote">Gio+ measures how far you can raise the arm to the front, seen from the side.</p>
+                    <p class="text-xs text-dim mt-4 leading-relaxed" data-i18n="for.shoulderNote">Gio+ measures raising the arm to the front.</p>
                 </div>
             </div>
 
             <div class="mt-6 border border-line rounded-lg p-6 grid md:grid-cols-[9rem_1fr] gap-3 md:gap-8 reveal">
                 <div class="lbl flex items-start gap-2"><i class="ph ph-info text-base text-brand"></i> <span data-i18n="notice.label">Notice</span></div>
-                <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="for.notice">Gio+ measures your range of motion. How far you may move the joint is decided by your doctor or physiotherapist, especially in the first weeks after an operation.</p>
+                <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="for.notice">Gio+ only measures. How far you may move the joint is up to your doctor or physiotherapist, especially in the first weeks after an operation.</p>
             </div>
         </div>
     </section>
@@ -792,15 +782,15 @@
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
                 <div class="lg:col-span-5 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="feat.h2">Measurement, history and achievements</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="feat.p">Gio+ accompanies your rehab from the first measurement. It stores every value, compares it with your baseline and with the functional range, and records each everyday movement you regain as an achievement.</p>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="feat.p">Gio+ saves every value, compares it with your first measurement and marks each everyday movement you get back as an achievement.</p>
                 </div>
                 <div class="lg:col-span-7 reveal">
-                    <div class="hero-phones relative w-full max-w-[520px] mx-auto lg:ml-auto lg:mr-0" role="img"
+                    <div class="hero-demo relative w-full max-w-[520px] mx-auto lg:ml-auto lg:mr-0" role="img"
                          aria-label="Gio+ goniometer app on iPhone: achievements, weekly trend and the functional range of the elbow"
                          data-i18n-attr="aria-label:hero.alt">
-                        <div class="phone" style="left: 0; top: 7%"><img data-screen="achievements" src="/media/screens/light-en-achievements.jpg" alt="" width="603" height="1311" loading="lazy"></div>
-                        <div class="phone" style="left: 27%; top: 3.5%"><img data-screen="history" src="/media/screens/light-en-history.jpg" alt="" width="603" height="1311" loading="lazy"></div>
-                        <div class="phone" style="left: 54%; top: 0"><img data-screen="progress" src="/media/screens/light-en-progress.jpg" alt="" width="603" height="1311" loading="lazy"></div>
+                        <div class="video-card hero-shot" style="left: 0; top: 7%"><img data-screen="achievements" src="/media/screens/light-en-achievements.jpg" alt="" width="603" height="1311" loading="lazy"></div>
+                        <div class="video-card hero-shot" style="left: 27%; top: 3.5%"><img data-screen="history" src="/media/screens/light-en-history.jpg" alt="" width="603" height="1311" loading="lazy"></div>
+                        <div class="video-card hero-shot" style="left: 54%; top: 0"><img data-screen="progress" src="/media/screens/light-en-progress.jpg" alt="" width="603" height="1311" loading="lazy"></div>
                     </div>
                 </div>
             </div>
@@ -810,9 +800,7 @@
                 <div class="p-6 flex flex-col reveal">
                     <div class="lbl mb-4" data-i18n="feat.aLabel">A · Camera</div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.aH">Measure with the camera</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.aP">
-                        The overlay works like a goniometer: a dashed 0° line, the angle arc, the reading in degrees and a hold ring, drawn on the camera image. A live view shows the current angle without saving anything.
-                    </p>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.aP">The angle arc and the degrees are drawn right on the camera image, like on a goniometer.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden relative" aria-hidden="true">
                         <svg viewBox="0 0 300 225" class="w-full h-full">
                             <defs>
@@ -847,9 +835,7 @@
                 <div class="p-6 flex flex-col reveal">
                     <div class="lbl mb-4" data-i18n="feat.bLabel">B · History</div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.bH">History and weekly trend</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.bP">
-                        A curve shows range, flexion or extension deficit day by day, with the change since your first measurement. Pro adds the weekly trend and a photo history with comparison and time-lapse.
-                    </p>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.bP">A curve shows your range day by day. Pro adds the weekly trend and the photo history.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col" aria-hidden="true">
                         <div class="text-sm font-semibold text-strong mb-2" data-i18n="app.weeklyTrend">Weekly trend</div>
                         <svg viewBox="0 0 260 150" class="w-full flex-grow">
@@ -882,9 +868,7 @@
                 <div class="p-6 flex flex-col reveal">
                     <div class="lbl mb-4" data-i18n="feat.cLabel">C · Achievements</div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.cH">Milestones from daily life</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.cP">
-                        Most achievements are tied to an everyday task: for the elbow, about 115° of flexion is enough to bring a spoon to your mouth. Others mark gains in range (+10°, +25°, +50°) and measuring streaks of 3 to 30 days.
-                    </p>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.cP">Achievements are tied to everyday tasks: about 115° of elbow flexion is enough to bring a spoon to your mouth.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-3" aria-hidden="true">
                         <div class="flex items-center gap-3">
                             <div class="relative w-9 h-9 rounded-full flex items-center justify-center text-white" style="background: rgb(var(--arc))"><i class="ph ph-fork-knife"></i>
@@ -949,19 +933,16 @@
                             <div class="flex justify-between text-xs text-muted font-mono mt-1"><span id="tl-start"></span><span id="tl-end"></span></div>
                         </div>
                     </div>
-                    <p class="lbl mt-4" data-i18n="tl.fig">Fig. 2 · Photo history, example values. Press play or drag the slider.</p>
+                    <p class="lbl mt-4" data-i18n="tl.fig">Fig. 3 · Example values. Press play.</p>
                 </div>
                 <div class="lg:col-span-6 reveal">
                     <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-strong mb-5"><span data-i18n="tl.h3">Photo history and time-lapse</span> <span class="font-mono text-xs uppercase tracking-[0.14em] text-brand align-middle ml-1">Pro</span></h3>
-                    <p class="text-muted text-lg leading-relaxed mb-8 max-w-xl" data-i18n="tl.p">
-                        Every saved measurement keeps a photo of the start and of the end position.
-                        The time-lapse plays these photos in order, one every 0.6 s, and shows the change between your first and your latest measurement as movement.
-                    </p>
+                    <p class="text-muted text-lg leading-relaxed mb-8 max-w-xl" data-i18n="tl.p">Each measurement keeps a photo of the start and end position. The time-lapse plays them in order and shows your progress as movement.</p>
                     <dl class="border-t border-line text-sm">
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.dt1">Comparison</dt><dd class="text-text" data-i18n="tl.dd1">First measurement next to any later one, with the change in degrees and the number of days between them</dd></div>
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.title">Time-lapse</dt><dd class="text-text" data-i18n="tl.dd2">Play and stop, or step through the measurements with the slider</dd></div>
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.dt3">Overview</dt><dd class="text-text" data-i18n="tl.dd3">All photos in a grid, for flexion and for extension</dd></div>
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.dt4">Storage</dt><dd class="text-text" data-i18n="tl.dd4">Photos are saved without the overlay, which is redrawn when shown. Saving photos can be switched off.</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.dt1">Comparison</dt><dd class="text-text" data-i18n="tl.dd1">First measurement next to a later one, with the difference in degrees and days</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.title">Time-lapse</dt><dd class="text-text" data-i18n="tl.dd2">Play, or step through with the slider</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.dt3">Overview</dt><dd class="text-text" data-i18n="tl.dd3">All photos in a grid</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="tl.dt4">Storage</dt><dd class="text-text" data-i18n="tl.dd4">Saving photos can be switched off</dd></div>
                     </dl>
                 </div>
             </div>
@@ -970,15 +951,12 @@
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center mt-20">
                 <div class="lg:col-span-6 reveal">
                     <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-strong mb-5" data-i18n="w.h3">Widgets, Control Center and Siri</h3>
-                    <p class="text-muted text-lg leading-relaxed mb-8 max-w-xl" data-i18n="w.p">
-                        Widgets show whether you have measured today and how your range has changed over the last weeks.
-                        A control or a Siri shortcut opens the camera measurement directly.
-                    </p>
+                    <p class="text-muted text-lg leading-relaxed mb-8 max-w-xl" data-i18n="w.p">Widgets show whether you have measured today and how your range is developing. A control or Siri starts the next measurement.</p>
                     <dl class="border-t border-line text-sm">
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5">Widgets <span class="text-brand">Pro</span></dt><dd class="text-text" data-i18n="w.dd1">Functional range, History and Measure today, on the Home and Lock Screen; set per person, joint, side and value</dd></div>
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="w.dt2">Control</dt><dd class="text-text" data-i18n="w.dd2">Starts a measurement from Control Center, the Lock Screen or the Action button</dd></div>
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="w.dt3">Siri &amp; Shortcuts</dt><dd class="text-text" data-i18n="w.dd3">Start a measurement or show progress, with person, joint and side</dd></div>
-                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="w.dt4">Reminder</dt><dd class="text-text" data-i18n="w.dd4">Daily at a fixed time, as a local notification</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5">Widgets <span class="text-brand">Pro</span></dt><dd class="text-text" data-i18n="w.dd1">Functional range, History and Measure today, on the Home and Lock Screen</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="w.dt2">Control</dt><dd class="text-text" data-i18n="w.dd2">Control Center, Lock Screen or Action button</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="w.dt3">Siri &amp; Shortcuts</dt><dd class="text-text" data-i18n="w.dd3">Start a measurement or show your progress</dd></div>
+                        <div class="grid grid-cols-[9rem_1fr] sm:grid-cols-[11rem_1fr] gap-4 py-3 border-b border-line"><dt class="lbl pt-0.5" data-i18n="w.dt4">Reminder</dt><dd class="text-text" data-i18n="w.dd4">Daily, at a time you choose</dd></div>
                     </dl>
                 </div>
                 <div class="lg:col-span-6 reveal" aria-hidden="true">
@@ -1020,7 +998,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="lbl mt-4 max-w-md mx-auto lg:ml-auto lg:mr-0" data-i18n="w.fig">Fig. 3 · Widgets, example values</p>
+                    <p class="lbl mt-4 max-w-md mx-auto lg:ml-auto lg:mr-0" data-i18n="w.fig">Fig. 4 · Widgets, example values</p>
                 </div>
             </div>
 
@@ -1046,24 +1024,24 @@
 
             <div class="max-w-2xl mb-12 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="priv.h2">Where your data is stored</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="priv.p">Range-of-motion values are health data. Gio+ keeps them in two places: on your iPhone and, if you leave sync on, in your private iCloud.</p>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="priv.p">Your measurements are health data. They stay on your iPhone and, if you want, in your private iCloud.</p>
             </div>
 
             <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-panel/60">
                 <div class="p-6 reveal">
                     <div class="flex items-center gap-3 mb-4"><i class="ph ph-device-mobile text-xl text-brand"></i><span class="lbl" data-i18n="priv.aLabel">Local</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="priv.aH">On your device</h3>
-                    <p class="text-muted text-sm leading-relaxed" data-i18n="priv.aP">Measurements, photos and profiles are stored in a database on your iPhone. Gio+ also works offline.</p>
+                    <p class="text-muted text-sm leading-relaxed" data-i18n="priv.aP">Measurements, photos and profiles are stored on your iPhone. Gio+ works offline.</p>
                 </div>
                 <div class="p-6 reveal">
                     <div class="flex items-center gap-3 mb-4"><i class="ph ph-cloud text-xl text-brand"></i><span class="lbl" data-i18n="priv.bLabel">Sync</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="priv.bH">In your iCloud</h3>
-                    <p class="text-muted text-sm leading-relaxed" data-i18n="priv.bP">Your devices sync through your private iCloud. You can switch that off in the settings at any time.</p>
+                    <p class="text-muted text-sm leading-relaxed" data-i18n="priv.bP">Your devices sync through your private iCloud. You can switch that off.</p>
                 </div>
                 <div class="p-6 reveal">
                     <div class="flex items-center gap-3 mb-4"><i class="ph ph-hand text-xl text-brand"></i><span class="lbl" data-i18n="priv.cLabel">No server</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="priv.cH">No account, no server</h3>
-                    <p class="text-muted text-sm leading-relaxed" data-i18n="priv.cP">Gio+ sends no data to its own servers or to anyone else's. Camera images are analysed on the device.</p>
+                    <p class="text-muted text-sm leading-relaxed" data-i18n="priv.cP">Gio+ sends no data to any server. Camera images are analysed on the device.</p>
                 </div>
             </div>
             <p class="text-sm text-muted mt-6 reveal" data-i18n="priv.more">Details in the <a href="/terms.html#privacy-policy" class="text-text underline underline-offset-4 decoration-line hover:text-strong">privacy policy</a>.</p>
@@ -1082,7 +1060,7 @@
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-5 reveal">
                     <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="pro.h2">What is free and what Pro adds</h2>
-                    <p class="text-muted text-lg leading-relaxed" data-i18n="pro.p">Measuring, progress, achievements and the history of the last 4 weeks stay free, for one person. Pro is available as a monthly or 6-month subscription or as a one-time purchase, and supports an independent developer.</p>
+                    <p class="text-muted text-lg leading-relaxed" data-i18n="pro.p">Measuring, progress, achievements and the last 4 weeks of history are free. Pro is available as a subscription or as a one-time purchase.</p>
                 </div>
                 <div class="lg:col-span-7 reveal">
                     <div class="border border-line rounded-lg overflow-x-auto bg-ink">
@@ -1096,11 +1074,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td class="text-text" data-i18n="pro.r1">Measuring: camera, live view, manual entry</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
+                                <tr><td class="text-text" data-i18n="pro.r1">Measuring with the camera or by hand</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r2">Progress with functional range</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r3">History of values</td><td class="font-mono text-xs text-muted" data-i18n="pro.r3free">4 weeks</td><td class="font-mono text-xs text-strong" data-i18n="pro.r3pro">Complete</td></tr>
                                 <tr><td class="text-text" data-i18n="app.weeklyTrend">Weekly trend</td><td class="text-dim">–</td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
-                                <tr><td class="text-text" data-i18n="pro.r5">Photo history with comparison and time-lapse</td><td class="text-dim">–</td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
+                                <tr><td class="text-text" data-i18n="pro.r5">Photo history and time-lapse</td><td class="text-dim">–</td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r6">List of all measurements</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r7">Achievements</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r8">People</td><td class="font-mono text-xs text-muted" data-i18n="pro.r8free">One</td><td class="font-mono text-xs text-strong" data-i18n="pro.r8pro">Any number</td></tr>
@@ -1108,7 +1086,7 @@
                                 <tr><td class="text-text">Widgets</td><td class="text-dim">–</td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r11">Control, Shortcuts and Siri</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                                 <tr><td class="text-text" data-i18n="pro.r12">Colour themes</td><td class="font-mono text-xs text-muted" data-i18n="pro.r12free">Default</td><td class="font-mono text-xs text-strong" data-i18n="pro.r12pro">All</td></tr>
-                                <tr><td class="text-text" data-i18n="pro.r13">Light and dark mode, reminder, voice prompts</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
+                                <tr><td class="text-text" data-i18n="pro.r13">Dark mode, reminder, voice prompts</td><td class="text-mint"><i class="ph-bold ph-check"></i></td><td class="text-mint"><i class="ph-bold ph-check"></i></td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1124,7 +1102,7 @@
                 <img src="/AppIcon.png" alt="Gio+" class="w-20 h-20 rounded-[1.1rem]">
                 <div>
                     <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-strong mb-2" data-i18n="dl.h2">Gio+ for iPhone, iPad and Mac</h2>
-                    <p class="text-muted" data-i18n="dl.p">Free to download. No account. The record of your recovery stays on your device and in your iCloud.</p>
+                    <p class="text-muted" data-i18n="dl.p">Free to download. No account needed.</p>
                 </div>
                 <a href="#download" class="js-appstore btn px-6 py-3.5 whitespace-nowrap">
                     <i class="ph ph-apple-logo text-lg"></i>
@@ -1135,9 +1113,7 @@
             <!-- Notice -->
             <div class="mt-6 border border-line rounded-lg p-6 grid md:grid-cols-[9rem_1fr] gap-3 md:gap-8 reveal">
                 <div class="lbl flex items-start gap-2"><i class="ph ph-info text-base text-brand"></i> <span data-i18n="notice.label">Notice</span></div>
-                <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="notice.p">
-                    Gio+ is not a medical device. The measurements are estimates from the camera image; they help you follow your own progress and do not replace a diagnosis or the advice of your doctor or physiotherapist.
-                </p>
+                <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="notice.p">Gio+ is not a medical device. The measurements are estimates from the camera image and do not replace a diagnosis or the advice of your doctor or physiotherapist.</p>
             </div>
         </div>
     </section>
