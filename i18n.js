@@ -1,9 +1,16 @@
-// Language switch for gioplus.app.
+// Translations for gioplus.app.
 //
-// English lives in the HTML. Every translatable element carries data-i18n="key"
+// English lives in index.html. Every translatable element carries data-i18n="key"
 // (or data-i18n-attr="attribute:key" for alt and aria-label). German is the DE table below.
 // EN only holds strings that are not in the HTML by default: texts set from JavaScript
 // and the "live" variants used once APP_STORE_URL is set.
+//
+// The German page /de/index.html is generated from index.html and this file:
+//
+//     node build-de.js
+//
+// Run it after every change to index.html or to this file, then commit both pages.
+// The language of a page is its <html lang>; the switch in the navigation links between "/" and "/de/".
 //
 // The German wording follows the app (Gio/Localizable.xcstrings), so the page and the
 // app use the same terms: Beugung, Streckung, Bewegungsumfang, Wochenverlauf, ...
@@ -26,6 +33,8 @@ const I18N = (() => {
         // Meta
         'meta.title': 'Gio+ - Goniometer-App für iPhone | Beweglichkeit von Ellbogen, Knie & Schulter messen',
         'meta.description': 'Gio+ dokumentiert deinen Heilungsverlauf nach einer Verletzung oder Operation. Die iPhone-Kamera misst wie ein Goniometer, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und die App hält deinen Bewegungsumfang über die Wochen der Reha fest. Ohne Konto, ohne Server: Deine Daten bleiben auf deinem Gerät und in deiner iCloud.',
+        'meta.ogTitle': 'Gio+ - Die Goniometer-App für iPhone',
+        'meta.ogDescription': 'Dokumentiere deinen Heilungsverlauf: Miss mit der iPhone-Kamera, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und sieh Woche für Woche, was sich verändert.',
         'theme.toggle': 'Zwischen hellem und dunklem Modus wechseln',
 
         // Navigation and buttons
@@ -46,13 +55,43 @@ const I18N = (() => {
         'joint.elbow': 'Ellbogen',
         'joint.knee': 'Knie',
         'joint.shoulder': 'Schulter <span class="text-muted font-normal">(Anheben nach vorn)</span>',
+        'joint.elbowPlain': 'Ellbogen',
+        'joint.kneePlain': 'Knie',
+        'joint.shoulderPlain': 'Schulter',
+
+        // 03 Who it is for
+        'for.label': 'Für wen',
+        'for.h2': 'Bei welchen Verletzungen und Operationen sich das Messen lohnt',
+        'for.p': 'Nach vielen Verletzungen und Operationen ist das Gelenk zunächst steif. Beugung und Streckung zurückzugewinnen ist dann ein zentrales Ziel der Reha. Gio+ lohnt sich überall dort, wo dieser Umfang über Wochen immer wieder gemessen wird.',
+        'for.elbow1': 'Ellenbogenfraktur: Radiuskopf, Olekranon, distaler Oberarm',
+        'for.elbow2': 'Ellenbogenluxation (ausgekugelter Ellbogen)',
+        'for.elbow3': 'Bänderriss und Bandoperation',
+        'for.elbow4': 'Ellenbogensteife nach Gips oder Ruhigstellung',
+        'for.elbow5': 'Nach einer Arthrolyse (operatives Lösen eines steifen Ellbogens)',
+        'for.knee1': 'Kreuzbandriss und Kreuzband-OP',
+        'for.knee2': 'Innenbandriss und andere Seitenbandverletzungen',
+        'for.knee3': 'Meniskusriss und Meniskus-OP',
+        'for.knee4': 'Künstliches Kniegelenk (Knie-TEP)',
+        'for.knee5': 'Kniescheibenbruch, Schienbeinkopfbruch',
+        'for.knee6': 'Arthrofibrose',
+        'for.shoulder1': 'Schultersteife (Frozen Shoulder)',
+        'for.shoulder2': 'Riss und Naht der Rotatorenmanschette',
+        'for.shoulder3': 'Oberarmkopfbruch',
+        'for.shoulder4': 'Schulterluxation (ausgekugelte Schulter)',
+        'for.shoulder5': 'Schulterprothese',
+        'for.shoulderNote': 'Gio+ misst, wie weit du den Arm nach vorn anheben kannst, von der Seite gesehen.',
+        'for.notice': 'Gio+ misst deinen Bewegungsumfang. Wie weit du das Gelenk bewegen darfst, legen deine Ärztin, dein Arzt oder deine Physiotherapie fest, besonders in den ersten Wochen nach einer Operation.',
 
         // Hero
         'hero.badge': 'Goniometer-App · Demnächst für iPhone, iPad und Mac',
         'hero.badgeLive': 'Goniometer-App · iPhone, iPad und Mac',
         'hero.h1': 'Dokumentiere deinen Heilungsverlauf mit der iPhone-Kamera.',
         'hero.p': 'Nach einer Verletzung oder Operation misst Gio+, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen. Jede Messung wird mit Datum und Fotos gespeichert. Über die Wochen der Reha entsteht so ein Protokoll deiner Heilung: wo du angefangen hast, was sich verändert hat und welche Alltagsbewegungen wieder gehen.',
-        'hero.watch': 'Messung ansehen',
+        'hero.watch': 'So läuft eine Messung ab',
+        'hero.cap1': 'Mit der Kamera messen',
+        'hero.cap2': 'Verlauf verfolgen',
+        'hero.historyAlt': 'Gio+ Verlauf: Wochenverlauf und die Kurve deines Bewegungsumfangs',
+        'hero.progressAlt': 'Gio+ Fortschritt: funktioneller Bereich des Ellbogens',
         'hero.dev': 'Entwickelt von',
         'hero.alt': 'Gio+ Goniometer-App auf dem iPhone: Erfolge, Wochenverlauf und der funktionelle Bereich des Ellbogens',
         'readout.label': 'Beispielmessung',
@@ -60,7 +99,6 @@ const I18N = (() => {
 
         // 01 Measurement
         'how.videoLabel': 'Bildschirmaufnahme: Gio+ misst den rechten Ellbogen. Der Arm wird gebeugt und gestreckt, jeder Wert wird gehalten, dann erscheint das Ergebnis.',
-        'how.fig': 'Abb. 1 · Bildschirmaufnahme (App auf Englisch), rechter Ellbogen, Wiederholung 2 und 3 von 3',
         'how.h2': 'Dein iPhone als Goniometer',
         'how.p': 'In der Physiotherapie wird der Gelenkwinkel mit einem Goniometer abgelesen. Gio+ liest ihn aus dem Kamerabild. Deine erste Messung ist der Ausgangswert deiner Reha, jede spätere wird damit verglichen.',
         'how.s1h': 'iPhone aufstellen',
@@ -73,7 +111,7 @@ const I18N = (() => {
         // 02 Functional range
         'range.h2': 'Wie weit du vom Alltagsbereich entfernt bist',
         'range.p': 'Die meisten Alltagsbewegungen brauchen weniger als den vollen Umfang eines gesunden Gelenks. Die Reha hat damit ein Ziel, das du Schritt für Schritt erreichen kannst. Gio+ zeichnet deinen aktuellen Bogen neben den funktionellen und den normalen Bereich, und du liest ab, wie viele Grad dir beim Beugen und beim Strecken fehlen.',
-        'range.fig': 'Abb. 2 · Fortschritt, Ellbogen',
+        'range.fig': 'Abb. 1 · Fortschritt, Ellbogen',
         'range.caption': 'Richtwerte in Gio+ für Ellbogen, Knie und Schulter',
         'range.thJoint': 'Gelenk',
         'range.thFunc': 'Funktionell',
@@ -131,7 +169,7 @@ const I18N = (() => {
         'tl.avg': 'Ø',
         'tl.delta': '+{d}° Beugung in {n} Tagen',
         'tl.sliderLabel': 'Position im Zeitraffer',
-        'tl.fig': 'Abb. 3 · Fotoverlauf, Beispielwerte. Drück auf Abspielen oder zieh den Regler.',
+        'tl.fig': 'Abb. 2 · Fotoverlauf, Beispielwerte. Drück auf Abspielen oder zieh den Regler.',
         'tl.h3': 'Fotoverlauf und Zeitraffer',
         'tl.p': 'Zu jeder gespeicherten Messung gehört je ein Foto der Start- und der Endposition. Der Zeitraffer spielt diese Fotos der Reihe nach ab, alle 0,6 s eines, und macht die Veränderung zwischen deiner ersten und deiner letzten Messung als Bewegung sichtbar.',
         'tl.dt1': 'Vergleich',
@@ -152,7 +190,7 @@ const I18N = (() => {
         'w.dd3': 'Messung starten oder Fortschritt anzeigen, mit Person, Gelenk und Seite',
         'w.dt4': 'Erinnerung',
         'w.dd4': 'Täglich zur festen Uhrzeit, als lokale Mitteilung',
-        'w.fig': 'Abb. 4 · Widgets, Beispielwerte',
+        'w.fig': 'Abb. 3 · Widgets, Beispielwerte',
 
         // Planned
         'dev.label': 'In Arbeit',
@@ -171,7 +209,7 @@ const I18N = (() => {
         'priv.cLabel': 'Kein Server',
         'priv.cH': 'Ohne Konto und Server',
         'priv.cP': 'Gio+ schickt keine Daten an eigene oder fremde Server. Die Kamerabilder werden auf dem Gerät ausgewertet.',
-        'priv.more': 'Details in der <a href="terms.html#privacy-policy" class="text-text underline underline-offset-4 decoration-line hover:text-strong">Datenschutzerklärung</a> (auf Englisch).',
+        'priv.more': 'Details in der <a href="/terms.html#privacy-policy" class="text-text underline underline-offset-4 decoration-line hover:text-strong">Datenschutzerklärung</a> (auf Englisch).',
 
         // 05 Free and Pro
         'pro.label': 'Kostenlos und Pro',
@@ -212,8 +250,8 @@ const I18N = (() => {
         'footer.imprint': 'Impressum',
     };
 
-    const original = {}; // English as written in the HTML, by key
-    const api = { lang: 'en', t, set, init };
+    const original = {}; // text as written in the HTML, by key
+    const api = { lang: 'en', tables: { EN, DE }, t, set, init };
 
     function t(key) {
         if (api.lang === 'de' && key in DE) return DE[key];
@@ -223,8 +261,7 @@ const I18N = (() => {
 
     function remember() {
         document.querySelectorAll('[data-i18n]').forEach(el => {
-            // keep the key the element was written with, even if it is switched to a "live" key later
-            const key = el.dataset.i18nSource || el.dataset.i18n;
+            const key = el.dataset.i18n;
             if (!(key in original)) original[key] = el.innerHTML.trim().replace(/\s+/g, ' ');
         });
         document.querySelectorAll('[data-i18n-attr]').forEach(el => {
@@ -233,14 +270,12 @@ const I18N = (() => {
                 if (!(key in original)) original[key] = el.getAttribute(attr);
             });
         });
-        original['meta.description'] = document.querySelector('meta[name="description"]').content;
     }
 
+    // Applies a language to the page. Each page is already written in its language,
+    // so this mostly matters for keys switched at runtime (the "live" App Store texts).
     function set(lang) {
         api.lang = lang === 'de' ? 'de' : 'en';
-        document.documentElement.lang = api.lang;
-        document.title = t('meta.title');
-        document.querySelector('meta[name="description"]').content = t('meta.description');
         document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = t(el.dataset.i18n); });
         document.querySelectorAll('[data-i18n-attr]').forEach(el => {
             el.dataset.i18nAttr.split(';').forEach(pair => {
@@ -248,23 +283,22 @@ const I18N = (() => {
                 el.setAttribute(attr, t(key));
             });
         });
-        document.querySelectorAll('[data-lang]').forEach(button => {
-            button.setAttribute('aria-pressed', String(button.dataset.lang === api.lang));
+        document.querySelectorAll('a[data-lang]').forEach(link => {
+            if (link.dataset.lang === api.lang) link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
         });
-        try { localStorage.setItem('gio-lang', api.lang); } catch (e) {}
         document.dispatchEvent(new CustomEvent('gio:lang', { detail: api.lang }));
     }
 
-    // Saved choice first, then the browser language, then English
     function init() {
         remember();
-        let lang = null;
-        try { lang = localStorage.getItem('gio-lang'); } catch (e) {}
-        if (!lang) lang = (navigator.language || 'en').toLowerCase().startsWith('de') ? 'de' : 'en';
-        document.querySelectorAll('[data-lang]').forEach(button => {
-            button.addEventListener('click', () => set(button.dataset.lang));
+        // Remember an explicit choice, so "/" does not send a German browser back to "/de/"
+        document.querySelectorAll('a[data-lang]').forEach(link => {
+            link.addEventListener('click', () => {
+                try { localStorage.setItem('gio-lang', link.dataset.lang); } catch (e) {}
+            });
         });
-        set(lang);
+        set(document.documentElement.lang);
     }
 
     return api;

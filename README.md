@@ -12,7 +12,9 @@ Google Fonts (IBM Plex), Phosphor Icons and a `favicon/` folder. No build step. 
 
 ```
 index.html        Landing page (markup, Tailwind config, styles and a little JS)
-i18n.js           German translations and the language switch
+i18n.js           German translations
+build-de.js       Generates de/index.html (run after text changes)
+de/index.html     German page, generated
 media/            Screen recording of a measurement (MP4, WebM, poster)
 terms.html        Privacy policy, terms of use and imprint (Styles/ + SFPro.ttf, like habitbe.app)
 AppIcon.png       App icon, composited from Gio/AppIcon.icon in the app repo on a dark tile
@@ -40,8 +42,12 @@ App Store and switch from "Coming soon" to "Download". Also add the Smart App Ba
 
 - Light is the default. The button in the navigation switches to dark; the choice is stored in `localStorage` (`gio-theme`) and `terms.html` follows it.
 - All colours are CSS variables at the top of the `<style>` block in `index.html` (`:root` for light, `html.dark` for dark). Tailwind classes such as `bg-ink` or `text-strong` point at them.
-- English is written in the HTML. German is the `DE` table in `i18n.js`; elements are linked by `data-i18n="key"` (or `data-i18n-attr="alt:key"`). The switch stores the choice in `localStorage` (`gio-lang`); without a choice the browser language decides.
-- When you add or change a text: edit the English in `index.html` and the German under the same key in `i18n.js`. German terms follow `Gio/Localizable.xcstrings` in the app repo.
+- English is `index.html` at `/`. German is `de/index.html` at `/de/`, generated from `index.html` and the `DE` table in `i18n.js`. Elements are linked by `data-i18n="key"` (or `data-i18n-attr="alt:key"`).
+- **After every change to `index.html` or `i18n.js`, run `node build-de.js` and commit both pages.** The script lists keys that have no German text.
+- The EN/DE switch links between the two addresses. A German browser without a saved choice is sent from `/` to `/de/`; clicking EN remembers the choice (`gio-lang`).
+- Both pages carry `hreflang` links and are in `sitemap.xml`, so search engines index each language under its own address.
+- All asset paths are root-absolute (`/media/...`), so the same markup works under `/de/`. Preview through a local server, not by opening the file.
+- German terms follow `Gio/Localizable.xcstrings` in the app repo.
 - The hero shows real screenshots from `media/screens/<light|dark>-<en|de>-<progress|history|achievements>.jpg`; the page picks the set that matches theme and language.
 - Not translated: the measurement video (English app UI) and `terms.html`.
 

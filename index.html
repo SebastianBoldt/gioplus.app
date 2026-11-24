@@ -9,6 +9,9 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#FFFFFF">
     <link rel="canonical" href="https://gioplus.app/">
+    <link rel="alternate" hreflang="en" href="https://gioplus.app/">
+    <link rel="alternate" hreflang="de" href="https://gioplus.app/de/">
+    <link rel="alternate" hreflang="x-default" href="https://gioplus.app/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -26,16 +29,21 @@
     <meta name="twitter:image" content="https://gioplus.app/gioplus-hero.png">
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
-    <link rel="shortcut icon" href="favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="favicon/site.webmanifest" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
 
     <!-- Theme: light by default, dark only if chosen before. Runs first to avoid a flash. -->
     <script>
         try {
             if (localStorage.getItem('gio-theme') === 'dark') document.documentElement.classList.add('dark');
+            // English page only: German browsers without a saved choice go to the German page
+            if (document.documentElement.lang === 'en' && !localStorage.getItem('gio-lang')
+                && (navigator.language || '').toLowerCase().startsWith('de')) {
+                location.replace('/de/' + location.hash);
+            }
         } catch (e) {}
     </script>
 
@@ -208,7 +216,7 @@
             border-radius: 6px;
             overflow: hidden;
         }
-        .switch button {
+        .switch a {
             font-family: "IBM Plex Mono", ui-monospace, monospace;
             font-size: 0.6875rem;
             letter-spacing: 0.08em;
@@ -216,7 +224,7 @@
             color: rgb(var(--muted));
             line-height: 1;
         }
-        .switch button[aria-pressed="true"] {
+        .switch a[aria-current="true"] {
             background: rgb(var(--strong));
             color: rgb(var(--ink));
         }
@@ -255,7 +263,24 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Hero: iPhone 17 screenshots (1206 x 2622) in a thin frame */
+        /* Hero: three screens in the same thin frame, staggered. The video is in front. */
+        .hero-demo {
+            aspect-ratio: 100 / 108;
+        }
+        .hero-video,
+        .hero-shot {
+            position: absolute;
+            width: 46%;
+            border-radius: 9% / 4.2%;
+            box-shadow: 0 28px 50px -26px var(--phone-shadow);
+        }
+        .hero-video {
+            left: 0;
+            top: 0;
+            z-index: 1;
+        }
+
+        /* Three iPhone 17 screenshots (1206 x 2622) in a thin frame */
         .hero-phones {
             aspect-ratio: 100 / 106;
         }
@@ -311,7 +336,8 @@
             aspect-ratio: 1206 / 2622;
             border: 1px solid var(--line-strong);
         }
-        .video-card > video {
+        .video-card > video,
+        .video-card > img {
             display: block;
             width: 100%;
             height: 100%;
@@ -401,7 +427,7 @@
         "operatingSystem": "iOS, iPadOS, macOS",
         "applicationCategory": "HealthApplication",
         "description": "Gio+ is a goniometer app for iPhone. It uses the camera to measure how far your elbow, knee or shoulder bends and straightens, and tracks your range of motion over time.",
-        "keywords": "goniometer, goniometer app, range of motion, ROM, elbow flexion, knee flexion, shoulder, physiotherapy, rehab",
+        "keywords": "goniometer, goniometer app, range of motion, ROM, elbow flexion, knee flexion, shoulder, physiotherapy, rehab, elbow fracture, radial head fracture, ACL tear, knee replacement, frozen shoulder, rotator cuff",
         "url": "https://gioplus.app",
         "screenshot": "https://gioplus.app/gioplus-hero.png",
         "offers": {
@@ -435,7 +461,7 @@
     <nav class="fixed w-full z-50 top-0 transition-colors duration-200" id="navbar">
         <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center gap-4">
             <a href="#" class="text-lg font-semibold tracking-tight text-strong flex items-center gap-2.5">
-                <img src="AppIcon.png" alt="Gio+" class="w-7 h-7 rounded-md object-cover">
+                <img src="/AppIcon.png" alt="Gio+" class="w-7 h-7 rounded-md object-cover">
                 <span>Gio<span class="text-brand">+</span></span>
             </a>
 
@@ -451,8 +477,8 @@
 
                 <!-- Language -->
                 <div class="switch" role="group" aria-label="Language">
-                    <button type="button" data-lang="en" aria-pressed="true">EN</button>
-                    <button type="button" data-lang="de" aria-pressed="false">DE</button>
+                    <a href="/" data-lang="en" hreflang="en" aria-current="true">EN</a>
+                    <a href="/de/" data-lang="de" hreflang="de">DE</a>
                 </div>
                 <!-- Theme -->
                 <button type="button" id="theme-toggle" class="icon-btn" aria-label="Switch between light and dark mode" data-i18n-attr="aria-label:theme.toggle">
@@ -497,21 +523,31 @@
                         <i class="ph ph-apple-logo text-lg"></i>
                         <span class="js-label" data-i18n="cta.soon" data-i18n-live="cta.live">Coming soon to the App Store</span>
                     </a>
-                    <a href="#how" class="text-sm text-muted hover:text-strong transition-colors"><span data-i18n="hero.watch">Watch a measurement</span> <span aria-hidden="true">↓</span></a>
+                    <a href="#how" class="text-sm text-muted hover:text-strong transition-colors"><span data-i18n="hero.watch">How a measurement works</span> <span aria-hidden="true">↓</span></a>
                 </div>
                 <p class="mt-10 text-sm text-dim">
                     <span data-i18n="hero.dev">Developed by</span> <a href="https://sebastianboldt.io" class="text-muted hover:text-strong underline underline-offset-4 decoration-line">Sebastian Boldt</a>
                 </p>
             </div>
 
-            <!-- App screens: real screenshots, swapped by theme and language (see updateScreens) -->
+            <!-- What the app does: a real measurement (video) in front, progress and history behind it -->
             <div class="lg:col-span-6 reveal">
-                <div class="hero-phones relative w-full max-w-[540px] mx-auto" role="img"
-                     aria-label="Gio+ goniometer app on iPhone: achievements, weekly trend and the functional range of the elbow"
-                     data-i18n-attr="aria-label:hero.alt">
-                    <div class="phone" style="left: 0; top: 7%"><img data-screen="achievements" src="media/screens/light-en-achievements.jpg" alt="" width="603" height="1311"></div>
-                    <div class="phone" style="left: 27%; top: 3.5%"><img data-screen="history" src="media/screens/light-en-history.jpg" alt="" width="603" height="1311"></div>
-                    <div class="phone" style="left: 54%; top: 0"><img data-screen="progress" src="media/screens/light-en-progress.jpg" alt="" width="603" height="1311"></div>
+                <div class="hero-demo relative w-full max-w-[540px] mx-auto">
+                    <div class="video-card hero-shot" style="left: 54%; top: 7%"><img data-screen="history" src="/media/screens/light-en-history.jpg" alt="Gio+ history: weekly trend and the curve of your range of motion" data-i18n-attr="alt:hero.historyAlt" width="603" height="1311"></div>
+                    <div class="video-card hero-shot" style="left: 27%; top: 3.5%"><img data-screen="progress" src="/media/screens/light-en-progress.jpg" alt="Gio+ progress view: functional range of the elbow" data-i18n-attr="alt:hero.progressAlt" width="603" height="1311"></div>
+                    <div class="video-card hero-video">
+                        <video class="js-autoplay" muted loop playsinline preload="auto"
+                               poster="/media/measurement-poster.jpg"
+                               aria-label="Screen recording of the Gio+ goniometer measuring the right elbow: the arm is bent and straightened, each value is held, then the result is shown"
+                               data-i18n-attr="aria-label:how.videoLabel">
+                            <source src="/media/measurement.webm" type="video/webm">
+                            <source src="/media/measurement.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 max-w-[540px] mx-auto mt-5">
+                    <p class="lbl"><span class="text-brand">01</span> <span data-i18n="hero.cap1">Measure with the camera</span></p>
+                    <p class="lbl"><span class="text-brand">02</span> <span data-i18n="hero.cap2">Follow your progress</span></p>
                 </div>
             </div>
         </div>
@@ -556,26 +592,12 @@
             </div>
 
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-                <!-- Video of a real measurement -->
-                <figure class="lg:col-span-5 reveal">
-                    <div class="video-card w-[260px] sm:w-[300px] mx-auto lg:mx-0">
-                        <video class="js-autoplay" muted loop playsinline preload="metadata"
-                               poster="media/measurement-poster.jpg"
-                               aria-label="Screen recording of the Gio+ goniometer measuring the right elbow: the arm is bent and straightened, each value is held, then the result is shown"
-                               data-i18n-attr="aria-label:how.videoLabel">
-                            <source src="media/measurement.webm" type="video/webm">
-                            <source src="media/measurement.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <figcaption class="lbl mt-4 w-[260px] sm:w-[300px] mx-auto lg:mx-0" data-i18n="how.fig">
-                        Fig. 1 · Screen recording, right elbow, repetitions 2 and 3 of 3
-                    </figcaption>
-                </figure>
+                <div class="lg:col-span-5">
+                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5 reveal" data-i18n="how.h2">Your iPhone as a goniometer</h2>
+                    <p class="text-muted text-lg leading-relaxed max-w-xl reveal" data-i18n="how.p">A physiotherapist reads joint angles off a goniometer. Gio+ reads them from the camera image. Your first measurement is the baseline of your recovery, and every later one is compared with it.</p>
+                </div>
 
                 <div class="lg:col-span-7">
-                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5 reveal" data-i18n="how.h2">Your iPhone as a goniometer</h2>
-                    <p class="text-muted text-lg leading-relaxed mb-10 max-w-xl reveal" data-i18n="how.p">A physiotherapist reads joint angles off a goniometer. Gio+ reads them from the camera image. Your first measurement is the baseline of your recovery, and every later one is compared with it.</p>
-
                     <ol class="border-t border-line">
                         <li class="reveal grid grid-cols-[3rem_1fr] gap-4 py-6 border-b border-line">
                             <span class="font-mono text-sm text-brand pt-0.5">01</span>
@@ -649,7 +671,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="lbl mt-4" data-i18n="range.fig">Fig. 2 · Progress view, elbow</p>
+                    <p class="lbl mt-4" data-i18n="range.fig">Fig. 1 · Progress view, elbow</p>
                 </div>
 
                 <div class="lg:col-span-7">
@@ -702,21 +724,88 @@
         </div>
     </section>
 
-    <!-- 03 Features -->
-    <section id="features" class="py-20 lg:py-28 border-b border-line scroll-mt-16">
+    <!-- 03 Who it is for -->
+    <section id="injuries" class="py-20 lg:py-28 border-b border-line scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12 reveal">
                 <span class="font-mono text-xs text-brand">03</span>
-                <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="nav.features">Features</span>
+                <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="for.label">Who it is for</span>
                 <span class="h-px flex-1 bg-line"></span>
             </div>
 
             <div class="max-w-2xl mb-12 reveal">
-                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="feat.h2">Measurement, history and achievements</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="feat.p">Gio+ accompanies your rehab from the first measurement. It stores every value, compares it with your baseline and with the functional range, and records each everyday movement you regain as an achievement.</p>
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="for.h2">Injuries and operations where measuring pays off</h2>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="for.p">After many injuries and operations the joint is stiff at first, and getting flexion and extension back is a central goal of rehab. Gio+ is useful wherever that range is measured again and again over weeks.</p>
             </div>
 
             <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-panel/60">
+                <div class="p-6 reveal">
+                    <h3 class="text-lg font-semibold text-strong mb-4" data-i18n="joint.elbowPlain">Elbow</h3>
+                    <ul class="text-sm text-text border-t border-line">
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow1">Elbow fracture: radial head, olecranon, distal humerus</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow2">Elbow dislocation</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow3">Ligament tear and ligament surgery</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow4">Stiff elbow after a cast or immobilisation</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow5">After arthrolysis (surgical release of a stiff elbow)</li>
+                    </ul>
+                </div>
+                <div class="p-6 reveal">
+                    <h3 class="text-lg font-semibold text-strong mb-4" data-i18n="joint.kneePlain">Knee</h3>
+                    <ul class="text-sm text-text border-t border-line">
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee1">ACL tear and ACL reconstruction</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee2">Collateral ligament injury (MCL, LCL)</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee3">Meniscus tear and meniscus surgery</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee4">Knee replacement</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee5">Patella fracture, tibial plateau fracture</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee6">Arthrofibrosis</li>
+                    </ul>
+                </div>
+                <div class="p-6 reveal">
+                    <h3 class="text-lg font-semibold text-strong mb-4" data-i18n="joint.shoulderPlain">Shoulder</h3>
+                    <ul class="text-sm text-text border-t border-line">
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder1">Frozen shoulder (adhesive capsulitis)</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder2">Rotator cuff tear and rotator cuff repair</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder3">Proximal humerus fracture</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder4">Shoulder dislocation</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder5">Shoulder replacement</li>
+                    </ul>
+                    <p class="text-xs text-dim mt-4 leading-relaxed" data-i18n="for.shoulderNote">Gio+ measures how far you can raise the arm to the front, seen from the side.</p>
+                </div>
+            </div>
+
+            <div class="mt-6 border border-line rounded-lg p-6 grid md:grid-cols-[9rem_1fr] gap-3 md:gap-8 reveal">
+                <div class="lbl flex items-start gap-2"><i class="ph ph-info text-base text-brand"></i> <span data-i18n="notice.label">Notice</span></div>
+                <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="for.notice">Gio+ measures your range of motion. How far you may move the joint is decided by your doctor or physiotherapist, especially in the first weeks after an operation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 Features -->
+    <section id="features" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center gap-4 mb-12 reveal">
+                <span class="font-mono text-xs text-brand">04</span>
+                <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="nav.features">Features</span>
+                <span class="h-px flex-1 bg-line"></span>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
+                <div class="lg:col-span-5 reveal">
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="feat.h2">Measurement, history and achievements</h2>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="feat.p">Gio+ accompanies your rehab from the first measurement. It stores every value, compares it with your baseline and with the functional range, and records each everyday movement you regain as an achievement.</p>
+                </div>
+                <div class="lg:col-span-7 reveal">
+                    <div class="hero-phones relative w-full max-w-[520px] mx-auto lg:ml-auto lg:mr-0" role="img"
+                         aria-label="Gio+ goniometer app on iPhone: achievements, weekly trend and the functional range of the elbow"
+                         data-i18n-attr="aria-label:hero.alt">
+                        <div class="phone" style="left: 0; top: 7%"><img data-screen="achievements" src="/media/screens/light-en-achievements.jpg" alt="" width="603" height="1311" loading="lazy"></div>
+                        <div class="phone" style="left: 27%; top: 3.5%"><img data-screen="history" src="/media/screens/light-en-history.jpg" alt="" width="603" height="1311" loading="lazy"></div>
+                        <div class="phone" style="left: 54%; top: 0"><img data-screen="progress" src="/media/screens/light-en-progress.jpg" alt="" width="603" height="1311" loading="lazy"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-ink">
                 <!-- Measure -->
                 <div class="p-6 flex flex-col reveal">
                     <div class="lbl mb-4" data-i18n="feat.aLabel">A · Camera</div>
@@ -860,7 +949,7 @@
                             <div class="flex justify-between text-xs text-muted font-mono mt-1"><span id="tl-start"></span><span id="tl-end"></span></div>
                         </div>
                     </div>
-                    <p class="lbl mt-4" data-i18n="tl.fig">Fig. 3 · Photo history, example values. Press play or drag the slider.</p>
+                    <p class="lbl mt-4" data-i18n="tl.fig">Fig. 2 · Photo history, example values. Press play or drag the slider.</p>
                 </div>
                 <div class="lg:col-span-6 reveal">
                     <h3 class="text-2xl md:text-3xl font-semibold tracking-tight text-strong mb-5"><span data-i18n="tl.h3">Photo history and time-lapse</span> <span class="font-mono text-xs uppercase tracking-[0.14em] text-brand align-middle ml-1">Pro</span></h3>
@@ -897,7 +986,7 @@
                         <div class="grid grid-cols-2 gap-4">
                             <!-- Today widget -->
                             <div class="app-card rounded-[1.4rem] p-4 aspect-square flex flex-col justify-between">
-                                <div class="flex items-center gap-2 text-xs text-muted"><img src="AppIcon.png" alt="" class="w-4 h-4 rounded"> <span data-i18n="app.today">Today</span></div>
+                                <div class="flex items-center gap-2 text-xs text-muted"><img src="/AppIcon.png" alt="" class="w-4 h-4 rounded"> <span data-i18n="app.today">Today</span></div>
                                 <div>
                                     <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-lg mb-2" style="background: rgb(var(--func))"><i class="ph-bold ph-check"></i></div>
                                     <div class="text-sm font-semibold text-strong" data-i18n="app.measuredToday">Measured today</div>
@@ -931,7 +1020,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="lbl mt-4 max-w-md mx-auto lg:ml-auto lg:mr-0" data-i18n="w.fig">Fig. 4 · Widgets, example values</p>
+                    <p class="lbl mt-4 max-w-md mx-auto lg:ml-auto lg:mr-0" data-i18n="w.fig">Fig. 3 · Widgets, example values</p>
                 </div>
             </div>
 
@@ -946,11 +1035,11 @@
         </div>
     </section>
 
-    <!-- 04 Privacy -->
-    <section id="privacy" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
+    <!-- 05 Privacy -->
+    <section id="privacy" class="py-20 lg:py-28 border-b border-line scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12 reveal">
-                <span class="font-mono text-xs text-brand">04</span>
+                <span class="font-mono text-xs text-brand">05</span>
                 <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="nav.privacy">Privacy</span>
                 <span class="h-px flex-1 bg-line"></span>
             </div>
@@ -960,7 +1049,7 @@
                 <p class="text-muted text-lg leading-relaxed" data-i18n="priv.p">Range-of-motion values are health data. Gio+ keeps them in two places: on your iPhone and, if you leave sync on, in your private iCloud.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-ink">
+            <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-panel/60">
                 <div class="p-6 reveal">
                     <div class="flex items-center gap-3 mb-4"><i class="ph ph-device-mobile text-xl text-brand"></i><span class="lbl" data-i18n="priv.aLabel">Local</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="priv.aH">On your device</h3>
@@ -977,15 +1066,15 @@
                     <p class="text-muted text-sm leading-relaxed" data-i18n="priv.cP">Gio+ sends no data to its own servers or to anyone else's. Camera images are analysed on the device.</p>
                 </div>
             </div>
-            <p class="text-sm text-muted mt-6 reveal" data-i18n="priv.more">Details in the <a href="terms.html#privacy-policy" class="text-text underline underline-offset-4 decoration-line hover:text-strong">privacy policy</a>.</p>
+            <p class="text-sm text-muted mt-6 reveal" data-i18n="priv.more">Details in the <a href="/terms.html#privacy-policy" class="text-text underline underline-offset-4 decoration-line hover:text-strong">privacy policy</a>.</p>
         </div>
     </section>
 
-    <!-- 05 Pro -->
-    <section id="pro" class="py-20 lg:py-28 border-b border-line scroll-mt-16">
+    <!-- 06 Pro -->
+    <section id="pro" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12 reveal">
-                <span class="font-mono text-xs text-brand">05</span>
+                <span class="font-mono text-xs text-brand">06</span>
                 <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="pro.label">Free and Pro</span>
                 <span class="h-px flex-1 bg-line"></span>
             </div>
@@ -996,7 +1085,7 @@
                     <p class="text-muted text-lg leading-relaxed" data-i18n="pro.p">Measuring, progress, achievements and the history of the last 4 weeks stay free, for one person. Pro is available as a monthly or 6-month subscription or as a one-time purchase, and supports an independent developer.</p>
                 </div>
                 <div class="lg:col-span-7 reveal">
-                    <div class="border border-line rounded-lg overflow-x-auto bg-panel/60">
+                    <div class="border border-line rounded-lg overflow-x-auto bg-ink">
                         <table class="data-table">
                             <caption class="sr-only" data-i18n="pro.caption">Comparison of Gio+ free and Gio+ Pro</caption>
                             <thead>
@@ -1032,7 +1121,7 @@
     <section id="download" class="py-20 lg:py-28 scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="border border-line rounded-lg bg-panel/60 p-8 md:p-12 grid md:grid-cols-[auto_1fr_auto] gap-8 items-center reveal">
-                <img src="AppIcon.png" alt="Gio+" class="w-20 h-20 rounded-[1.1rem]">
+                <img src="/AppIcon.png" alt="Gio+" class="w-20 h-20 rounded-[1.1rem]">
                 <div>
                     <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-strong mb-2" data-i18n="dl.h2">Gio+ for iPhone, iPad and Mac</h2>
                     <p class="text-muted" data-i18n="dl.p">Free to download. No account. The record of your recovery stays on your device and in your iCloud.</p>
@@ -1059,7 +1148,7 @@
             <div class="grid md:grid-cols-4 gap-10 mb-14">
                 <div class="md:col-span-2">
                     <a href="#" class="text-lg font-semibold tracking-tight text-strong flex items-center gap-2.5 mb-3">
-                        <img src="AppIcon.png" alt="Gio+" class="w-7 h-7 rounded-md object-cover">
+                        <img src="/AppIcon.png" alt="Gio+" class="w-7 h-7 rounded-md object-cover">
                         <span>Gio<span class="text-brand">+</span></span>
                     </a>
                     <p class="text-muted max-w-sm text-sm leading-relaxed" data-i18n="footer.tagline">The goniometer app that documents your rehab. For iPhone, iPad and Mac.</p>
@@ -1069,6 +1158,7 @@
                     <ul class="space-y-2.5 text-muted text-sm">
                         <li><a href="#how" class="hover:text-strong transition-colors" data-i18n="nav.measure">Measurement</a></li>
                         <li><a href="#reference" class="hover:text-strong transition-colors" data-i18n="nav.range">Functional range</a></li>
+                        <li><a href="#injuries" class="hover:text-strong transition-colors" data-i18n="for.label">Who it is for</a></li>
                         <li><a href="#features" class="hover:text-strong transition-colors" data-i18n="nav.features">Features</a></li>
                         <li><a href="#pro" class="hover:text-strong transition-colors" data-i18n="pro.label">Free and Pro</a></li>
                     </ul>
@@ -1076,9 +1166,9 @@
                 <div>
                     <h4 class="lbl mb-4" data-i18n="footer.legal">Legal</h4>
                     <ul class="space-y-2.5 text-muted text-sm">
-                        <li><a href="terms.html#privacy-policy" class="hover:text-strong transition-colors" data-i18n="footer.privacy">Privacy Policy</a></li>
-                        <li><a href="terms.html#terms" class="hover:text-strong transition-colors" data-i18n="footer.terms">Terms</a></li>
-                        <li><a href="terms.html#imprint" class="hover:text-strong transition-colors" data-i18n="footer.imprint">Imprint</a></li>
+                        <li><a href="/terms.html#privacy-policy" class="hover:text-strong transition-colors" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="/terms.html#terms" class="hover:text-strong transition-colors" data-i18n="footer.terms">Terms</a></li>
+                        <li><a href="/terms.html#imprint" class="hover:text-strong transition-colors" data-i18n="footer.imprint">Imprint</a></li>
                     </ul>
                 </div>
             </div>
@@ -1091,7 +1181,7 @@
 </main>
 
     <!-- Translations and language switch -->
-    <script src="i18n.js"></script>
+    <script src="/i18n.js"></script>
 
     <!-- Scripts -->
     <script>
@@ -1116,7 +1206,7 @@
         const updateScreens = () => {
             const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
             document.querySelectorAll('img[data-screen]').forEach(img => {
-                const src = `media/screens/${theme}-${I18N.lang}-${img.dataset.screen}.jpg`;
+                const src = `/media/screens/${theme}-${I18N.lang}-${img.dataset.screen}.jpg`;
                 if (img.getAttribute('src') !== src) img.src = src;
             });
         };
