@@ -198,16 +198,7 @@ const I18N = (() => {
         'dev.label': 'In Arbeit',
         'dev.report': 'Ein Bericht über deine Messungen',
         'dev.notes': 'Notizen und eine Schmerzskala zu jeder Messung',
-        'watch.label': 'Geplant · Apple Watch',
-        'watch.h3': 'Messen direkt am Handgelenk',
-        'watch.p1': 'Die Uhr sitzt schon am Handgelenk und hat denselben Lagesensor wie das iPhone. Für Schulter, Ellbogen und Unterarm müsste man nichts mehr halten oder festschnallen: an der Uhr starten, bewegen, und ein Tippen am Handgelenk bestätigt jeden Wert.',
-        'watch.p2': 'Konzept. Die Bildschirme sind Mockups, keine Screenshots. Noch nicht in Entwicklung.',
-        'watch.alt': 'Konzept-Mockup: Gio+ auf zwei Apple Watches, eine laufende Ellbogen-Messung und die Fortschritt-Ansicht',
-        'watch.s1': 'ELLBOGEN R',
-        'watch.s2': 'Halten …',
-        'watch.s3': 'FORTSCHRITT',
-        'watch.s4': 'von 100° funktionell',
-        'watch.s5': 'Messen',
+        'dev.watch': 'Messen mit der Apple Watch',
 
         // 04 Privacy
         'priv.h2': 'Wo deine Daten liegen',
