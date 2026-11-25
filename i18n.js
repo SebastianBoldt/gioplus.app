@@ -17,10 +17,10 @@
 
 const I18N = (() => {
     const EN = {
-        'meta.title': 'Gio+ - Goniometer App for iPhone, iPad & Mac | Measure Elbow, Knee & Shoulder Range of Motion',
+        'meta.title': 'Gio+ - Goniometer App for iPhone, iPad, Mac & Apple Watch | Measure Elbow, Knee & Shoulder Range of Motion',
         'cta.liveShort': 'Download',
         'cta.live': 'Download on the App Store',
-        'hero.badgeLive': 'Goniometer app · iPhone, iPad and Mac',
+        'hero.badgeLive': 'Goniometer app · iPhone, iPad, Mac and Apple Watch',
         'tl.current': 'Current',
         'tl.selected': 'Selected',
         'tl.play': 'Play',
@@ -31,9 +31,9 @@ const I18N = (() => {
 
     const DE = {
         // Meta
-        'meta.title': 'Gio+ - Goniometer-App für iPhone, iPad & Mac | Beweglichkeit von Ellbogen, Knie & Schulter messen',
+        'meta.title': 'Gio+ - Goniometer-App für iPhone, iPad, Mac & Apple Watch | Beweglichkeit von Ellbogen, Knie & Schulter messen',
         'meta.description': 'Gio+ dokumentiert deinen Heilungsverlauf nach einer Verletzung oder Operation. Die Kamera von iPhone, iPad oder Mac misst wie ein Goniometer, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und die App hält deinen Bewegungsumfang über die Wochen der Reha fest. Ohne Konto, ohne Server: Deine Daten bleiben auf deinem Gerät und in deiner iCloud.',
-        'meta.ogTitle': 'Gio+ - Die Goniometer-App für iPhone, iPad und Mac',
+        'meta.ogTitle': 'Gio+ - Die Goniometer-App für iPhone, iPad, Mac und Apple Watch',
         'meta.ogDescription': 'Dokumentiere deinen Heilungsverlauf: Miss mit der Kamera von iPhone, iPad oder Mac, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und sieh Woche für Woche, was sich verändert.',
         'theme.toggle': 'Zwischen hellem und dunklem Modus wechseln',
 
@@ -84,10 +84,10 @@ const I18N = (() => {
         'for.notice': 'Gio+ misst nur. Wie weit du das Gelenk bewegen darfst, entscheiden deine Ärztin, dein Arzt oder deine Physiotherapie, besonders in den ersten Wochen nach einer Operation.',
 
         // Hero
-        'hero.badge': 'Goniometer-App · Demnächst für iPhone, iPad und Mac',
-        'hero.badgeLive': 'Goniometer-App · iPhone, iPad und Mac',
+        'hero.badge': 'Goniometer-App · Demnächst für iPhone, iPad, Mac und Apple Watch',
+        'hero.badgeLive': 'Goniometer-App · iPhone, iPad, Mac und Apple Watch',
         'hero.claim': 'Die fortschrittlichste Goniometer-App.',
-        'hero.h1': 'Dokumentiere deinen Heilungsverlauf mit iPhone, iPad oder Mac.',
+        'hero.h1': 'Dokumentiere deinen Heilungsverlauf mit iPhone, iPad, Mac oder Apple Watch.',
         'hero.p': 'Gio+ misst 38 Gelenkbewegungen von der Halswirbelsäule bis zur Großzehe: mit der Kamera, mit dem Lagesensor deines iPhones, aus einem Foto oder von Hand eingetragen. Jede Messung wird mit Datum gespeichert. So siehst du Woche für Woche, wie deine Reha vorankommt.',
         'pro.r1b': 'Alle 38 Bewegungen in 10 Körperregionen',
         'hero.watch': 'So läuft eine Messung ab',
@@ -236,13 +236,13 @@ const I18N = (() => {
         'pro.r13': 'Dunkelmodus, Erinnerung, Sprachansagen',
 
         // Download and notice
-        'dl.h2': 'Gio+ für iPhone, iPad und Mac',
+        'dl.h2': 'Gio+ für iPhone, iPad, Mac und Apple Watch',
         'dl.p': 'Kostenlos laden. Kein Konto nötig.',
         'notice.label': 'Hinweis',
         'notice.p': 'Gio+ ist kein Medizinprodukt. Die Messwerte sind Schätzungen aus dem Kamerabild und ersetzen weder eine Diagnose noch den Rat deiner Ärztin, deines Arztes oder deiner Physiotherapie.',
 
         // Footer
-        'footer.tagline': 'Die Goniometer-App, die deine Reha dokumentiert. Für iPhone, iPad und Mac.',
+        'footer.tagline': 'Die Goniometer-App, die deine Reha dokumentiert. Für iPhone, iPad, Mac und Apple Watch.',
         'footer.legal': 'Rechtliches',
         'footer.privacy': 'Datenschutzerklärung',
         'footer.terms': 'Nutzungsbedingungen',
