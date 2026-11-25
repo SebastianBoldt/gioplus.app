@@ -331,7 +331,7 @@
         .f-strong { fill: rgb(var(--strong)); }
         .f-muted  { fill: rgb(var(--muted)); }
 
-        /* Screen recording of a measurement: rounded corners, no device frame */
+        /* App screens: rounded corners, no device frame */
         .video-card {
             overflow: hidden;
             border-radius: 28px;
@@ -573,19 +573,13 @@
                 </p>
             </div>
 
-            <!-- What the app does: a real measurement (video) in front, progress and history behind it -->
+            <!-- What the app does: the camera measurement in front, progress and history behind it -->
             <div class="lg:col-span-6 reveal">
                 <div class="hero-demo relative w-full max-w-[540px] mx-auto">
                     <div class="video-card hero-shot" style="left: 54%; top: 7%"><img data-screen="history" src="/media/screens/light-en-history.jpg" alt="Gio+ history: weekly trend and the curve of your range of motion" data-i18n-attr="alt:hero.historyAlt" width="603" height="1311"></div>
                     <div class="video-card hero-shot" style="left: 27%; top: 3.5%"><img data-screen="progress" src="/media/screens/light-en-progress.jpg" alt="Gio+ progress view: functional range of the elbow" data-i18n-attr="alt:hero.progressAlt" width="603" height="1311"></div>
                     <div class="video-card hero-video">
-                        <video class="js-autoplay" muted loop playsinline preload="auto"
-                               poster="/media/measurement-poster.jpg"
-                               aria-label="Screen recording of the Gio+ goniometer measuring the right elbow: the arm is bent and straightened, each value is held, then the result is shown"
-                               data-i18n-attr="aria-label:how.videoLabel">
-                            <source src="/media/measurement.webm" type="video/webm">
-                            <source src="/media/measurement.mp4" type="video/mp4">
-                        </video>
+                        <img data-screen="camera" src="/media/screens/light-en-camera.jpg" alt="Gio+ camera measurement: a person stands side-on, the app draws the elbow angle of 101° on the camera image" data-i18n-attr="alt:hero.cameraAlt" width="603" height="1311">
                     </div>
                 </div>
             </div>
@@ -1442,20 +1436,6 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Measurement video: play only while visible, never with reduced motion (the poster stays)
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (!reduceMotion) {
-            const videoObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.play().catch(() => {});
-                    } else {
-                        entry.target.pause();
-                    }
-                });
-            }, { threshold: 0.35 });
-            document.querySelectorAll('video.js-autoplay').forEach(video => videoObserver.observe(video));
-        }
 
         // Photo history demo: first measurement next to the selected one, time-lapse at 0.6 s per photo
         (() => {

@@ -98,7 +98,7 @@ const I18N = (() => {
         'readout.sub': 'So viel braucht der Alltag',
 
         // 01 Measurement
-        'how.videoLabel': 'Bildschirmaufnahme: Gio+ misst den rechten Ellbogen. Der Arm wird gebeugt und gestreckt, jeder Wert wird gehalten, dann erscheint das Ergebnis.',
+        'hero.cameraAlt': 'Gio+ Kamera-Messung: Eine Person steht seitlich zur Kamera, die App zeichnet den Ellbogenwinkel von 101° ins Kamerabild',
         'how.h2': 'Dein Gerät als Goniometer',
         'how.p': 'In der Physiotherapie liest man den Winkel am Goniometer ab. Gio+ liest ihn aus dem Kamerabild, mit dem iPhone-Sensor oder mit der Apple Watch. Du kannst ihn auch aus einem Foto bestimmen oder von Hand eintragen.',
 
