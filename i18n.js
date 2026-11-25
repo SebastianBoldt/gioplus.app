@@ -168,6 +168,13 @@ const I18N = (() => {
         'v.p': 'Du stehst 1 bis 2 m vom Gerät entfernt. Gio+ sagt an, was als Nächstes kommt, und nennt jeden Wert.',
         'v.say1': '„Streckung 43 Grad. Jetzt beugen und halten.“',
         'v.say2': '„Fertig. Mittelwert Streckung 43 Grad, Beugung 101 Grad.“',
+        'feat.pLabel': 'I · Personen',
+        'ppl.h3': 'Mehrere Personen in einer App',
+        'ppl.p': 'Leg weitere Personen an, etwa Familienmitglieder oder die Patient:innen einer Praxis. Messungen, Fotos und Erfolge gehören immer zu einer Person.',
+        'ppl.me': 'Ich',
+        'ppl.meInitial': 'I',
+        'ppl.knee': 'Knie · links',
+        'ppl.shoulder': 'Schulter · rechts',
         'feat.cH': 'Meilensteine aus dem Alltag',
         'feat.cP': 'Erfolge hängen an Alltagsbewegungen: Etwa 115° Beugung im Ellbogen reichen, um einen Löffel zum Mund zu führen.',
 

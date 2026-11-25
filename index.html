@@ -904,14 +904,38 @@
                     </div>
                 </div>
 
-                <!-- Planned -->
-                <div class="p-6 flex flex-col bg-panel reveal">
-                    <div class="lbl mb-4" data-i18n="dev.label">In development</div>
-                    <ul class="text-sm text-text space-y-2">
-                        <li data-i18n="dev.report">A report of your measurements</li>
-                        <li data-i18n="dev.notes">Notes and a pain scale for each measurement</li>
-                    </ul>
+                <!-- People (PersonSelection in the app) -->
+                <div class="p-6 flex flex-col bg-ink reveal">
+                    <div class="lbl mb-4"><span data-i18n="feat.pLabel">I · People</span> <span class="text-brand">· Pro</span></div>
+                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="ppl.h3">Several people in one app</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="ppl.p">Add more people, such as family members or the patients of a practice. Measurements, photos and achievements always belong to one person.</p>
+                    <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-2" aria-hidden="true">
+                        <div class="app-card rounded-xl px-3 py-2 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-semibold shrink-0" style="background: linear-gradient(135deg, #5E5CE6, #0A84FF)" data-i18n="ppl.meInitial">M</span>
+                            <span class="flex-grow min-w-0"><span class="block text-sm text-strong leading-tight" data-i18n="ppl.me">Me</span><span class="block text-xs text-muted leading-tight" data-i18n="app.elbowRight">Elbow · right</span></span>
+                            <i class="ph-bold ph-check text-brand"></i>
+                        </div>
+                        <div class="app-card rounded-xl px-3 py-2 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-semibold shrink-0" style="background: linear-gradient(135deg, #FF9F0A, #FF375F)">A</span>
+                            <span class="flex-grow min-w-0"><span class="block text-sm text-strong leading-tight">Anna</span><span class="block text-xs text-muted leading-tight" data-i18n="ppl.knee">Knee · left</span></span>
+                            
+                        </div>
+                        <div class="app-card rounded-xl px-3 py-2 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-semibold shrink-0" style="background: linear-gradient(135deg, #30B0C7, #34C759)">J</span>
+                            <span class="flex-grow min-w-0"><span class="block text-sm text-strong leading-tight">Jonas</span><span class="block text-xs text-muted leading-tight" data-i18n="ppl.shoulder">Shoulder · right</span></span>
+                            
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <!-- Planned -->
+            <div class="mt-6 border border-dashed rounded-lg p-6 grid md:grid-cols-[9rem_1fr] gap-3 md:gap-8 reveal" style="border-color: var(--line-strong)">
+                <div class="lbl" data-i18n="dev.label">In development</div>
+                <ul class="text-sm text-text space-y-1.5">
+                    <li data-i18n="dev.report">A report of your measurements</li>
+                    <li data-i18n="dev.notes">Notes and a pain scale for each measurement</li>
+                </ul>
             </div>
         </div>
     </section>
