@@ -1,3 +1,5 @@
 .DS_Store
 node_modules/
 raw/
+# Full-size portraits; the site only uses the cropped avatars
+media/faces/Face*.jpg

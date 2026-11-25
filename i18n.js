@@ -163,8 +163,6 @@ const I18N = (() => {
         'feat.pLabel': 'K · Personen',
         'ppl.h3': 'Mehrere Personen in einer App',
         'ppl.p': 'Leg weitere Personen an, etwa Familienmitglieder oder die Patient:innen einer Praxis. Messungen, Fotos und Erfolge gehören immer zu einer Person.',
-        'ppl.me': 'Ich',
-        'ppl.meInitial': 'I',
         'ppl.knee': 'Knie · links',
         'ppl.shoulder': 'Schulter · rechts',
         'feat.phLabel': 'D · Foto',
