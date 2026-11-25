@@ -256,9 +256,6 @@ const I18N = (() => {
         'pro.r8pro': 'Beliebig viele',
         'pro.r9': 'Export, Import und iCloud-Abgleich',
         'pro.r11': 'Steuerelement, Kurzbefehle und Siri',
-        'pro.r12': 'Farbthemen',
-        'pro.r12free': 'Standard',
-        'pro.r12pro': 'Alle',
         'pro.r13': 'Dunkelmodus, Erinnerung, Sprachansagen',
 
         // Download and notice

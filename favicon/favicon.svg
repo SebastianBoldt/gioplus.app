@@ -5,12 +5,12 @@
       <stop offset="1" stop-color="#363636"/>
     </linearGradient>
     <linearGradient id="arm" gradientUnits="userSpaceOnUse" x1="266" y1="732" x2="502" y2="271">
-      <stop offset="0" stop-color="#A357D9"/>
-      <stop offset="1" stop-color="#5C57D6"/>
+      <stop offset="0" stop-color="#5854D6"/>
+      <stop offset="1" stop-color="#007AFF"/>
     </linearGradient>
     <linearGradient id="arc" gradientUnits="userSpaceOnUse" x1="471" y1="461" x2="604" y2="707">
-      <stop offset="0" stop-color="#5C57D6"/>
-      <stop offset="1" stop-color="#A357D9"/>
+      <stop offset="0" stop-color="#007AFF"/>
+      <stop offset="1" stop-color="#5854D6"/>
     </linearGradient>
   </defs>
   <rect width="1024" height="1024" rx="230" fill="url(#tile)"/>
