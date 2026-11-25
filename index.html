@@ -394,6 +394,25 @@
             transform-origin: 150px 150px;
             animation: bend 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
         }
+        /* Sensor illustration: the forearm with the iPhone swings up to 40 degrees */
+        @keyframes tilt {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-40deg); }
+        }
+        .sensor-swing {
+            transform-box: view-box;
+            transform-origin: 110px 165px;
+            transform: rotate(-40deg);
+            animation: tilt 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+        /* Watch illustration: the ring fills and empties with the movement */
+        @keyframes ring {
+            0%, 100% { stroke-dashoffset: 92; }
+            50% { stroke-dashoffset: 0; }
+        }
+        .watch-ring {
+            animation: ring 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
 
         /* Sections fade in once */
         .reveal {
@@ -411,7 +430,9 @@
                 transform: none;
                 transition: none;
             }
-            .arm-swing {
+            .arm-swing,
+            .sensor-swing,
+            .watch-ring {
                 animation: none;
             }
         }
@@ -468,9 +489,9 @@
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex items-center gap-7 text-sm text-muted">
                     <a href="#how" class="hover:text-strong transition-colors" data-i18n="nav.measure">Measurement</a>
-                    <a href="#devices" class="hover:text-strong transition-colors" data-i18n="nav.devices">Devices</a>
                     <a href="#features" class="hover:text-strong transition-colors" data-i18n="nav.features">Features</a>
                     <a href="#reference" class="hover:text-strong transition-colors" data-i18n="nav.range">Functional range</a>
+                    <a href="#devices" class="hover:text-strong transition-colors" data-i18n="nav.devices">Devices</a>
                     <a href="#privacy" class="hover:text-strong transition-colors" data-i18n="nav.privacy">Privacy</a>
                     <a href="#pro" class="hover:text-strong transition-colors" data-i18n="nav.pro">Pro</a>
                 </div>
@@ -497,9 +518,9 @@
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden lg:hidden absolute w-full bg-panel border-b border-line p-6 flex-col gap-1">
             <a href="#how" class="block py-2 text-text" onclick="toggleMenu()" data-i18n="nav.measure">Measurement</a>
-            <a href="#devices" class="block py-2 text-text" onclick="toggleMenu()" data-i18n="nav.devices">Devices</a>
             <a href="#features" class="block py-2 text-text" onclick="toggleMenu()" data-i18n="nav.features">Features</a>
             <a href="#reference" class="block py-2 text-text" onclick="toggleMenu()" data-i18n="nav.range">Functional range</a>
+            <a href="#devices" class="block py-2 text-text" onclick="toggleMenu()" data-i18n="nav.devices">Devices</a>
             <a href="#privacy" class="block py-2 text-text" onclick="toggleMenu()" data-i18n="nav.privacy">Privacy</a>
             <a href="#pro" class="block py-2 text-text" onclick="toggleMenu()" data-i18n="nav.pro">Pro</a>
             <a href="#download" class="js-appstore btn w-full py-3 mt-3" onclick="toggleMenu()" data-i18n="cta.soon" data-i18n-live="cta.live">Coming soon to the App Store</a>
@@ -639,68 +660,11 @@
             </div>
         </div>
     </section>
-    <!-- 02 Devices -->
-    <section id="devices" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
+    <!-- 02 Features -->
+    <section id="features" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12 reveal">
                 <span class="font-mono text-xs text-brand">02</span>
-                <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="nav.devices">Devices</span>
-                <span class="h-px flex-1 bg-line"></span>
-            </div>
-            <div class="max-w-2xl mb-12 reveal">
-                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="dv.h2">Which device measures how</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="dv.p">Gio+ runs on iPhone, iPad, Mac and Apple Watch. Your measurements sync through your private iCloud, so you can measure on one device and follow your progress on another.</p>
-            </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line border border-line rounded-lg overflow-hidden">
-                <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="flex items-center justify-between mb-6"><i class="ph ph-device-mobile text-4xl text-strong"></i></div>
-                    <h3 class="text-lg font-semibold text-strong mb-5">iPhone</h3>
-                    <ul class="text-sm mt-auto">
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.camera">Camera</span><i class="ph-bold ph-check text-brand"></i></li>
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.sensor">Motion sensor</span><i class="ph-bold ph-check text-brand"></i></li>
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.photo">Photo</span><i class="ph-bold ph-check text-brand"></i></li>
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.manual">Add manually</span><i class="ph-bold ph-check text-brand"></i></li>
-                    </ul>
-                </div>
-                <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="flex items-center justify-between mb-6"><i class="ph ph-device-tablet text-4xl text-strong"></i></div>
-                    <h3 class="text-lg font-semibold text-strong mb-5">iPad</h3>
-                    <ul class="text-sm mt-auto">
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.camera">Camera</span><i class="ph-bold ph-check text-brand"></i></li>
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-dim" data-i18n="dv.sensor">Motion sensor</span><span class="text-dim">–</span></li>
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.photo">Photo</span><i class="ph-bold ph-check text-brand"></i></li>
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.manual">Add manually</span><i class="ph-bold ph-check text-brand"></i></li>
-                    </ul>
-                </div>
-                <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="flex items-center justify-between mb-6"><i class="ph ph-laptop text-4xl text-strong"></i></div>
-                    <h3 class="text-lg font-semibold text-strong mb-5">Mac</h3>
-                    <ul class="text-sm mt-auto">
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.camera">Camera</span><i class="ph-bold ph-check text-brand"></i></li>
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-dim" data-i18n="dv.sensor">Motion sensor</span><span class="text-dim">–</span></li>
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.photo">Photo</span><i class="ph-bold ph-check text-brand"></i></li>
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.manual">Add manually</span><i class="ph-bold ph-check text-brand"></i></li>
-                    </ul>
-                </div>
-                <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="flex items-center justify-between mb-6"><i class="ph ph-watch text-4xl text-strong"></i></div>
-                    <h3 class="text-lg font-semibold text-strong mb-5">Apple Watch</h3>
-                    <ul class="text-sm mt-auto">
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-dim" data-i18n="dv.camera">Camera</span><span class="text-dim">–</span></li>
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.sensor">Motion sensor</span><i class="ph-bold ph-check text-brand"></i></li>
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-dim" data-i18n="dv.photo">Photo</span><span class="text-dim">–</span></li>
-                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-dim" data-i18n="dv.manual">Add manually</span><span class="text-dim">–</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 03 Features -->
-    <section id="features" class="py-20 lg:py-28 border-b border-line scroll-mt-16">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex items-center gap-4 mb-12 reveal">
-                <span class="font-mono text-xs text-brand">03</span>
                 <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="nav.features">Features</span>
                 <span class="h-px flex-1 bg-line"></span>
             </div>
@@ -737,14 +701,60 @@
                             <circle cx="150" cy="150" r="8" fill="#fff" stroke="#0A84FF" stroke-width="3.5"/>
                             <rect class="cam-pill" x="34" y="34" width="84" height="34" rx="6"/>
                             <text class="f-strong" x="76" y="57" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-weight="500" font-size="17">128°</text>
-                            <text class="f-muted" x="150" y="200" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" data-i18n="feat.aRep">REPETITION 2 / 3</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Sensor -->
+                <div class="p-6 flex flex-col bg-ink reveal">
+                    <div class="lbl mb-4" data-i18n="feat.sLabel">B · Sensor</div>
+                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.sH">Measure with the iPhone sensor</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.sP">Hold the iPhone against your body and its motion sensor measures the angle. For 22 movements.</p>
+                    <div class="app-screen aspect-4/3 overflow-hidden relative" aria-hidden="true">
+                        <svg viewBox="0 0 300 225" class="w-full h-full">
+                            <defs>
+                                <linearGradient id="sensorGrad" gradientUnits="userSpaceOnUse" x1="110" y1="165" x2="210" y2="165">
+                                    <stop offset="0" stop-color="#5E5CE6"/>
+                                    <stop offset="1" stop-color="#0A84FF"/>
+                                </linearGradient>
+                            </defs>
+                            <line class="cam-faint" x1="110" y1="165" x2="232" y2="165" stroke-width="1" stroke-dasharray="2 4"/>
+                            <path class="cam-faint" d="M180 165 A70 70 0 0 0 163.6 120" fill="none" stroke-width="1.5"/>
+                            <line class="cam-bone" x1="34" y1="165" x2="110" y2="165" stroke-width="10" stroke-linecap="round"/>
+                            <g class="sensor-swing">
+                                <line x1="110" y1="165" x2="210" y2="165" stroke="url(#sensorGrad)" stroke-width="10" stroke-linecap="round"/>
+                                <rect class="cam-pill" x="136" y="140" width="62" height="18" rx="5" stroke-width="1.5"/>
+                                <circle class="cam-dot" cx="210" cy="165" r="6" stroke-width="1.5"/>
+                            </g>
+                            <circle class="cam-dot" cx="34" cy="165" r="6" stroke-width="1.5"/>
+                            <circle cx="110" cy="165" r="8" fill="#fff" stroke="#0A84FF" stroke-width="3.5"/>
+                            <rect class="cam-pill" x="196" y="34" width="72" height="34" rx="6"/>
+                            <text class="f-strong" x="232" y="57" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-weight="500" font-size="17">40°</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Apple Watch -->
+                <div class="p-6 flex flex-col bg-ink reveal">
+                    <div class="lbl mb-4" data-i18n="feat.wLabel">C · Apple Watch</div>
+                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.wH">Measure with Apple Watch</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.wP">The watch on your wrist measures seven arm movements and sends the result to your iPhone.</p>
+                    <div class="app-screen aspect-4/3 overflow-hidden relative" aria-hidden="true">
+                        <svg viewBox="0 0 300 225" class="w-full h-full">
+                            <rect x="124" y="20" width="52" height="40" rx="8" style="fill: rgb(var(--gauge-track))"/>
+                            <rect x="124" y="140" width="52" height="40" rx="8" style="fill: rgb(var(--gauge-track))"/>
+                            <rect x="192" y="86" width="6" height="18" rx="3" style="fill: rgb(var(--gauge-normal))"/>
+                            <rect class="cam-pill" x="108" y="48" width="84" height="104" rx="24" stroke-width="1.5"/>
+                            <circle class="g-track" cx="150" cy="100" r="30" fill="none" stroke-width="6"/>
+                            <path class="g-arc watch-ring" d="M150 70 A30 30 0 1 1 124 115" fill="none" stroke-width="6" stroke-linecap="round" pathLength="100" stroke-dasharray="100"/>
+                            <text class="f-strong" x="150" y="106" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-weight="500" font-size="17">74°</text>
                         </svg>
                     </div>
                 </div>
 
                 <!-- History -->
                 <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="lbl mb-4" data-i18n="feat.bLabel">B · History</div>
+                    <div class="lbl mb-4" data-i18n="feat.bLabel">D · History</div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.bH">History and weekly trend</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.bP">A curve shows your range day by day. Pro adds the weekly trend and the photo history.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col" aria-hidden="true">
@@ -777,7 +787,7 @@
 
                 <!-- Achievements -->
                 <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="lbl mb-4" data-i18n="feat.cLabel">C · Achievements</div>
+                    <div class="lbl mb-4" data-i18n="feat.cLabel">E · Achievements</div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.cH">Milestones from daily life</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.cP">Achievements are tied to everyday tasks: about 115° of elbow flexion is enough to bring a spoon to your mouth.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-3" aria-hidden="true">
@@ -801,7 +811,7 @@
 
                 <!-- Photo history and time-lapse (PhotoHistoryView in the app) -->
                 <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="lbl mb-4"><span data-i18n="feat.dLabel">D · Photos</span> <span class="text-brand">· Pro</span></div>
+                    <div class="lbl mb-4"><span data-i18n="feat.dLabel">F · Photos</span> <span class="text-brand">· Pro</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="tl.h3">Photo history and time-lapse</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="tl.p">Each measurement keeps a photo. The time-lapse plays them in order and shows your progress as movement.</p>
                     <div id="timelapse" class="app-screen aspect-4/3 overflow-hidden p-3 flex flex-col gap-1.5">
@@ -844,7 +854,7 @@
 
                 <!-- Widgets -->
                 <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="lbl mb-4"><span data-i18n="feat.eLabel">E · Widgets</span> <span class="text-brand">· Pro</span></div>
+                    <div class="lbl mb-4"><span data-i18n="feat.eLabel">G · Widgets</span> <span class="text-brand">· Pro</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="w.h3">Widgets</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="w.p">On the Home and Lock Screen, widgets show whether you have measured today and how your range is developing.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden" aria-hidden="true">
@@ -869,53 +879,39 @@
                     </div>
                 </div>
 
-                <!-- Control Center, Siri -->
+                <!-- Voice guidance (spoken prompts of the measurement, MeasurementEngine in the app) -->
                 <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="lbl mb-4" data-i18n="feat.fLabel">F · Quick start</div>
-                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="q.h3">Control Center and Siri</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="q.p">Start the next measurement from a control in Control Center, with the Action button or with Siri.</p>
-                    <div class="app-screen aspect-4/3 overflow-hidden" aria-hidden="true">
-                        <svg viewBox="0 0 300 225" class="w-full h-full" font-family="IBM Plex Sans, sans-serif">
-                            <defs>
-                                <linearGradient id="ctlGrad" x1="0" y1="0" x2="1" y2="1">
-                                    <stop offset="0" stop-color="#5E5CE6"/>
-                                    <stop offset="1" stop-color="#0A84FF"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="72" cy="100" r="38" fill="url(#ctlGrad)"/>
-                            <g fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M88 112 H58 L79 84"/>
-                            </g>
-                            <path d="M73 112 A15 15 0 0 0 67 100" fill="none" stroke="#fff" stroke-opacity="0.7" stroke-width="2.5" stroke-linecap="round"/>
-                            <text class="f-muted" x="72" y="166" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1" data-i18n="q.control">CONTROL</text>
-
-                            <rect class="cam-pill" x="132" y="64" width="154" height="32" rx="16"/>
-                            <circle cx="150" cy="80" r="5" fill="url(#ctlGrad)"/>
-                            <text class="f-strong" x="163" y="84" font-size="11" data-i18n="q.start">Start measurement</text>
-                            <rect class="cam-pill" x="132" y="104" width="154" height="32" rx="16"/>
-                            <circle cx="150" cy="120" r="5" fill="url(#ctlGrad)"/>
-                            <text class="f-strong" x="163" y="124" font-size="11" data-i18n="q.progress">Show progress</text>
-                            <text class="f-muted" x="209" y="166" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1" data-i18n="q.siri">SIRI · SHORTCUTS</text>
-                        </svg>
+                    <div class="lbl mb-4" data-i18n="feat.fLabel">H · Voice guidance</div>
+                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="v.h3">Voice prompts guide the measurement</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="v.p">You stand 1 to 2 m from the device. Gio+ tells you what comes next and reads out each value.</p>
+                    <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-2.5" aria-hidden="true">
+                        <div class="flex items-center gap-2.5 mb-1">
+                            <span class="w-8 h-8 rounded-full flex items-center justify-center text-white shrink-0" style="background: rgb(var(--arc))"><i class="ph-fill ph-speaker-high"></i></span>
+                            <span class="flex items-center gap-[3px] h-6">
+                                <span class="w-[3px] h-2 rounded-full bg-brand/50"></span><span class="w-[3px] h-4 rounded-full bg-brand/70"></span><span class="w-[3px] h-6 rounded-full bg-brand"></span><span class="w-[3px] h-3 rounded-full bg-brand/70"></span><span class="w-[3px] h-5 rounded-full bg-brand"></span><span class="w-[3px] h-2 rounded-full bg-brand/50"></span><span class="w-[3px] h-4 rounded-full bg-brand/70"></span><span class="w-[3px] h-3 rounded-full bg-brand/50"></span>
+                            </span>
+                        </div>
+                        <div class="app-card rounded-xl rounded-tl-sm px-3 py-2 text-xs leading-snug text-strong" data-i18n="v.say1">“Extension 43 degrees. Now bend and hold.”</div>
+                        <div class="app-card rounded-xl rounded-tl-sm px-3 py-2 text-xs leading-snug text-strong" data-i18n="v.say2">“Done. Average extension 43 degrees, flexion 101 degrees.”</div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Planned -->
-            <div class="mt-6 border border-dashed rounded-lg p-6 grid md:grid-cols-[9rem_1fr] gap-3 md:gap-8 reveal" style="border-color: var(--line-strong)">
-                <div class="lbl" data-i18n="dev.label">In development</div>
-                <ul class="text-sm text-text space-y-1.5">
-                    <li data-i18n="dev.report">A report of your measurements</li>
-                    <li data-i18n="dev.notes">Notes and a pain scale for each measurement</li>
-                </ul>
+                <!-- Planned -->
+                <div class="p-6 flex flex-col bg-panel reveal">
+                    <div class="lbl mb-4" data-i18n="dev.label">In development</div>
+                    <ul class="text-sm text-text space-y-2">
+                        <li data-i18n="dev.report">A report of your measurements</li>
+                        <li data-i18n="dev.notes">Notes and a pain scale for each measurement</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
-    <!-- 04 Functional range -->
-    <section id="reference" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
+    <!-- 03 Functional range -->
+    <section id="reference" class="py-20 lg:py-28 border-b border-line scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12 reveal">
-                <span class="font-mono text-xs text-brand">04</span>
+                <span class="font-mono text-xs text-brand">03</span>
                 <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="nav.range">Functional range</span>
                 <span class="h-px flex-1 bg-line"></span>
             </div>
@@ -1004,6 +1000,62 @@
                     <p class="text-xs text-dim mt-4 max-w-xl leading-relaxed reveal" data-i18n="range.note">
                         Guide values as used in the app. They depend on the task and on how the angle is measured.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 04 Devices -->
+    <section id="devices" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center gap-4 mb-12 reveal">
+                <span class="font-mono text-xs text-brand">04</span>
+                <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="nav.devices">Devices</span>
+                <span class="h-px flex-1 bg-line"></span>
+            </div>
+            <div class="max-w-2xl mb-12 reveal">
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="dv.h2">Which device measures how</h2>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="dv.p">Gio+ runs on iPhone, iPad, Mac and Apple Watch. Your measurements sync through your private iCloud, so you can measure on one device and follow your progress on another.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line border border-line rounded-lg overflow-hidden">
+                <div class="p-6 flex flex-col bg-ink reveal">
+                    <div class="flex items-center justify-between mb-6"><i class="ph ph-device-mobile text-4xl text-strong"></i></div>
+                    <h3 class="text-lg font-semibold text-strong mb-5">iPhone</h3>
+                    <ul class="text-sm mt-auto">
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.camera">Camera</span><i class="ph-bold ph-check text-brand"></i></li>
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.sensor">Motion sensor</span><i class="ph-bold ph-check text-brand"></i></li>
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.photo">Photo</span><i class="ph-bold ph-check text-brand"></i></li>
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.manual">Add manually</span><i class="ph-bold ph-check text-brand"></i></li>
+                    </ul>
+                </div>
+                <div class="p-6 flex flex-col bg-ink reveal">
+                    <div class="flex items-center justify-between mb-6"><i class="ph ph-device-tablet text-4xl text-strong"></i></div>
+                    <h3 class="text-lg font-semibold text-strong mb-5">iPad</h3>
+                    <ul class="text-sm mt-auto">
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.camera">Camera</span><i class="ph-bold ph-check text-brand"></i></li>
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-dim" data-i18n="dv.sensor">Motion sensor</span><span class="text-dim">–</span></li>
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.photo">Photo</span><i class="ph-bold ph-check text-brand"></i></li>
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.manual">Add manually</span><i class="ph-bold ph-check text-brand"></i></li>
+                    </ul>
+                </div>
+                <div class="p-6 flex flex-col bg-ink reveal">
+                    <div class="flex items-center justify-between mb-6"><i class="ph ph-laptop text-4xl text-strong"></i></div>
+                    <h3 class="text-lg font-semibold text-strong mb-5">Mac</h3>
+                    <ul class="text-sm mt-auto">
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.camera">Camera</span><i class="ph-bold ph-check text-brand"></i></li>
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-dim" data-i18n="dv.sensor">Motion sensor</span><span class="text-dim">–</span></li>
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.photo">Photo</span><i class="ph-bold ph-check text-brand"></i></li>
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.manual">Add manually</span><i class="ph-bold ph-check text-brand"></i></li>
+                    </ul>
+                </div>
+                <div class="p-6 flex flex-col bg-ink reveal">
+                    <div class="flex items-center justify-between mb-6"><i class="ph ph-watch text-4xl text-strong"></i></div>
+                    <h3 class="text-lg font-semibold text-strong mb-5">Apple Watch</h3>
+                    <ul class="text-sm mt-auto">
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-dim" data-i18n="dv.camera">Camera</span><span class="text-dim">–</span></li>
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-text" data-i18n="dv.sensor">Motion sensor</span><i class="ph-bold ph-check text-brand"></i></li>
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-dim" data-i18n="dv.photo">Photo</span><span class="text-dim">–</span></li>
+                        <li class="flex items-center justify-between py-2 border-b border-line last:border-b-0"><span class="text-dim" data-i18n="dv.manual">Add manually</span><span class="text-dim">–</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1150,6 +1202,7 @@
 
 
 
+
     <!-- Download -->
     <section id="download" class="py-20 lg:py-28 scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
@@ -1188,9 +1241,9 @@
                     <h4 class="lbl mb-4">App</h4>
                     <ul class="space-y-2.5 text-muted text-sm">
                         <li><a href="#how" class="hover:text-strong transition-colors" data-i18n="nav.measure">Measurement</a></li>
-                        <li><a href="#devices" class="hover:text-strong transition-colors" data-i18n="nav.devices">Devices</a></li>
                         <li><a href="#features" class="hover:text-strong transition-colors" data-i18n="nav.features">Features</a></li>
                         <li><a href="#reference" class="hover:text-strong transition-colors" data-i18n="nav.range">Functional range</a></li>
+                        <li><a href="#devices" class="hover:text-strong transition-colors" data-i18n="nav.devices">Devices</a></li>
                         <li><a href="#injuries" class="hover:text-strong transition-colors" data-i18n="for.label">Who it is for</a></li>
                         <li><a href="#pro" class="hover:text-strong transition-colors" data-i18n="pro.label">Free and Pro</a></li>
                     </ul>
