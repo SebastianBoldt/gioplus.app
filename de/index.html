@@ -707,9 +707,68 @@
                     </div>
                 </div>
 
+                <!-- Photo measurement (ManualEntry in the app) -->
+                <div class="p-6 flex flex-col bg-ink reveal">
+                    <div class="lbl mb-4" data-i18n="feat.phLabel">D · Foto</div>
+                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="ph.h3">Winkel aus einem Foto</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="ph.p">Gio+ erkennt den Winkel auf einem Foto. Die drei Punkte kannst du verschieben oder selbst setzen.</p>
+                    <div class="app-screen aspect-4/3 overflow-hidden relative" aria-hidden="true">
+                        <svg viewBox="0 0 300 225" class="w-full h-full">
+                            <rect class="tl-photo" x="62" y="22" width="176" height="181" rx="10" style="fill: rgb(var(--app-card)); stroke: var(--line-strong)"/>
+                            <circle class="tl-body" cx="118" cy="52" r="13" stroke="none"/>
+                            <path class="tl-body" d="M118 70 V184" fill="none" stroke-width="30" stroke-linecap="round"/>
+                            <line class="g-func" x1="118" y1="78" x2="118" y2="140" stroke-width="5" stroke-linecap="round"/>
+                            <line class="g-func" x1="118" y1="140" x2="176" y2="112" stroke-width="5" stroke-linecap="round"/>
+                            <path class="g-func" d="M118 116 A24 24 0 0 1 139.6 129.6" fill="none" stroke-width="2"/>
+                            <g class="tl-joint" stroke-width="3">
+                                <circle cx="118" cy="78" r="7"/><circle cx="118" cy="140" r="7"/><circle cx="176" cy="112" r="7"/>
+                            </g>
+                            <circle cx="176" cy="112" r="14" fill="none" stroke-width="1.5" stroke-dasharray="3 3" style="stroke: rgb(var(--arc))"/>
+                            <rect class="cam-pill" x="170" y="150" width="56" height="30" rx="6"/>
+                            <text class="f-strong" x="198" y="170" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-weight="500" font-size="15">116°</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Movements (BodyRegion and Joint in the app) -->
+                <div class="p-6 flex flex-col bg-ink reveal">
+                    <div class="lbl mb-4" data-i18n="feat.rLabel">E · Bewegungen</div>
+                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="reg.h3">38 Bewegungen in 10 Körperregionen</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="reg.p">Von der Halswirbelsäule bis zur Großzehe. Jede Bewegung hat ihren eigenen Verlauf, getrennt für links und rechts.</p>
+                    <div class="app-screen aspect-4/3 overflow-hidden p-3 flex flex-wrap content-center gap-1.5" aria-hidden="true">
+                        <span class="app-card rounded-full pl-2.5 pr-2 py-1 text-xs text-strong inline-flex items-center gap-1.5"><span data-i18n="reg.neck">Halswirbelsäule</span><span class="font-mono text-[10px] text-brand">3</span></span>
+                        <span class="app-card rounded-full pl-2.5 pr-2 py-1 text-xs text-strong inline-flex items-center gap-1.5"><span data-i18n="reg.trunk">Rumpf</span><span class="font-mono text-[10px] text-brand">3</span></span>
+                        <span class="app-card rounded-full pl-2.5 pr-2 py-1 text-xs text-strong inline-flex items-center gap-1.5"><span data-i18n="reg.shoulder">Schulter</span><span class="font-mono text-[10px] text-brand">5</span></span>
+                        <span class="app-card rounded-full pl-2.5 pr-2 py-1 text-xs text-strong inline-flex items-center gap-1.5"><span data-i18n="reg.elbow">Ellbogen</span><span class="font-mono text-[10px] text-brand">1</span></span>
+                        <span class="app-card rounded-full pl-2.5 pr-2 py-1 text-xs text-strong inline-flex items-center gap-1.5"><span data-i18n="reg.forearm">Unterarm</span><span class="font-mono text-[10px] text-brand">1</span></span>
+                        <span class="app-card rounded-full pl-2.5 pr-2 py-1 text-xs text-strong inline-flex items-center gap-1.5"><span data-i18n="reg.wrist">Handgelenk</span><span class="font-mono text-[10px] text-brand">2</span></span>
+                        <span class="app-card rounded-full pl-2.5 pr-2 py-1 text-xs text-strong inline-flex items-center gap-1.5"><span data-i18n="reg.hand">Hand und Finger</span><span class="font-mono text-[10px] text-brand">15</span></span>
+                        <span class="app-card rounded-full pl-2.5 pr-2 py-1 text-xs text-strong inline-flex items-center gap-1.5"><span data-i18n="reg.hip">Hüfte</span><span class="font-mono text-[10px] text-brand">4</span></span>
+                        <span class="app-card rounded-full pl-2.5 pr-2 py-1 text-xs text-strong inline-flex items-center gap-1.5"><span data-i18n="reg.knee">Knie</span><span class="font-mono text-[10px] text-brand">1</span></span>
+                        <span class="app-card rounded-full pl-2.5 pr-2 py-1 text-xs text-strong inline-flex items-center gap-1.5"><span data-i18n="reg.ankle">Sprunggelenk und Fuß</span><span class="font-mono text-[10px] text-brand">3</span></span>
+                    </div>
+                </div>
+
+                <!-- Voice guidance (spoken prompts of the measurement, MeasurementEngine in the app) -->
+                <div class="p-6 flex flex-col bg-ink reveal">
+                    <div class="lbl mb-4" data-i18n="feat.fLabel">F · Sprachansagen</div>
+                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="v.h3">Ansagen führen durch die Messung</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="v.p">Du stehst 1 bis 2 m vom Gerät entfernt. Gio+ sagt an, was als Nächstes kommt, und nennt jeden Wert.</p>
+                    <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-2.5" aria-hidden="true">
+                        <div class="flex items-center gap-2.5 mb-1">
+                            <span class="w-8 h-8 rounded-full flex items-center justify-center text-white shrink-0" style="background: rgb(var(--arc))"><i class="ph-fill ph-speaker-high"></i></span>
+                            <span class="flex items-center gap-[3px] h-6">
+                                <span class="w-[3px] h-2 rounded-full bg-brand/50"></span><span class="w-[3px] h-4 rounded-full bg-brand/70"></span><span class="w-[3px] h-6 rounded-full bg-brand"></span><span class="w-[3px] h-3 rounded-full bg-brand/70"></span><span class="w-[3px] h-5 rounded-full bg-brand"></span><span class="w-[3px] h-2 rounded-full bg-brand/50"></span><span class="w-[3px] h-4 rounded-full bg-brand/70"></span><span class="w-[3px] h-3 rounded-full bg-brand/50"></span>
+                            </span>
+                        </div>
+                        <div class="app-card rounded-xl rounded-tl-sm px-3 py-2 text-xs leading-snug text-strong" data-i18n="v.say1">„Streckung 43 Grad. Jetzt beugen und halten.“</div>
+                        <div class="app-card rounded-xl rounded-tl-sm px-3 py-2 text-xs leading-snug text-strong" data-i18n="v.say2">„Fertig. Mittelwert Streckung 43 Grad, Beugung 101 Grad.“</div>
+                    </div>
+                </div>
+
                 <!-- History -->
                 <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="lbl mb-4" data-i18n="feat.bLabel">D · Verlauf</div>
+                    <div class="lbl mb-4" data-i18n="feat.bLabel">G · Verlauf</div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.bH">Verlauf und Wochenverlauf</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.bP">Eine Kurve zeigt deinen Umfang Tag für Tag. Pro ergänzt den Wochenverlauf und den Fotoverlauf.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col" aria-hidden="true">
@@ -742,7 +801,7 @@
 
                 <!-- Achievements -->
                 <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="lbl mb-4" data-i18n="feat.cLabel">E · Erfolge</div>
+                    <div class="lbl mb-4" data-i18n="feat.cLabel">H · Erfolge</div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="feat.cH">Meilensteine aus dem Alltag</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="feat.cP">Erfolge hängen an Alltagsbewegungen: Etwa 115° Beugung im Ellbogen reichen, um einen Löffel zum Mund zu führen.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-3" aria-hidden="true">
@@ -766,7 +825,7 @@
 
                 <!-- Photo history and time-lapse (PhotoHistoryView in the app) -->
                 <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="lbl mb-4"><span data-i18n="feat.dLabel">F · Fotos</span> <span class="text-brand">· Pro</span></div>
+                    <div class="lbl mb-4"><span data-i18n="feat.dLabel">I · Fotoverlauf</span> <span class="text-brand">· Pro</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="tl.h3">Fotoverlauf und Zeitraffer</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="tl.p">Zu jeder Messung gehört ein Foto. Der Zeitraffer spielt sie der Reihe nach ab und zeigt deinen Fortschritt als Bewegung.</p>
                     <div id="timelapse" class="app-screen aspect-4/3 overflow-hidden p-3 flex flex-col gap-1.5">
@@ -809,7 +868,7 @@
 
                 <!-- Widgets -->
                 <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="lbl mb-4"><span data-i18n="feat.eLabel">G · Widgets</span> <span class="text-brand">· Pro</span></div>
+                    <div class="lbl mb-4"><span data-i18n="feat.eLabel">J · Widgets</span> <span class="text-brand">· Pro</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="w.h3">Widgets</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="w.p">Auf Home- und Sperrbildschirm zeigen Widgets, ob du heute schon gemessen hast und wie sich dein Umfang entwickelt.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden" aria-hidden="true">
@@ -834,26 +893,9 @@
                     </div>
                 </div>
 
-                <!-- Voice guidance (spoken prompts of the measurement, MeasurementEngine in the app) -->
-                <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="lbl mb-4" data-i18n="feat.fLabel">H · Sprachansagen</div>
-                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="v.h3">Ansagen führen durch die Messung</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="v.p">Du stehst 1 bis 2 m vom Gerät entfernt. Gio+ sagt an, was als Nächstes kommt, und nennt jeden Wert.</p>
-                    <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-2.5" aria-hidden="true">
-                        <div class="flex items-center gap-2.5 mb-1">
-                            <span class="w-8 h-8 rounded-full flex items-center justify-center text-white shrink-0" style="background: rgb(var(--arc))"><i class="ph-fill ph-speaker-high"></i></span>
-                            <span class="flex items-center gap-[3px] h-6">
-                                <span class="w-[3px] h-2 rounded-full bg-brand/50"></span><span class="w-[3px] h-4 rounded-full bg-brand/70"></span><span class="w-[3px] h-6 rounded-full bg-brand"></span><span class="w-[3px] h-3 rounded-full bg-brand/70"></span><span class="w-[3px] h-5 rounded-full bg-brand"></span><span class="w-[3px] h-2 rounded-full bg-brand/50"></span><span class="w-[3px] h-4 rounded-full bg-brand/70"></span><span class="w-[3px] h-3 rounded-full bg-brand/50"></span>
-                            </span>
-                        </div>
-                        <div class="app-card rounded-xl rounded-tl-sm px-3 py-2 text-xs leading-snug text-strong" data-i18n="v.say1">„Streckung 43 Grad. Jetzt beugen und halten.“</div>
-                        <div class="app-card rounded-xl rounded-tl-sm px-3 py-2 text-xs leading-snug text-strong" data-i18n="v.say2">„Fertig. Mittelwert Streckung 43 Grad, Beugung 101 Grad.“</div>
-                    </div>
-                </div>
-
                 <!-- People (PersonSelection in the app) -->
                 <div class="p-6 flex flex-col bg-ink reveal">
-                    <div class="lbl mb-4"><span data-i18n="feat.pLabel">I · Personen</span> <span class="text-brand">· Pro</span></div>
+                    <div class="lbl mb-4"><span data-i18n="feat.pLabel">K · Personen</span> <span class="text-brand">· Pro</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="ppl.h3">Mehrere Personen in einer App</h3>
                     <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="ppl.p">Leg weitere Personen an, etwa Familienmitglieder oder die Patient:innen einer Praxis. Messungen, Fotos und Erfolge gehören immer zu einer Person.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-2" aria-hidden="true">
@@ -871,6 +913,25 @@
                             <span class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-semibold shrink-0" style="background: linear-gradient(135deg, #30B0C7, #34C759)">J</span>
                             <span class="flex-grow min-w-0"><span class="block text-sm text-strong leading-tight">Jonas</span><span class="block text-xs text-muted leading-tight" data-i18n="ppl.shoulder">Schulter · rechts</span></span>
                             
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Export (DataTransferFeature in the app) -->
+                <div class="p-6 flex flex-col bg-ink reveal">
+                    <div class="lbl mb-4" data-i18n="feat.xLabel">L · Export</div>
+                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="x.h3">Deine Daten für die Physiotherapie</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="x.p">Exportiere deine Messungen als Tabelle oder als Gio+-Sicherung, zum Beispiel für deine Physiotherapie.</p>
+                    <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-2" aria-hidden="true">
+                        <div class="app-card rounded-xl px-3 py-2.5 flex items-center gap-3">
+                            <i class="ph ph-table text-xl text-brand"></i>
+                            <span class="flex-grow min-w-0"><span class="block text-sm text-strong leading-tight" data-i18n="x.csv">Tabelle (CSV)</span><span class="block text-xs text-muted leading-tight" data-i18n="x.csvSub">Für Numbers und Excel</span></span>
+                            <i class="ph ph-export text-brand"></i>
+                        </div>
+                        <div class="app-card rounded-xl px-3 py-2.5 flex items-center gap-3">
+                            <i class="ph ph-archive text-xl text-brand"></i>
+                            <span class="flex-grow min-w-0"><span class="block text-sm text-strong leading-tight" data-i18n="x.backup">Gio+-Sicherung</span><span class="block text-xs text-muted leading-tight" data-i18n="x.backupSub">Zum Einlesen auf einem anderen Gerät</span></span>
+                            <i class="ph ph-export text-brand"></i>
                         </div>
                     </div>
                 </div>
@@ -1088,7 +1149,10 @@
 
             <div class="mt-6 border border-line rounded-lg p-6 grid md:grid-cols-[9rem_1fr] gap-3 md:gap-8 reveal">
                 <div class="lbl flex items-start gap-2"><i class="ph ph-info text-base text-brand"></i> <span data-i18n="notice.label">Hinweis</span></div>
-                <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="for.notice">Gio+ misst nur. Wie weit du das Gelenk bewegen darfst, entscheiden deine Ärztin, dein Arzt oder deine Physiotherapie, besonders in den ersten Wochen nach einer Operation.</p>
+                <div>
+                    <p class="text-sm text-text leading-relaxed max-w-3xl mb-3" data-i18n="for.more">Gio+ misst außerdem Halswirbelsäule, Rumpf, Unterarm, Handgelenk, Hand und Finger, Hüfte sowie Sprunggelenk und Fuß.</p>
+                    <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="for.notice">Gio+ misst nur. Wie weit du das Gelenk bewegen darfst, entscheiden deine Ärztin, dein Arzt oder deine Physiotherapie, besonders in den ersten Wochen nach einer Operation.</p>
+                </div>
             </div>
         </div>
     </section>
