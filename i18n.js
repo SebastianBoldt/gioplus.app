@@ -169,7 +169,7 @@ const I18N = (() => {
         'ppl.shoulder': 'Schulter · rechts',
         'feat.phLabel': 'D · Foto',
         'ph.h3': 'Winkel aus einem Foto',
-        'ph.p': 'Gio+ erkennt den Winkel auf je einem Foto der Start- und der Endposition.',
+        'ph.p': 'Gio+ erkennt den Winkel auf einem Foto. Die drei Punkte kannst du verschieben oder selbst setzen.',
         'feat.rLabel': 'E · Bewegungen',
         'reg.h3': '38 Bewegungen in 10 Körperregionen',
         'reg.p': 'Von der Halswirbelsäule bis zur Großzehe. Jede Bewegung hat ihren eigenen Verlauf, getrennt für links und rechts.',
