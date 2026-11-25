@@ -95,8 +95,8 @@ const I18N = (() => {
         'hero.progressAlt': 'Gio+ Fortschritt: funktioneller Bereich des Ellbogens',
         'hero.dev': 'Entwickelt von',
         'hero.alt': 'Gio+ Goniometer-App auf dem iPhone: Erfolge, Wochenverlauf und der funktionelle Bereich des Ellbogens',
-        'readout.label': 'Beispielmessung',
-        'readout.sub': 'Rechter Ellbogen, 3 Wiederholungen',
+        'readout.label': 'Ellbogenbeugung',
+        'readout.sub': 'So viel braucht der Alltag',
 
         // 01 Measurement
         'how.videoLabel': 'Bildschirmaufnahme: Gio+ misst den rechten Ellbogen. Der Arm wird gebeugt und gestreckt, jeder Wert wird gehalten, dann erscheint das Ergebnis.',

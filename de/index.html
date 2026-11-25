@@ -179,6 +179,16 @@
             background-position: left bottom;
         }
 
+        .ruler-mark {
+            position: absolute;
+            bottom: 0;
+            width: 2px;
+            height: 20px;
+            margin-left: -1px;
+            border-radius: 1px;
+            background: rgb(var(--arc));
+        }
+
         /* Nav gets a surface once the page scrolls */
         .nav-solid {
             background: rgb(var(--ink) / 0.9);
@@ -537,29 +547,33 @@
             </div>
         </div>
 
-        <!-- Readout: the values from the recorded measurement below -->
+        <!-- Readout: elbow flexion needed for everyday tasks (milestones from the app) -->
         <div class="relative border-t border-line bg-ink/80">
-            <div class="max-w-6xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-8 items-end">
-                <div class="col-span-2 md:col-span-1">
-                    <div class="lbl" data-i18n="readout.label">Beispielmessung</div>
-                    <div class="text-sm text-muted" data-i18n="readout.sub">Rechter Ellbogen, 3 Wiederholungen</div>
+            <div class="max-w-6xl mx-auto px-6 py-5 grid grid-cols-3 md:grid-cols-4 gap-y-4 gap-x-6 md:gap-x-8 items-end">
+                <div class="col-span-3 md:col-span-1">
+                    <div class="lbl" data-i18n="readout.label">Ellbogenbeugung</div>
+                    <div class="text-sm text-muted" data-i18n="readout.sub">So viel braucht der Alltag</div>
                 </div>
                 <div>
-                    <div class="lbl" data-i18n="t.extension">Streckung</div>
-                    <div class="font-mono text-2xl text-strong">43°</div>
+                    <div class="lbl" data-i18n="app.spoon">Löffel zum Mund</div>
+                    <div class="font-mono text-2xl text-strong">115°</div>
                 </div>
                 <div>
-                    <div class="lbl" data-i18n="t.flexion">Beugung</div>
-                    <div class="font-mono text-2xl text-strong">101°</div>
+                    <div class="lbl" data-i18n="app.cup">Becher zum Mund</div>
+                    <div class="font-mono text-2xl text-strong">130°</div>
                 </div>
                 <div>
-                    <div class="lbl" data-i18n="t.rom">Bewegungsumfang</div>
-                    <div class="font-mono text-2xl text-brand">58°</div>
+                    <div class="lbl" data-i18n="app.phone">Telefon ans Ohr</div>
+                    <div class="font-mono text-2xl text-brand">136°</div>
                 </div>
             </div>
-            <!-- 0 to 180 degree ruler -->
+            <!-- 0 to 180 degree ruler with the three milestones marked -->
             <div class="max-w-6xl mx-auto px-6 pb-4" aria-hidden="true">
-                <div class="ruler"></div>
+                <div class="ruler">
+                    <span class="ruler-mark" style="left: 63.89%"></span>
+                    <span class="ruler-mark" style="left: 72.22%"></span>
+                    <span class="ruler-mark" style="left: 75.56%"></span>
+                </div>
                 <div class="flex justify-between font-mono text-[10px] text-dim mt-1.5">
                     <span>0°</span><span>30°</span><span>60°</span><span>90°</span><span>120°</span><span>150°</span><span>180°</span>
                 </div>
