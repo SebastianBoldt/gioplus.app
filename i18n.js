@@ -38,7 +38,6 @@ const I18N = (() => {
         'theme.toggle': 'Zwischen hellem und dunklem Modus wechseln',
 
         // Navigation and buttons
-        'nav.measure': 'Messung',
         'nav.range': 'Funktioneller Bereich',
         'nav.features': 'Funktionen',
         'nav.devices': 'Geräte',
@@ -90,7 +89,7 @@ const I18N = (() => {
         'hero.h1': 'Dokumentiere deinen Heilungsverlauf mit iPhone, iPad, Mac oder Apple Watch.',
         'hero.p': 'Gio+ misst 38 Gelenkbewegungen von der Halswirbelsäule bis zur Großzehe: mit der Kamera, mit dem Lagesensor deines iPhones, aus einem Foto oder von Hand eingetragen. Jede Messung wird mit Datum gespeichert. So siehst du Woche für Woche, wie deine Reha vorankommt.',
         'pro.r1b': 'Alle 38 Bewegungen in 10 Körperregionen',
-        'hero.watch': 'So läuft eine Messung ab',
+        'hero.watch': 'So misst Gio+',
         'hero.historyAlt': 'Gio+ Verlauf: Wochenverlauf und die Kurve deines Bewegungsumfangs',
         'hero.progressAlt': 'Gio+ Fortschritt: funktioneller Bereich des Ellbogens',
         'hero.dev': 'Entwickelt von',
@@ -100,20 +99,13 @@ const I18N = (() => {
 
         // 01 Measurement
         'how.videoLabel': 'Bildschirmaufnahme: Gio+ misst den rechten Ellbogen. Der Arm wird gebeugt und gestreckt, jeder Wert wird gehalten, dann erscheint das Ergebnis.',
-        'how.fig': 'Abb. 1 · Bildschirmaufnahme, rechter Ellbogen (App auf Englisch)',
         'how.h2': 'Dein Gerät als Goniometer',
-        'how.p': 'In der Physiotherapie liest man den Winkel am Goniometer ab. Gio+ liest ihn aus dem Kamerabild.',
-        'how.s1h': 'Gerät aufstellen',
-        'how.s1p': 'Lehn es an und geh 1 bis 2 m zurück. Steht das Gerät gerade und ist dein Gelenk von der Seite zu sehen, startet die Messung von selbst.',
-        'how.s2h': 'Dreimal strecken und beugen',
-        'how.s2p': 'Halte jede Endposition 2 Sekunden. Sprachansagen sagen dir, was als Nächstes kommt.',
-        'how.s3h': 'Ergebnis prüfen',
-        'how.s3p': 'Gio+ speichert den Mittelwert der drei Runden und je ein Foto der Endpositionen. Werte kannst du auch von Hand eintragen.',
+        'how.p': 'In der Physiotherapie liest man den Winkel am Goniometer ab. Gio+ liest ihn aus dem Kamerabild, mit dem iPhone-Sensor oder mit der Apple Watch. Du kannst ihn auch aus einem Foto bestimmen oder von Hand eintragen.',
 
         // 02 Functional range
         'range.h2': 'Wie weit du vom Alltagsbereich entfernt bist',
         'range.p': 'Im Alltag brauchst du weniger als den vollen Umfang eines gesunden Gelenks. Gio+ zeigt deinen Bogen neben diesem funktionellen Bereich und wie viele Grad dir noch fehlen.',
-        'range.fig': 'Abb. 2 · Fortschritt, Ellbogen',
+        'range.fig': 'Abb. 1 · Fortschritt, Ellbogen',
         'range.caption': 'Richtwerte in Gio+ für Ellbogen, Knie und Schulter',
         'range.thJoint': 'Gelenk',
         'range.thFunc': 'Funktionell',

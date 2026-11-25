@@ -496,7 +496,6 @@
             <div class="flex items-center gap-3 lg:gap-6">
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex items-center gap-7 text-sm text-muted">
-                    <a href="#how" class="hover:text-strong transition-colors" data-i18n="nav.measure">Measurement</a>
                     <a href="#features" class="hover:text-strong transition-colors" data-i18n="nav.features">Features</a>
                     <a href="#reference" class="hover:text-strong transition-colors" data-i18n="nav.range">Functional range</a>
                     <a href="#devices" class="hover:text-strong transition-colors" data-i18n="nav.devices">Devices</a>
@@ -525,7 +524,6 @@
 
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden lg:hidden absolute w-full bg-panel border-b border-line p-6 flex-col gap-1">
-            <a href="#how" class="block py-2 text-text" onclick="toggleMenu()" data-i18n="nav.measure">Measurement</a>
             <a href="#features" class="block py-2 text-text" onclick="toggleMenu()" data-i18n="nav.features">Features</a>
             <a href="#reference" class="block py-2 text-text" onclick="toggleMenu()" data-i18n="nav.range">Functional range</a>
             <a href="#devices" class="block py-2 text-text" onclick="toggleMenu()" data-i18n="nav.devices">Devices</a>
@@ -554,7 +552,7 @@
                         <i class="ph ph-apple-logo text-lg"></i>
                         <span class="js-label" data-i18n="cta.soon" data-i18n-live="cta.live">Coming soon to the App Store</span>
                     </a>
-                    <a href="#how" class="text-sm text-muted hover:text-strong transition-colors"><span data-i18n="hero.watch">How a measurement works</span> <span aria-hidden="true">↓</span></a>
+                    <a href="#features" class="text-sm text-muted hover:text-strong transition-colors"><span data-i18n="hero.watch">How Gio+ measures</span> <span aria-hidden="true">↓</span></a>
                 </div>
                 <p class="mt-10 text-sm text-dim">
                     <span data-i18n="hero.dev">Developed by</span> <a href="https://sebastianboldt.io" class="text-muted hover:text-strong underline underline-offset-4 decoration-line">Sebastian Boldt</a>
@@ -613,70 +611,18 @@
         </div>
     </header>
 
-    <!-- 01 Measurement -->
-    <section id="how" class="py-20 lg:py-28 border-b border-line scroll-mt-16">
+    <!-- 01 Features -->
+    <section id="features" class="py-20 lg:py-28 border-b border-line scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12 reveal">
                 <span class="font-mono text-xs text-brand">01</span>
-                <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="nav.measure">Measurement</span>
-                <span class="h-px flex-1 bg-line"></span>
-            </div>
-
-            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-                <!-- Video of a real measurement (the same recording as in the hero) -->
-                <figure class="lg:col-span-5 reveal">
-                    <div class="video-card w-[260px] sm:w-[300px] mx-auto lg:mx-0">
-                        <video class="js-autoplay" muted loop playsinline preload="metadata"
-                               poster="/media/measurement-poster.jpg"
-                               aria-label="Screen recording of the Gio+ goniometer measuring the right elbow: the arm is bent and straightened, each value is held, then the result is shown"
-                               data-i18n-attr="aria-label:how.videoLabel">
-                            <source src="/media/measurement.webm" type="video/webm">
-                            <source src="/media/measurement.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <figcaption class="lbl mt-4 w-[260px] sm:w-[300px] mx-auto lg:mx-0" data-i18n="how.fig">Fig. 1 · Screen recording, right elbow</figcaption>
-                </figure>
-
-                <div class="lg:col-span-7">
-                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5 reveal" data-i18n="how.h2">Your device as a goniometer</h2>
-                    <p class="text-muted text-lg leading-relaxed mb-10 max-w-xl reveal" data-i18n="how.p">A physiotherapist reads the angle off a goniometer. Gio+ reads it from the camera image.</p>
-
-                    <ol class="border-t border-line">
-                        <li class="reveal grid grid-cols-[3rem_1fr] gap-4 py-6 border-b border-line">
-                            <span class="font-mono text-sm text-brand pt-0.5">01</span>
-                            <div>
-                                <h3 class="font-semibold text-strong mb-1.5" data-i18n="how.s1h">Set up your device</h3>
-                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s1p">Lean it against something and step back 1 to 2 m. Once the device is upright and your joint is in view from the side, the measurement starts by itself.</p>
-                            </div>
-                        </li>
-                        <li class="reveal grid grid-cols-[3rem_1fr] gap-4 py-6 border-b border-line">
-                            <span class="font-mono text-sm text-brand pt-0.5">02</span>
-                            <div>
-                                <h3 class="font-semibold text-strong mb-1.5" data-i18n="how.s2h">Straighten and bend three times</h3>
-                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s2p">Hold each end position for 2 seconds. Voice prompts tell you what comes next.</p>
-                            </div>
-                        </li>
-                        <li class="reveal grid grid-cols-[3rem_1fr] gap-4 py-6 border-b border-line">
-                            <span class="font-mono text-sm text-brand pt-0.5">03</span>
-                            <div>
-                                <h3 class="font-semibold text-strong mb-1.5" data-i18n="how.s3h">Check the result</h3>
-                                <p class="text-muted text-sm leading-relaxed" data-i18n="how.s3p">Gio+ saves the average of the three rounds, with a photo of each end position. You can also enter values by hand.</p>
-                            </div>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- 02 Features -->
-    <section id="features" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex items-center gap-4 mb-12 reveal">
-                <span class="font-mono text-xs text-brand">02</span>
                 <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="nav.features">Features</span>
                 <span class="h-px flex-1 bg-line"></span>
             </div>
-            <h2 class="sr-only" data-i18n="nav.features">Features</h2>
+            <div class="max-w-2xl mb-12 reveal">
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="how.h2">Your device as a goniometer</h2>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="how.p">A physiotherapist reads the angle off a goniometer. Gio+ reads it from the camera image, with the iPhone sensor or with the Apple Watch. You can also take it from a photo or enter it by hand.</p>
+            </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-px bg-line border border-line rounded-lg overflow-hidden">
                 <!-- Measure -->
@@ -939,11 +885,11 @@
             </div>
         </div>
     </section>
-    <!-- 03 Functional range -->
-    <section id="reference" class="py-20 lg:py-28 border-b border-line scroll-mt-16">
+    <!-- 02 Functional range -->
+    <section id="reference" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12 reveal">
-                <span class="font-mono text-xs text-brand">03</span>
+                <span class="font-mono text-xs text-brand">02</span>
                 <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="nav.range">Functional range</span>
                 <span class="h-px flex-1 bg-line"></span>
             </div>
@@ -984,7 +930,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="lbl mt-4" data-i18n="range.fig">Fig. 2 · Progress view, elbow</p>
+                    <p class="lbl mt-4" data-i18n="range.fig">Fig. 1 · Progress view, elbow</p>
                 </div>
 
                 <div class="lg:col-span-7 min-w-0">
@@ -1036,11 +982,11 @@
             </div>
         </div>
     </section>
-    <!-- 04 Devices -->
-    <section id="devices" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
+    <!-- 03 Devices -->
+    <section id="devices" class="py-20 lg:py-28 border-b border-line scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12 reveal">
-                <span class="font-mono text-xs text-brand">04</span>
+                <span class="font-mono text-xs text-brand">03</span>
                 <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="nav.devices">Devices</span>
                 <span class="h-px flex-1 bg-line"></span>
             </div>
@@ -1092,11 +1038,11 @@
             </div>
         </div>
     </section>
-    <!-- 05 Who it is for -->
-    <section id="injuries" class="py-20 lg:py-28 border-b border-line scroll-mt-16">
+    <!-- 04 Who it is for -->
+    <section id="injuries" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12 reveal">
-                <span class="font-mono text-xs text-brand">05</span>
+                <span class="font-mono text-xs text-brand">04</span>
                 <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="for.label">Who it is for</span>
                 <span class="h-px flex-1 bg-line"></span>
             </div>
@@ -1147,11 +1093,11 @@
             </div>
         </div>
     </section>
-    <!-- 06 Privacy -->
-    <section id="privacy" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
+    <!-- 05 Privacy -->
+    <section id="privacy" class="py-20 lg:py-28 border-b border-line scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12 reveal">
-                <span class="font-mono text-xs text-brand">06</span>
+                <span class="font-mono text-xs text-brand">05</span>
                 <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="nav.privacy">Privacy</span>
                 <span class="h-px flex-1 bg-line"></span>
             </div>
@@ -1181,11 +1127,11 @@
             <p class="text-sm text-muted mt-6 reveal" data-i18n="priv.more">Details in the <a href="/terms.html#privacy-policy" class="text-text underline underline-offset-4 decoration-line hover:text-strong">privacy policy</a>.</p>
         </div>
     </section>
-    <!-- 07 Pro -->
-    <section id="pro" class="py-20 lg:py-28 border-b border-line scroll-mt-16">
+    <!-- 06 Pro -->
+    <section id="pro" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12 reveal">
-                <span class="font-mono text-xs text-brand">07</span>
+                <span class="font-mono text-xs text-brand">06</span>
                 <span class="font-mono text-xs uppercase tracking-[0.18em] text-muted" data-i18n="pro.label">Free and Pro</span>
                 <span class="h-px flex-1 bg-line"></span>
             </div>
@@ -1272,7 +1218,6 @@
                 <div>
                     <h4 class="lbl mb-4">App</h4>
                     <ul class="space-y-2.5 text-muted text-sm">
-                        <li><a href="#how" class="hover:text-strong transition-colors" data-i18n="nav.measure">Measurement</a></li>
                         <li><a href="#features" class="hover:text-strong transition-colors" data-i18n="nav.features">Features</a></li>
                         <li><a href="#reference" class="hover:text-strong transition-colors" data-i18n="nav.range">Functional range</a></li>
                         <li><a href="#devices" class="hover:text-strong transition-colors" data-i18n="nav.devices">Devices</a></li>
