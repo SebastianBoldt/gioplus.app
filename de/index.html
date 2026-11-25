@@ -414,6 +414,17 @@
             transform: rotate(-40deg);
             animation: tilt 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
         }
+        /* Joints in "Who it is for": each limb moves through its range */
+        @keyframes joint-elbow { 0%, 100% { transform: rotate(-15deg); } 50% { transform: rotate(-125deg); } }
+        @keyframes joint-knee { 0%, 100% { transform: rotate(8deg); } 50% { transform: rotate(115deg); } }
+        @keyframes joint-shoulder { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-150deg); } }
+        .joint-move {
+            transform-box: view-box;
+            animation: 5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+        .joint-elbow { transform-origin: 150px 100px; transform: rotate(-70deg); animation-name: joint-elbow; }
+        .joint-knee { transform-origin: 150px 40px; transform: rotate(60deg); animation-name: joint-knee; animation-delay: -1.2s; }
+        .joint-shoulder { transform-origin: 150px 50px; transform: rotate(-75deg); animation-name: joint-shoulder; animation-delay: -2.4s; }
         /* Watch illustration: the ring fills and empties with the movement */
         @keyframes ring {
             0%, 100% { stroke-dashoffset: 92; }
@@ -441,6 +452,7 @@
             }
             .arm-swing,
             .sensor-swing,
+            .joint-move,
             .watch-ring {
                 animation: none;
             }
@@ -1114,6 +1126,24 @@
 
             <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-panel/60">
                 <div class="p-6 reveal">
+                    <div class="app-screen mb-5 overflow-hidden" aria-hidden="true">
+                        <svg viewBox="0 0 300 140" class="w-full h-auto block">
+                            <defs>
+                                <linearGradient id="elbowGrad" gradientUnits="userSpaceOnUse" x1="150" y1="100" x2="225" y2="100">
+                                    <stop offset="0" stop-color="#5E5CE6"/>
+                                    <stop offset="1" stop-color="#0A84FF"/>
+                                </linearGradient>
+                            </defs>
+                            <path class="cam-faint" d="M205 100 A55 55 0 0 0 118.5 55" fill="none" stroke-width="1.5" stroke-dasharray="2 4"/>
+                            <line class="cam-bone" x1="70" y1="100" x2="150" y2="100" stroke-width="10" stroke-linecap="round"/>
+                            <g class="joint-move joint-elbow">
+                                <line x1="150" y1="100" x2="225" y2="100" stroke="url(#elbowGrad)" stroke-width="10" stroke-linecap="round"/>
+                                <circle class="cam-dot" cx="225" cy="100" r="6" stroke-width="1.5"/>
+                            </g>
+                            <circle class="cam-dot" cx="70" cy="100" r="6" stroke-width="1.5"/>
+                            <circle cx="150" cy="100" r="8" fill="#fff" stroke="#0A84FF" stroke-width="3.5"/>
+                        </svg>
+                    </div>
                     <h3 class="text-lg font-semibold text-strong mb-4" data-i18n="joint.elbowPlain">Ellbogen</h3>
                     <ul class="text-sm text-text border-t border-line">
                         <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow1">Ellenbogenfraktur: Radiuskopf, Olekranon, distaler Oberarm</li>
@@ -1124,6 +1154,24 @@
                     </ul>
                 </div>
                 <div class="p-6 reveal">
+                    <div class="app-screen mb-5 overflow-hidden" aria-hidden="true">
+                        <svg viewBox="0 0 300 140" class="w-full h-auto block">
+                            <defs>
+                                <linearGradient id="kneeGrad" gradientUnits="userSpaceOnUse" x1="150" y1="40" x2="225" y2="40">
+                                    <stop offset="0" stop-color="#5E5CE6"/>
+                                    <stop offset="1" stop-color="#0A84FF"/>
+                                </linearGradient>
+                            </defs>
+                            <path class="cam-faint" d="M205 40 A55 55 0 0 1 126.8 89.8" fill="none" stroke-width="1.5" stroke-dasharray="2 4"/>
+                            <line class="cam-bone" x1="70" y1="40" x2="150" y2="40" stroke-width="10" stroke-linecap="round"/>
+                            <g class="joint-move joint-knee">
+                                <line x1="150" y1="40" x2="225" y2="40" stroke="url(#kneeGrad)" stroke-width="10" stroke-linecap="round"/>
+                                <circle class="cam-dot" cx="225" cy="40" r="6" stroke-width="1.5"/>
+                            </g>
+                            <circle class="cam-dot" cx="70" cy="40" r="6" stroke-width="1.5"/>
+                            <circle cx="150" cy="40" r="8" fill="#fff" stroke="#0A84FF" stroke-width="3.5"/>
+                        </svg>
+                    </div>
                     <h3 class="text-lg font-semibold text-strong mb-4" data-i18n="joint.kneePlain">Knie</h3>
                     <ul class="text-sm text-text border-t border-line">
                         <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee1">Kreuzbandriss und Kreuzband-OP</li>
@@ -1135,6 +1183,25 @@
                     </ul>
                 </div>
                 <div class="p-6 reveal">
+                    <div class="app-screen mb-5 overflow-hidden" aria-hidden="true">
+                        <svg viewBox="0 0 300 140" class="w-full h-auto block">
+                            <defs>
+                                <linearGradient id="shoulderGrad" gradientUnits="userSpaceOnUse" x1="150" y1="50" x2="150" y2="118">
+                                    <stop offset="0" stop-color="#5E5CE6"/>
+                                    <stop offset="1" stop-color="#0A84FF"/>
+                                </linearGradient>
+                            </defs>
+                            <path class="cam-faint" d="M150 100 A50 50 0 0 0 175 6.7" fill="none" stroke-width="1.5" stroke-dasharray="2 4"/>
+                            <circle cx="150" cy="24" r="11" style="fill: rgb(var(--gauge-normal))"/>
+                            <line class="cam-bone" x1="150" y1="128" x2="150" y2="50" stroke-width="10" stroke-linecap="round"/>
+                            <g class="joint-move joint-shoulder">
+                                <line x1="150" y1="50" x2="150" y2="118" stroke="url(#shoulderGrad)" stroke-width="10" stroke-linecap="round"/>
+                                <circle class="cam-dot" cx="150" cy="118" r="6" stroke-width="1.5"/>
+                            </g>
+                            <circle class="cam-dot" cx="150" cy="128" r="6" stroke-width="1.5"/>
+                            <circle cx="150" cy="50" r="8" fill="#fff" stroke="#0A84FF" stroke-width="3.5"/>
+                        </svg>
+                    </div>
                     <h3 class="text-lg font-semibold text-strong mb-4" data-i18n="joint.shoulderPlain">Schulter</h3>
                     <ul class="text-sm text-text border-t border-line">
                         <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder1">Schultersteife (Frozen Shoulder)</li>
