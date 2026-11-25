@@ -556,14 +556,18 @@
         <div class="absolute inset-0 graph-paper pointer-events-none" aria-hidden="true"></div>
 
         <div class="max-w-6xl mx-auto px-6 relative grid lg:grid-cols-12 gap-12 items-center pb-16 lg:pb-20">
-            <!-- Text -->
-            <div class="lg:col-span-6 reveal">
+            <!-- Text. On phones the column dissolves (display: contents) so the screens can sit
+                 between the headline and the description: headline, screens, description. -->
+            <div class="max-lg:contents lg:col-span-6 reveal">
+                <div class="max-lg:order-1">
                 <p class="font-mono text-xs uppercase tracking-[0.18em] text-muted mb-6 flex items-center gap-3">
                     <span class="inline-block w-2 h-2 rounded-full bg-brand shrink-0"></span>
                     <span class="js-badge" data-i18n="hero.badge" data-i18n-live="hero.badgeLive">Goniometer app · Coming soon for iPhone, iPad, Mac and Apple Watch</span>
                 </p>
                 <p class="text-brand font-semibold text-lg mb-3" data-i18n="hero.claim">The most advanced goniometer app.</p>
-                <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold tracking-tight text-strong leading-[1.08] mb-6" data-i18n="hero.h1">Document your recovery with iPhone, iPad, Mac or Apple Watch.</h1>
+                <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold tracking-tight text-strong leading-[1.08] lg:mb-6" data-i18n="hero.h1">Document your recovery with iPhone, iPad, Mac or Apple Watch.</h1>
+                </div>
+                <div class="max-lg:order-3">
                 <p class="text-lg text-muted mb-8 max-w-xl leading-relaxed" data-i18n="hero.p">Gio+ measures 38 joint movements from the cervical spine to the great toe: with the camera, with the motion sensor of your iPhone, from a photo or entered by hand. Every measurement is saved with its date, so you can see week by week how your rehab is going.</p>
                 <div class="flex flex-col sm:flex-row sm:items-center gap-5">
                     <a href="#download" class="js-appstore btn px-6 py-3.5">
@@ -575,10 +579,11 @@
                 <p class="mt-10 text-sm text-dim">
                     <span data-i18n="hero.dev">Developed by</span> <a href="https://sebastianboldt.io" class="text-muted hover:text-strong underline underline-offset-4 decoration-line">Sebastian Boldt</a>
                 </p>
+                </div>
             </div>
 
             <!-- What the app does: the camera measurement in front, progress and history behind it -->
-            <div class="lg:col-span-6 reveal">
+            <div class="max-lg:order-2 max-lg:w-full lg:col-span-6 reveal">
                 <div class="hero-demo relative w-full max-w-[540px] mx-auto">
                     <div class="video-card hero-shot" style="left: 54%; top: 7%"><img data-screen="history" src="/media/screens/light-en-history.jpg" alt="Gio+ history: weekly trend and the curve of your range of motion" data-i18n-attr="alt:hero.historyAlt" width="603" height="1311"></div>
                     <div class="video-card hero-shot" style="left: 27%; top: 3.5%"><img data-screen="progress" src="/media/screens/light-en-progress.jpg" alt="Gio+ progress view: functional range of the elbow" data-i18n-attr="alt:hero.progressAlt" width="603" height="1311"></div>
