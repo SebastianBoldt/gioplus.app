@@ -59,6 +59,9 @@ content('property="og:locale"', 'de_DE');
 content('property="og:url"', 'https://gioplus.app/de/');
 swap('<link rel="canonical" href="https://gioplus.app/">', '<link rel="canonical" href="https://gioplus.app/de/">');
 
+// German link preview image (og:image, twitter:image, structured data)
+html = html.replace(/gioplus-hero\.png/g, 'gioplus-hero-de.png');
+
 // German screenshots from the first paint
 html = html.replace(/\/media\/screens\/light-en-/g, '/media/screens/light-de-');
 

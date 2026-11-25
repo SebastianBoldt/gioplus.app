@@ -18,7 +18,8 @@ de/index.html     German page, generated
 media/            Screen recording of a measurement (MP4, WebM, poster)
 terms.html        Privacy policy, terms of use and imprint (own copy of the landing page styles)
 AppIcon.png       App icon, composited from Gio/AppIcon.icon in the app repo on a dark tile
-gioplus-hero.png  Preview image for link sharing (og:image)
+gioplus-hero.png  Preview image for link sharing (og:image), 1200 x 630; gioplus-hero-de.png for /de/
+og.html           Template both preview images are rendered from
 media/screens/    Hero screenshots per theme and language
 favicon/          Favicons and web manifest, generated from the app icon
 CNAME             Custom domain for GitHub Pages
@@ -72,3 +73,13 @@ xcrun simctl launch <udid> com.sebastianboldt.GioPlus -seedSamples -pro -tab 0 -
 - The Free/Pro table follows `FEATURES.md` in the app repo
 - The hero readout (43 / 101 / 58 degrees) is the result of the recording in `media/`; update it with a new video
 - Feature illustrations are inline HTML/SVG rebuilt from the app UI; they follow the theme, camera images stay dark
+
+## Link preview images
+
+`gioplus-hero.png` and `gioplus-hero-de.png` are rendered from `og.html` with headless Chrome while the dev server runs:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 --virtual-time-budget=6000 --screenshot=gioplus-hero.png "http://localhost:4322/og.html"
+```
+
+Use `og.html?lang=de` and `gioplus-hero-de.png` for the German image. Render again after new hero screenshots.

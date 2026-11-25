@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- Template for the link preview images (og:image). Not linked from the site.
+     Render 1200 x 630 with headless Chrome, see README.md:
+       gioplus-hero.png     og.html
+       gioplus-hero-de.png  og.html?lang=de -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<title>Gio+ link preview</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+    html, body { margin: 0; }
+    body {
+        width: 1200px; height: 630px; overflow: hidden; position: relative;
+        background: #fff; color: #0B0C0E;
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+    }
+    .paper {
+        position: absolute; inset: 0;
+        background-image:
+            linear-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(15, 23, 42, 0.06) 1px, transparent 1px),
+            linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px;
+    }
+    .text { position: absolute; left: 72px; top: 0; bottom: 0; width: 560px; display: flex; flex-direction: column; justify-content: center; }
+    .brand { display: flex; align-items: center; gap: 18px; font-size: 44px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 44px; }
+    .brand img { width: 76px; height: 76px; border-radius: 17px; }
+    .brand span { color: #0071EB; }
+    h1 { font-size: 64px; line-height: 1.06; font-weight: 600; letter-spacing: -0.025em; margin: 0 0 26px; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 19px; letter-spacing: 0.14em; text-transform: uppercase; color: #57606A; display: flex; align-items: center; gap: 14px; }
+    .label i { width: 10px; height: 10px; border-radius: 50%; background: #0071EB; flex: none; }
+    .shot { position: absolute; width: 262px; border-radius: 36px; overflow: hidden; border: 1px solid rgba(15, 23, 42, 0.24); box-shadow: 0 30px 60px -20px rgba(15, 23, 42, 0.4); background: #fff; }
+    .shot img { display: block; width: 100%; }
+</style>
+</head>
+<body>
+    <div class="paper"></div>
+    <div class="text">
+        <div class="brand"><img src="AppIcon.png" alt=""><div>Gio<span>+</span></div></div>
+        <h1 id="h1">Document your recovery.</h1>
+        <div class="label"><i></i><span id="label">Goniometer app · iPhone, iPad, Mac, Apple Watch</span></div>
+    </div>
+    <div class="shot" style="left: 890px; top: 96px"><img id="history" src="media/screens/light-en-history.jpg" alt=""></div>
+    <div class="shot" style="left: 668px; top: 56px"><img id="progress" src="media/screens/light-en-progress.jpg" alt=""></div>
+    <script>
+        if (new URLSearchParams(location.search).get('lang') === 'de') {
+            document.documentElement.lang = 'de';
+            document.getElementById('h1').textContent = 'Dokumentiere deinen Heilungsverlauf.';
+            document.getElementById('label').textContent = 'Goniometer-App · iPhone, iPad, Mac, Apple Watch';
+            document.getElementById('history').src = 'media/screens/light-de-history.jpg';
+            document.getElementById('progress').src = 'media/screens/light-de-progress.jpg';
+        }
+    </script>
+</body>
+</html>
