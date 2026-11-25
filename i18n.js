@@ -17,7 +17,7 @@
 
 const I18N = (() => {
     const EN = {
-        'meta.title': 'Gio+ - Goniometer App for iPhone | Measure Elbow, Knee & Shoulder Range of Motion',
+        'meta.title': 'Gio+ - Goniometer App for iPhone, iPad & Mac | Measure Elbow, Knee & Shoulder Range of Motion',
         'cta.liveShort': 'Download',
         'cta.live': 'Download on the App Store',
         'hero.badgeLive': 'Goniometer app · iPhone, iPad and Mac',
@@ -31,16 +31,17 @@ const I18N = (() => {
 
     const DE = {
         // Meta
-        'meta.title': 'Gio+ - Goniometer-App für iPhone | Beweglichkeit von Ellbogen, Knie & Schulter messen',
-        'meta.description': 'Gio+ dokumentiert deinen Heilungsverlauf nach einer Verletzung oder Operation. Die iPhone-Kamera misst wie ein Goniometer, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und die App hält deinen Bewegungsumfang über die Wochen der Reha fest. Ohne Konto, ohne Server: Deine Daten bleiben auf deinem Gerät und in deiner iCloud.',
-        'meta.ogTitle': 'Gio+ - Die Goniometer-App für iPhone',
-        'meta.ogDescription': 'Dokumentiere deinen Heilungsverlauf: Miss mit der iPhone-Kamera, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und sieh Woche für Woche, was sich verändert.',
+        'meta.title': 'Gio+ - Goniometer-App für iPhone, iPad & Mac | Beweglichkeit von Ellbogen, Knie & Schulter messen',
+        'meta.description': 'Gio+ dokumentiert deinen Heilungsverlauf nach einer Verletzung oder Operation. Die Kamera von iPhone, iPad oder Mac misst wie ein Goniometer, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und die App hält deinen Bewegungsumfang über die Wochen der Reha fest. Ohne Konto, ohne Server: Deine Daten bleiben auf deinem Gerät und in deiner iCloud.',
+        'meta.ogTitle': 'Gio+ - Die Goniometer-App für iPhone, iPad und Mac',
+        'meta.ogDescription': 'Dokumentiere deinen Heilungsverlauf: Miss mit der Kamera von iPhone, iPad oder Mac, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und sieh Woche für Woche, was sich verändert.',
         'theme.toggle': 'Zwischen hellem und dunklem Modus wechseln',
 
         // Navigation and buttons
         'nav.measure': 'Messung',
         'nav.range': 'Funktioneller Bereich',
         'nav.features': 'Funktionen',
+        'nav.devices': 'Geräte',
         'nav.privacy': 'Datenschutz',
         'nav.pro': 'Pro',
         'cta.soonShort': 'Demnächst',
@@ -85,12 +86,11 @@ const I18N = (() => {
         // Hero
         'hero.badge': 'Goniometer-App · Demnächst für iPhone, iPad und Mac',
         'hero.badgeLive': 'Goniometer-App · iPhone, iPad und Mac',
-        'hero.h1': 'Dokumentiere deinen Heilungsverlauf mit dem iPhone.',
+        'hero.claim': 'Die fortschrittlichste Goniometer-App.',
+        'hero.h1': 'Dokumentiere deinen Heilungsverlauf mit iPhone, iPad oder Mac.',
         'hero.p': 'Gio+ misst 38 Gelenkbewegungen von der Halswirbelsäule bis zur Großzehe: mit der Kamera, mit dem Lagesensor deines iPhones, aus einem Foto oder von Hand eingetragen. Jede Messung wird mit Datum gespeichert. So siehst du Woche für Woche, wie deine Reha vorankommt.',
         'pro.r1b': 'Alle 38 Bewegungen in 10 Körperregionen',
         'hero.watch': 'So läuft eine Messung ab',
-        'hero.cap1': 'Mit der Kamera messen',
-        'hero.cap2': 'Verlauf verfolgen',
         'hero.historyAlt': 'Gio+ Verlauf: Wochenverlauf und die Kurve deines Bewegungsumfangs',
         'hero.progressAlt': 'Gio+ Fortschritt: funktioneller Bereich des Ellbogens',
         'hero.dev': 'Entwickelt von',
@@ -101,9 +101,9 @@ const I18N = (() => {
         // 01 Measurement
         'how.videoLabel': 'Bildschirmaufnahme: Gio+ misst den rechten Ellbogen. Der Arm wird gebeugt und gestreckt, jeder Wert wird gehalten, dann erscheint das Ergebnis.',
         'how.fig': 'Abb. 1 · Bildschirmaufnahme, rechter Ellbogen (App auf Englisch)',
-        'how.h2': 'Dein iPhone als Goniometer',
+        'how.h2': 'Dein Gerät als Goniometer',
         'how.p': 'In der Physiotherapie liest man den Winkel am Goniometer ab. Gio+ liest ihn aus dem Kamerabild.',
-        'how.s1h': 'iPhone aufstellen',
+        'how.s1h': 'Gerät aufstellen',
         'how.s1p': 'Lehn es an und geh 1 bis 2 m zurück. Steht das Gerät gerade und ist dein Gelenk von der Seite zu sehen, startet die Messung von selbst.',
         'how.s2h': 'Dreimal strecken und beugen',
         'how.s2p': 'Halte jede Endposition 2 Sekunden. Sprachansagen sagen dir, was als Nächstes kommt.',
@@ -187,16 +187,22 @@ const I18N = (() => {
 
         // Planned
         'dev.label': 'In Arbeit',
+        'dv.h2': 'Welches Gerät wie misst',
+        'dv.p': 'Gio+ läuft auf iPhone, iPad und Mac. Deine Messungen gleichen sich über deine private iCloud ab: Du misst auf einem Gerät und verfolgst deinen Fortschritt auf einem anderen.',
+        'dv.camera': 'Kamera',
+        'dv.sensor': 'Lagesensor',
+        'dv.photo': 'Foto',
+        'dv.manual': 'Manuell hinzufügen',
         'dev.report': 'Ein Bericht über deine Messungen',
         'dev.notes': 'Notizen und eine Schmerzskala zu jeder Messung',
         'dev.watch': 'Messen mit der Apple Watch',
 
         // 04 Privacy
         'priv.h2': 'Wo deine Daten liegen',
-        'priv.p': 'Deine Messwerte sind Gesundheitsdaten. Sie bleiben auf deinem iPhone und, wenn du willst, in deiner privaten iCloud.',
+        'priv.p': 'Deine Messwerte sind Gesundheitsdaten. Sie bleiben auf deinen Geräten und, wenn du willst, in deiner privaten iCloud.',
         'priv.aLabel': 'Lokal',
         'priv.aH': 'Auf deinem Gerät',
-        'priv.aP': 'Messungen, Fotos und Profile liegen auf deinem iPhone. Gio+ funktioniert auch offline.',
+        'priv.aP': 'Messungen, Fotos und Profile liegen auf deinem Gerät. Gio+ funktioniert auch offline.',
         'priv.bLabel': 'Abgleich',
         'priv.bH': 'In deiner iCloud',
         'priv.bP': 'Deine Geräte gleichen sich über deine private iCloud ab. Das lässt sich abschalten.',
