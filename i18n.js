@@ -188,14 +188,13 @@ const I18N = (() => {
         // Planned
         'dev.label': 'In Arbeit',
         'dv.h2': 'Welches Gerät wie misst',
-        'dv.p': 'Gio+ läuft auf iPhone, iPad und Mac. Deine Messungen gleichen sich über deine private iCloud ab: Du misst auf einem Gerät und verfolgst deinen Fortschritt auf einem anderen.',
+        'dv.p': 'Gio+ läuft auf iPhone, iPad, Mac und Apple Watch. Deine Messungen gleichen sich über deine private iCloud ab: Du misst auf einem Gerät und verfolgst deinen Fortschritt auf einem anderen.',
         'dv.camera': 'Kamera',
         'dv.sensor': 'Lagesensor',
         'dv.photo': 'Foto',
         'dv.manual': 'Manuell hinzufügen',
         'dev.report': 'Ein Bericht über deine Messungen',
         'dev.notes': 'Notizen und eine Schmerzskala zu jeder Messung',
-        'dev.watch': 'Messen mit der Apple Watch',
 
         // 04 Privacy
         'priv.h2': 'Wo deine Daten liegen',
