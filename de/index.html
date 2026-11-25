@@ -363,6 +363,12 @@
         .data-table tr:last-child td {
             border-bottom: 0;
         }
+        /* Phones: tighter cells so the tables fit without sideways scrolling */
+        @media (max-width: 639px) {
+            .data-table { font-size: 0.8125rem; }
+            .data-table th { font-size: 0.625rem; letter-spacing: 0.06em; }
+            .data-table th, .data-table td { padding-left: 0.6rem; padding-right: 0.6rem; }
+        }
 
         /* Range bar in the reference table: 0 to 180 degrees */
         .range-bar {
@@ -648,7 +654,7 @@
 
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <!-- Gauge as shown in the app -->
-                <div class="lg:col-span-5 reveal" aria-hidden="true">
+                <div class="lg:col-span-5 min-w-0 reveal" aria-hidden="true">
                     <div class="app-screen p-4 max-w-md mx-auto lg:mx-0">
                         <div class="app-card rounded-xl p-5">
                             <div class="text-lg font-semibold app-title" data-i18n="app.functionalRange">Funktioneller Bereich</div>
@@ -685,7 +691,7 @@
                     <p class="lbl mt-4" data-i18n="range.fig">Abb. 2 · Fortschritt, Ellbogen</p>
                 </div>
 
-                <div class="lg:col-span-7">
+                <div class="lg:col-span-7 min-w-0">
                     <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5 reveal" data-i18n="range.h2">Wie weit du vom Alltagsbereich entfernt bist</h2>
                     <p class="text-muted text-lg leading-relaxed mb-10 max-w-xl reveal" data-i18n="range.p">Im Alltag brauchst du weniger als den vollen Umfang eines gesunden Gelenks. Gio+ zeigt deinen Bogen neben diesem funktionellen Bereich und wie viele Grad dir noch fehlen.</p>
 
