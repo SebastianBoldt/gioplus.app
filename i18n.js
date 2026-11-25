@@ -169,7 +169,7 @@ const I18N = (() => {
         'ppl.shoulder': 'Schulter · rechts',
         'feat.phLabel': 'D · Foto',
         'ph.h3': 'Winkel aus einem Foto',
-        'ph.p': 'Gio+ erkennt den Winkel auf einem Foto. Die drei Punkte kannst du verschieben oder selbst setzen.',
+        'ph.p': 'Gio+ erkennt den Winkel auf je einem Foto der Start- und der Endposition.',
         'feat.rLabel': 'E · Bewegungen',
         'reg.h3': '38 Bewegungen in 10 Körperregionen',
         'reg.p': 'Von der Halswirbelsäule bis zur Großzehe. Jede Bewegung hat ihren eigenen Verlauf, getrennt für links und rechts.',
@@ -192,7 +192,7 @@ const I18N = (() => {
         'x.backupSub': 'Zum Einlesen auf einem anderen Gerät',
         'for.more': 'Gio+ misst außerdem Halswirbelsäule, Rumpf, Unterarm, Handgelenk, Hand und Finger, Hüfte sowie Sprunggelenk und Fuß.',
         'feat.cH': 'Meilensteine aus dem Alltag',
-        'feat.cP': 'Erfolge hängen an Alltagsbewegungen: Etwa 115° Beugung im Ellbogen reichen, um einen Löffel zum Mund zu führen.',
+        'feat.cP': 'Erfolge motivieren dich, Schritt für Schritt deine Ziele zu erreichen.',
 
         // Photo history and time-lapse
         'tl.first': 'Erste Messung',
