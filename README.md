@@ -16,7 +16,7 @@ i18n.js           German translations
 build-de.js       Generates de/index.html (run after text changes)
 de/index.html     German page, generated
 media/            Screen recording of a measurement (MP4, WebM, poster)
-terms.html        Privacy policy, terms of use and imprint (Styles/ + SFPro.ttf, like habitbe.app)
+terms.html        Privacy policy, terms of use and imprint (own copy of the landing page styles)
 AppIcon.png       App icon, composited from Gio/AppIcon.icon in the app repo on a dark tile
 gioplus-hero.png  Preview image for link sharing (og:image)
 media/screens/    Hero screenshots per theme and language
