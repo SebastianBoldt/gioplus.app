@@ -128,6 +128,7 @@ const I18N = (() => {
         'app.wk44': 'KW 44',
         'app.wk45': 'KW 45',
         'app.spoon': 'Löffel zum Mund',
+        'app.newspaper': 'Zeitung lesen',
         'app.cup': 'Becher zum Mund',
         'app.phone': 'Telefon ans Ohr',
         'app.reachedShort': 'erreicht',
