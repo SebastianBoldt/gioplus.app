@@ -83,3 +83,17 @@ xcrun simctl launch <udid> com.sebastianboldt.GioPlus -seedSamples -pro -tab 0 -
 ```
 
 Use `og.html?lang=de` and `gioplus-hero-de.png` for the German image. Render again after new hero screenshots.
+
+## Build
+
+The pages load one prebuilt stylesheet, `site.css`, instead of Tailwind's browser script. After changing class names in `index.html`, `terms.html` or `i18n.js`, rebuild and commit the results:
+
+```bash
+npm install
+```
+
+```bash
+npm run build
+```
+
+`npm run build` runs `build:css` (Tailwind into `site.css`, configured in `tailwind.config.js`) and `build:de` (`de/index.html`). A class that is missing from `site.css` has no effect, so always rebuild after adding one.

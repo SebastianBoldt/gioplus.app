@@ -5,6 +5,12 @@
   "description": "Static website for the Gio+ app",
   "scripts": {
     "dev": "python3 -m http.server 4322",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "build:css": "tailwindcss -i tailwind.css -o site.css --minify",
+    "build:de": "node build-de.js",
+    "build": "npm run build:css && npm run build:de"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
   }
 }

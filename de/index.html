@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Once Gio+ is live: add <meta name="apple-itunes-app" content="app-id=XXXXXXXXXX"> -->
-    <title>Gio+ - Goniometer-App für iPhone, iPad, Mac &amp; Apple Watch | Beweglichkeit von Ellbogen, Knie &amp; Schulter messen</title>
-    <meta name="description" content="Gio+ dokumentiert deinen Heilungsverlauf nach einer Verletzung oder Operation. Die Kamera von iPhone, iPad oder Mac misst wie ein Goniometer, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und die App hält deinen Bewegungsumfang über die Wochen der Reha fest. Ohne Konto, ohne Server: Deine Daten bleiben auf deinem Gerät und in deiner iCloud.">
+    <title>Gio+ - Digitales Goniometer als App für iPhone, iPad, Mac &amp; Apple Watch</title>
+    <meta name="description" content="Gio+ dokumentiert deinen Heilungsverlauf nach einer Verletzung oder Operation. Die Kamera von iPhone, iPad oder Mac misst wie ein digitales Goniometer, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und die App hält deinen Bewegungsumfang über die Wochen der Reha fest. Ohne Konto, ohne Server: Deine Daten bleiben auf deinem Gerät und in deiner iCloud.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#FFFFFF">
     <link rel="canonical" href="https://gioplus.app/de/">
@@ -19,7 +19,7 @@
     <meta property="og:site_name" content="Gio+">
     <meta property="og:locale" content="de_DE">
     <meta property="og:url" content="https://gioplus.app/de/">
-    <meta property="og:title" content="Gio+ - Die Goniometer-App für iPhone, iPad, Mac und Apple Watch">
+    <meta property="og:title" content="Gio+ - Das digitale Goniometer für iPhone, iPad, Mac und Apple Watch">
     <meta property="og:description" content="Dokumentiere deinen Heilungsverlauf: Miss mit der Kamera von iPhone, iPad oder Mac, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und sieh Woche für Woche, was sich verändert.">
     <meta property="og:image" content="https://gioplus.app/gioplus-hero-de.png">
     <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Gio+ - Die Goniometer-App für iPhone, iPad, Mac und Apple Watch">
+    <meta name="twitter:title" content="Gio+ - Das digitale Goniometer für iPhone, iPad, Mac und Apple Watch">
     <meta name="twitter:description" content="Dokumentiere deinen Heilungsverlauf: Miss mit der Kamera von iPhone, iPad oder Mac, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und sieh Woche für Woche, was sich verändert.">
     <meta name="twitter:image" content="https://gioplus.app/gioplus-hero-de.png">
 
@@ -55,41 +55,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <!-- Tailwind colours point at the CSS variables below, so light and dark share one markup -->
-    <script>
-        const token = name => `rgb(var(--${name}) / <alpha-value>)`;
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
-                        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
-                    },
-                    colors: {
-                        ink: token('ink'),       // page
-                        panel: token('panel'),   // raised surfaces
-                        strong: token('strong'), // headings
-                        text: token('text'),
-                        muted: token('muted'),
-                        dim: token('dim'),
-                        brand: token('brand'),   // system blue: your arc, buttons, links
-                        mint: token('mint'),     // functional range, reached
-                        track: token('track'),   // empty bars
-                        line: 'var(--line)',
-                    },
-                    aspectRatio: {
-                        '4/3': '4 / 3',
-                    },
-                }
-            }
-        }
-    </script>
+    <!-- Phosphor Icons: only the three weights the pages use (regular, bold, fill) -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css">
 
     <style>
         /* Light is the default. Values are RGB triplets so Tailwind can add opacity. */
@@ -489,6 +459,10 @@
         }
     </style>
 
+    <!-- Tailwind CSS, built into one file (npm run build:css). It comes after the styles above
+         so that utilities such as "hidden" keep winning over them. -->
+    <link rel="stylesheet" href="/site.css">
+
     <!-- Structured Data: SoftwareApplication -->
     <script type="application/ld+json">
     {
@@ -497,8 +471,8 @@
         "name": "Gio+",
         "operatingSystem": "iOS, iPadOS, macOS, watchOS",
         "applicationCategory": "HealthApplication",
-        "description": "Gio+ is a goniometer app for iPhone, iPad, Mac and Apple Watch. It uses the camera to measure how far your elbow, knee or shoulder bends and straightens, and tracks your range of motion over time.",
-        "keywords": "goniometer, goniometer app, range of motion, ROM, elbow flexion, knee flexion, shoulder, physiotherapy, rehab, elbow fracture, radial head fracture, ACL tear, knee replacement, frozen shoulder, rotator cuff",
+        "description": "Gio+ is a digital goniometer app for iPhone, iPad, Mac and Apple Watch. It uses the camera to measure how far your elbow, knee or shoulder bends and straightens, and tracks your range of motion over time.",
+        "keywords": "goniometer, digital goniometer, goniometer app, range of motion, ROM, elbow flexion, knee flexion, shoulder, physiotherapy, rehab, elbow fracture, radial head fracture, ACL tear, knee replacement, frozen shoulder, rotator cuff",
         "url": "https://gioplus.app",
         "screenshot": "https://gioplus.app/gioplus-hero-de.png",
         "offers": {
@@ -662,7 +636,7 @@
                 <span class="h-px flex-1 bg-line"></span>
             </div>
             <div class="max-w-2xl mb-12 reveal">
-                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="how.h2">Dein Gerät als Goniometer</h2>
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="how.h2">Dein Gerät als digitales Goniometer</h2>
                 <p class="text-muted text-lg leading-relaxed" data-i18n="how.p">In der Physiotherapie liest man den Winkel am Goniometer ab. Gio+ liest ihn aus dem Kamerabild, mit dem iPhone-Sensor oder mit der Apple Watch. Du kannst ihn auch aus einem Foto bestimmen oder von Hand eintragen.</p>
             </div>
 

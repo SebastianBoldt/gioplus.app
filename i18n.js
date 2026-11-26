@@ -17,7 +17,7 @@
 
 const I18N = (() => {
     const EN = {
-        'meta.title': 'Gio+ - Goniometer App for iPhone, iPad, Mac & Apple Watch | Measure Elbow, Knee & Shoulder Range of Motion',
+        'meta.title': 'Gio+ - Digital Goniometer App for iPhone, iPad, Mac & Apple Watch',
         'cta.liveShort': 'Download',
         'cta.live': 'Download on the App Store',
         'hero.badgeLive': 'Goniometer app · iPhone, iPad, Mac and Apple Watch',
@@ -31,9 +31,9 @@ const I18N = (() => {
 
     const DE = {
         // Meta
-        'meta.title': 'Gio+ - Goniometer-App für iPhone, iPad, Mac & Apple Watch | Beweglichkeit von Ellbogen, Knie & Schulter messen',
-        'meta.description': 'Gio+ dokumentiert deinen Heilungsverlauf nach einer Verletzung oder Operation. Die Kamera von iPhone, iPad oder Mac misst wie ein Goniometer, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und die App hält deinen Bewegungsumfang über die Wochen der Reha fest. Ohne Konto, ohne Server: Deine Daten bleiben auf deinem Gerät und in deiner iCloud.',
-        'meta.ogTitle': 'Gio+ - Die Goniometer-App für iPhone, iPad, Mac und Apple Watch',
+        'meta.title': 'Gio+ - Digitales Goniometer als App für iPhone, iPad, Mac & Apple Watch',
+        'meta.description': 'Gio+ dokumentiert deinen Heilungsverlauf nach einer Verletzung oder Operation. Die Kamera von iPhone, iPad oder Mac misst wie ein digitales Goniometer, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und die App hält deinen Bewegungsumfang über die Wochen der Reha fest. Ohne Konto, ohne Server: Deine Daten bleiben auf deinem Gerät und in deiner iCloud.',
+        'meta.ogTitle': 'Gio+ - Das digitale Goniometer für iPhone, iPad, Mac und Apple Watch',
         'meta.ogDescription': 'Dokumentiere deinen Heilungsverlauf: Miss mit der Kamera von iPhone, iPad oder Mac, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und sieh Woche für Woche, was sich verändert.',
         'theme.toggle': 'Zwischen hellem und dunklem Modus wechseln',
 
@@ -99,7 +99,7 @@ const I18N = (() => {
 
         // 01 Measurement
         'hero.cameraAlt': 'Gio+ Kamera-Messung: Eine Person steht seitlich zur Kamera, die App zeichnet den Ellbogenwinkel von 101° ins Kamerabild',
-        'how.h2': 'Dein Gerät als Goniometer',
+        'how.h2': 'Dein Gerät als digitales Goniometer',
         'how.p': 'In der Physiotherapie liest man den Winkel am Goniometer ab. Gio+ liest ihn aus dem Kamerabild, mit dem iPhone-Sensor oder mit der Apple Watch. Du kannst ihn auch aus einem Foto bestimmen oder von Hand eintragen.',
 
         // 02 Functional range
