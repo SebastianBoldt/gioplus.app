@@ -32,9 +32,9 @@ const I18N = (() => {
     const DE = {
         // Meta
         'meta.title': 'Gio+ - Digitales Goniometer als App für iPhone, iPad, Mac & Apple Watch',
-        'meta.description': 'Gio+ dokumentiert deinen Heilungsverlauf nach einer Verletzung oder Operation. Die Kamera von iPhone, iPad oder Mac misst wie ein digitales Goniometer, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und die App hält deinen Bewegungsumfang über die Wochen der Reha fest. Ohne Konto, ohne Server: Deine Daten bleiben auf deinem Gerät und in deiner iCloud.',
+        'meta.description': 'Gio+ ist ein Tagebuch für die Beweglichkeit deiner Gelenke, zum Beispiel während einer Reha. Die Kamera von iPhone, iPad oder Mac misst wie ein digitales Goniometer, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und die App hält deinen Bewegungsumfang über die Wochen der Reha fest. Ohne Konto, ohne Server: Deine Daten bleiben auf deinem Gerät und in deiner iCloud.',
         'meta.ogTitle': 'Gio+ - Das digitale Goniometer für iPhone, iPad, Mac und Apple Watch',
-        'meta.ogDescription': 'Dokumentiere deinen Heilungsverlauf: Miss mit der Kamera von iPhone, iPad oder Mac, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und sieh Woche für Woche, was sich verändert.',
+        'meta.ogDescription': 'Dokumentiere deine Beweglichkeit: Miss mit der Kamera von iPhone, iPad oder Mac, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und sieh Woche für Woche, was sich verändert.',
         'theme.toggle': 'Zwischen hellem und dunklem Modus wechseln',
 
         // Navigation and buttons
@@ -61,8 +61,8 @@ const I18N = (() => {
 
         // 03 Who it is for
         'for.label': 'Für wen',
-        'for.h2': 'Bei welchen Verletzungen und Operationen sich das Messen lohnt',
-        'for.p': 'Nach vielen Verletzungen und Operationen ist das Gelenk zunächst steif. Gio+ hilft überall dort, wo Beugung und Streckung über Wochen immer wieder gemessen werden.',
+        'for.h2': 'Wann Menschen ihre Beweglichkeit festhalten',
+        'for.p': 'Nach vielen Verletzungen und Operationen ist das Gelenk zunächst steif. In der Reha werden Beugung und Streckung über Wochen immer wieder gemessen. Mit Gio+ hältst du diese Werte selbst fest.',
         'for.elbow1': 'Ellenbogenfraktur: Radiuskopf, Olekranon, distaler Oberarm',
         'for.elbow2': 'Ellenbogenluxation (ausgekugelter Ellbogen)',
         'for.elbow3': 'Bänderriss und Bandoperation',
@@ -86,8 +86,9 @@ const I18N = (() => {
         'hero.badge': 'Goniometer-App · Demnächst für iPhone, iPad, Mac und Apple Watch',
         'hero.badgeLive': 'Goniometer-App · iPhone, iPad, Mac und Apple Watch',
         'hero.claim': 'Die fortschrittlichste Goniometer-App.',
-        'hero.h1': 'Dokumentiere deinen Heilungsverlauf mit iPhone, iPad, Mac oder Apple Watch.',
-        'hero.p': 'Gio+ misst 38 Gelenkbewegungen von der Halswirbelsäule bis zur Großzehe: mit der Kamera, mit dem Lagesensor deines iPhones, aus einem Foto oder von Hand eingetragen. Jede Messung wird mit Datum gespeichert. So siehst du Woche für Woche, wie deine Reha vorankommt.',
+        'hero.h1': 'Dokumentiere deine Beweglichkeit mit iPhone, iPad, Mac oder Apple Watch.',
+        'hero.notice': 'Zur Selbstbeobachtung. Kein Medizinprodukt.',
+        'hero.p': 'Gio+ misst 38 Gelenkbewegungen von der Halswirbelsäule bis zur Großzehe: mit der Kamera, mit dem Lagesensor deines iPhones, aus einem Foto oder von Hand eingetragen. Jede Messung wird mit Datum gespeichert. So siehst du Woche für Woche, wie sich deine Beweglichkeit verändert.',
         'pro.r1b': 'Alle 38 Bewegungen in 10 Körperregionen',
         'hero.watch': 'So misst Gio+',
         'hero.historyAlt': 'Gio+ Verlauf: Wochenverlauf und die Kurve deines Bewegungsumfangs',
@@ -261,7 +262,7 @@ const I18N = (() => {
         'dl.h2': 'Gio+ für iPhone, iPad, Mac und Apple Watch',
         'dl.p': 'Kostenlos laden. Kein Konto nötig.',
         'notice.label': 'Hinweis',
-        'notice.p': 'Gio+ ist kein Medizinprodukt. Die Messwerte sind Schätzungen aus dem Kamerabild und ersetzen weder eine Diagnose noch den Rat deiner Ärztin, deines Arztes oder deiner Physiotherapie.',
+        'notice.p': 'Gio+ dient der Selbstbeobachtung und ist kein Medizinprodukt. Die App stellt keine Diagnose und gibt keine Behandlungs- oder Übungsempfehlung. Die Messwerte sind Schätzungen und ersetzen nicht den Rat deiner Ärztin, deines Arztes oder deiner Physiotherapie.',
 
         // Footer
         'footer.tagline': 'Die Goniometer-App, die deine Reha dokumentiert. Für iPhone, iPad, Mac und Apple Watch.',
