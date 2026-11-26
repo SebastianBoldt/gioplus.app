@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Once Gio+ is live: add <meta name="apple-itunes-app" content="app-id=XXXXXXXXXX"> -->
     <title>Gio+ - Digitales Goniometer als App für iPhone, iPad, Mac &amp; Apple Watch</title>
-    <meta name="description" content="Gio+ ist ein Tagebuch für die Beweglichkeit deiner Gelenke, zum Beispiel während einer Reha. Die Kamera von iPhone, iPad oder Mac misst wie ein digitales Goniometer, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und die App hält deinen Bewegungsumfang über die Wochen der Reha fest. Ohne Konto, ohne Server: Deine Daten bleiben auf deinem Gerät und in deiner iCloud.">
+    <meta name="description" content="Gio+ ist ein Tagebuch für die Beweglichkeit deiner Gelenke, für Training, Sport und Alltag. Die Kamera von iPhone, iPad oder Mac misst wie ein digitales Goniometer, wie weit sich Ellbogen, Knie oder Schulter beugen und strecken lassen, und die App hält deinen Bewegungsumfang über die Wochen fest. Ohne Konto, ohne Server: Deine Daten bleiben auf deinem Gerät und in deiner iCloud.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#FFFFFF">
     <link rel="canonical" href="https://gioplus.app/de/">
@@ -470,9 +470,9 @@
         "@type": "SoftwareApplication",
         "name": "Gio+",
         "operatingSystem": "iOS, iPadOS, macOS, watchOS",
-        "applicationCategory": "HealthApplication",
+        "applicationCategory": "SportsApplication",
         "description": "Gio+ is a digital goniometer app for iPhone, iPad, Mac and Apple Watch. It uses the camera to measure how far your elbow, knee or shoulder bends and straightens, and tracks your range of motion over time.",
-        "keywords": "goniometer, digital goniometer, goniometer app, range of motion, ROM, elbow flexion, knee flexion, shoulder, physiotherapy, rehab, elbow fracture, radial head fracture, ACL tear, knee replacement, frozen shoulder, rotator cuff",
+        "keywords": "goniometer, digital goniometer, goniometer app, range of motion, ROM, elbow flexion, knee flexion, shoulder, flexibility, mobility training, stretching, joint angle, mobility tracker",
         "url": "https://gioplus.app",
         "screenshot": "https://gioplus.app/gioplus-hero-de.png",
         "offers": {
@@ -638,7 +638,7 @@
             </div>
             <div class="max-w-2xl mb-12 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="how.h2">Dein Gerät als digitales Goniometer</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="how.p">In der Physiotherapie liest man den Winkel am Goniometer ab. Gio+ liest ihn aus dem Kamerabild, mit dem iPhone-Sensor oder mit der Apple Watch. Du kannst ihn auch aus einem Foto bestimmen oder von Hand eintragen.</p>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="how.p">Ein Goniometer ist ein Winkelmesser für Gelenke. Gio+ liest den Winkel aus dem Kamerabild, mit dem iPhone-Sensor oder mit der Apple Watch. Du kannst ihn auch aus einem Foto bestimmen oder von Hand eintragen.</p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-px bg-line border border-line rounded-lg overflow-hidden">
@@ -934,7 +934,7 @@
                 <div class="p-6 flex flex-col bg-ink reveal">
                     <div class="lbl mb-4"><span data-i18n="feat.pLabel">K · Personen</span> <span class="text-brand">· Pro</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="ppl.h3">Mehrere Personen in einer App</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="ppl.p">Leg weitere Personen an, etwa Familienmitglieder oder die Patient:innen einer Praxis. Messungen, Fotos und Erfolge gehören immer zu einer Person.</p>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="ppl.p">Leg weitere Personen an, etwa Familienmitglieder, Trainingspartner oder die Mitglieder einer Sportgruppe. Messungen, Fotos und Erfolge gehören immer zu einer Person.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-2" aria-hidden="true">
                         <div class="app-card rounded-xl px-3 py-2 flex items-center gap-3">
                             <img src="/media/faces/avatar-1.jpg" alt="" width="192" height="192" loading="lazy" class="w-9 h-9 rounded-full object-cover shrink-0">
@@ -957,8 +957,8 @@
                 <!-- Export (DataTransferFeature in the app) -->
                 <div class="p-6 flex flex-col bg-ink reveal">
                     <div class="lbl mb-4" data-i18n="feat.xLabel">L · Export</div>
-                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="x.h3">Deine Daten für die Physiotherapie</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="x.p">Exportiere deine Messungen als Tabelle oder als Gio+-Sicherung, zum Beispiel für deine Physiotherapie.</p>
+                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="x.h3">Deine Daten zum Mitnehmen</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="x.p">Exportiere deine Messungen als Tabelle oder als Gio+-Sicherung, etwa für eigene Auswertungen oder ein anderes Gerät.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-2" aria-hidden="true">
                         <div class="app-card rounded-xl px-3 py-2.5 flex items-center gap-3">
                             <i class="ph ph-table text-xl text-brand"></i>
@@ -979,7 +979,7 @@
                 <div class="lbl" data-i18n="dev.label">In Arbeit</div>
                 <ul class="text-sm text-text space-y-1.5">
                     <li data-i18n="dev.report">Ein Bericht über deine Messungen</li>
-                    <li data-i18n="dev.notes">Notizen und eine Schmerzskala zu jeder Messung</li>
+                    <li data-i18n="dev.notes">Notizen zu jeder Messung</li>
                 </ul>
             </div>
         </div>
@@ -1034,7 +1034,7 @@
 
                 <div class="lg:col-span-7 min-w-0">
                     <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5 reveal" data-i18n="range.h2">Wie weit du vom Alltagsbereich entfernt bist</h2>
-                    <p class="text-muted text-lg leading-relaxed mb-10 max-w-xl reveal" data-i18n="range.p">Im Alltag brauchst du weniger als den vollen Umfang eines gesunden Gelenks. Gio+ zeigt deinen Bogen neben diesem funktionellen Bereich und wie viele Grad dir noch fehlen.</p>
+                    <p class="text-muted text-lg leading-relaxed mb-10 max-w-xl reveal" data-i18n="range.p">Für die meisten Alltagsbewegungen braucht man weniger als den vollen Bewegungsumfang. Gio+ zeigt deinen Bogen neben diesem Alltagsbereich und wie viele Grad noch fehlen.</p>
 
                     <!-- Reference ranges as used in the app (JointReference.swift) -->
                     <div class="border border-line rounded-lg overflow-x-auto bg-ink reveal">
@@ -1136,7 +1136,7 @@
         </div>
     </section>
     <!-- 04 Who it is for -->
-    <section id="injuries" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
+    <section id="who" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12 reveal">
                 <span class="font-mono text-xs text-brand">04</span>
@@ -1146,7 +1146,7 @@
 
             <div class="max-w-2xl mb-12 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="for.h2">Wann Menschen ihre Beweglichkeit festhalten</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="for.p">Nach vielen Verletzungen und Operationen ist das Gelenk zunächst steif. In der Reha werden Beugung und Streckung über Wochen immer wieder gemessen. Mit Gio+ hältst du diese Werte selbst fest.</p>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="for.p">Beim Dehnen, im Krafttraining, beim Yoga oder aus Neugier: Wer seine Beweglichkeit regelmäßig misst, sieht, was sich über Wochen verändert.</p>
             </div>
 
             <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-panel/60">
@@ -1171,11 +1171,11 @@
                     </div>
                     <h3 class="text-lg font-semibold text-strong mb-4" data-i18n="joint.elbowPlain">Ellbogen</h3>
                     <ul class="text-sm text-text border-t border-line">
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow1">Ellenbogenfraktur: Radiuskopf, Olekranon, distaler Oberarm</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow2">Ellenbogenluxation (ausgekugelter Ellbogen)</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow3">Bänderriss und Bandoperation</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow4">Ellenbogensteife nach Gips oder Ruhigstellung</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow5">Nach einer Arthrolyse</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow1">Dehnen und Mobility-Training</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow2">Klettern und Bouldern</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow3">Kraftsport: Klimmzüge, Dips, Liegestütze</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow4">Wurf- und Schlägersportarten</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow5">Yoga und Kampfsport</li>
                     </ul>
                 </div>
                 <div class="p-6 reveal">
@@ -1199,12 +1199,12 @@
                     </div>
                     <h3 class="text-lg font-semibold text-strong mb-4" data-i18n="joint.kneePlain">Knie</h3>
                     <ul class="text-sm text-text border-t border-line">
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee1">Kreuzbandriss und Kreuzband-OP</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee2">Innenbandriss und andere Seitenbandverletzungen</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee3">Meniskusriss und Meniskus-OP</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee4">Künstliches Kniegelenk (Knie-TEP)</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee5">Kniescheibenbruch, Schienbeinkopfbruch</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee6">Arthrofibrose</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee1">Tiefe Kniebeuge</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee2">Laufen und Radfahren</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee3">Yoga: Fersensitz und Hocke</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee4">Fußball, Handball, Basketball</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee5">Tanz und Turnen</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee6">Alltag: Treppe, Hocke, Knien</li>
                     </ul>
                 </div>
                 <div class="p-6 reveal">
@@ -1229,11 +1229,11 @@
                     </div>
                     <h3 class="text-lg font-semibold text-strong mb-4" data-i18n="joint.shoulderPlain">Schulter</h3>
                     <ul class="text-sm text-text border-t border-line">
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder1">Schultersteife (Frozen Shoulder)</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder2">Riss und Naht der Rotatorenmanschette</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder3">Oberarmkopfbruch</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder4">Schulterluxation (ausgekugelte Schulter)</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder5">Schulterprothese</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder1">Überkopf-Position im Kraftsport</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder2">Schwimmen</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder3">Klettern und Turnen</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder4">Wurf- und Schlägersportarten</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder5">Yoga und Mobility-Training</li>
                     </ul>
                     <p class="text-xs text-dim mt-4 leading-relaxed" data-i18n="for.shoulderNote">Gemessen wird das Anheben des Arms nach vorn.</p>
                 </div>
@@ -1243,7 +1243,7 @@
                 <div class="lbl flex items-start gap-2"><i class="ph ph-info text-base text-brand"></i> <span data-i18n="notice.label">Hinweis</span></div>
                 <div>
                     <p class="text-sm text-text leading-relaxed max-w-3xl mb-3" data-i18n="for.more">Gio+ misst außerdem Halswirbelsäule, Rumpf, Unterarm, Handgelenk, Hand und Finger, Hüfte sowie Sprunggelenk und Fuß.</p>
-                    <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="for.notice">Gio+ misst nur. Wie weit du das Gelenk bewegen darfst, entscheiden deine Ärztin, dein Arzt oder deine Physiotherapie, besonders in den ersten Wochen nach einer Operation.</p>
+                    <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="for.notice">Gio+ misst nur. Die App gibt keine Trainings- oder Übungsempfehlung. Bei Beschwerden oder nach einer Verletzung sprich mit Fachleuten, bevor du an deine Grenzen gehst.</p>
                 </div>
             </div>
         </div>
@@ -1259,7 +1259,7 @@
 
             <div class="max-w-2xl mb-12 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="priv.h2">Wo deine Daten liegen</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="priv.p">Deine Messwerte sind Gesundheitsdaten. Sie bleiben auf deinen Geräten und, wenn du willst, in deiner privaten iCloud.</p>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="priv.p">Deine Messwerte gehören dir. Sie bleiben auf deinen Geräten und, wenn du willst, in deiner privaten iCloud.</p>
             </div>
 
             <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-ink">
@@ -1367,7 +1367,7 @@
                         <img src="/AppIcon.png" alt="Gio+" class="w-7 h-7 rounded-md object-cover">
                         <span>Gio<span class="text-brand">+</span></span>
                     </a>
-                    <p class="text-muted max-w-sm text-sm leading-relaxed" data-i18n="footer.tagline">Die Goniometer-App, die deine Reha dokumentiert. Für iPhone, iPad, Mac und Apple Watch.</p>
+                    <p class="text-muted max-w-sm text-sm leading-relaxed" data-i18n="footer.tagline">Die Goniometer-App für Beweglichkeit und Mobility-Training. Für iPhone, iPad, Mac und Apple Watch.</p>
                 </div>
                 <div>
                     <h4 class="lbl mb-4">App</h4>
@@ -1375,7 +1375,7 @@
                         <li><a href="#features" class="hover:text-strong transition-colors" data-i18n="nav.features">Funktionen</a></li>
                         <li><a href="#reference" class="hover:text-strong transition-colors" data-i18n="nav.range">Funktioneller Bereich</a></li>
                         <li><a href="#devices" class="hover:text-strong transition-colors" data-i18n="nav.devices">Geräte</a></li>
-                        <li><a href="#injuries" class="hover:text-strong transition-colors" data-i18n="for.label">Für wen</a></li>
+                        <li><a href="#who" class="hover:text-strong transition-colors" data-i18n="for.label">Für wen</a></li>
                         <li><a href="#pro" class="hover:text-strong transition-colors" data-i18n="pro.label">Kostenlos und Pro</a></li>
                     </ul>
                 </div>

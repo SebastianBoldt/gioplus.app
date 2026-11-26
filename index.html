@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Once Gio+ is live: add <meta name="apple-itunes-app" content="app-id=XXXXXXXXXX"> -->
     <title>Gio+ - Digital Goniometer App for iPhone, iPad, Mac & Apple Watch</title>
-    <meta name="description" content="Gio+ is a diary for the mobility of your joints, for example during rehab. Like a digital goniometer, the camera of your iPhone, iPad or Mac measures how far your elbow, knee or shoulder bends and straightens, and the app records your range of motion over the weeks of rehab. No account, no server - your data stays on your device and in your iCloud.">
+    <meta name="description" content="Gio+ is a diary for the mobility of your joints, for training, sport and daily life. Like a digital goniometer, the camera of your iPhone, iPad or Mac measures how far your elbow, knee or shoulder bends and straightens, and the app records your range of motion over the weeks. No account, no server - your data stays on your device and in your iCloud.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#FFFFFF">
     <link rel="canonical" href="https://gioplus.app/">
@@ -469,9 +469,9 @@
         "@type": "SoftwareApplication",
         "name": "Gio+",
         "operatingSystem": "iOS, iPadOS, macOS, watchOS",
-        "applicationCategory": "HealthApplication",
+        "applicationCategory": "SportsApplication",
         "description": "Gio+ is a digital goniometer app for iPhone, iPad, Mac and Apple Watch. It uses the camera to measure how far your elbow, knee or shoulder bends and straightens, and tracks your range of motion over time.",
-        "keywords": "goniometer, digital goniometer, goniometer app, range of motion, ROM, elbow flexion, knee flexion, shoulder, physiotherapy, rehab, elbow fracture, radial head fracture, ACL tear, knee replacement, frozen shoulder, rotator cuff",
+        "keywords": "goniometer, digital goniometer, goniometer app, range of motion, ROM, elbow flexion, knee flexion, shoulder, flexibility, mobility training, stretching, joint angle, mobility tracker",
         "url": "https://gioplus.app",
         "screenshot": "https://gioplus.app/gioplus-hero.png",
         "offers": {
@@ -637,7 +637,7 @@
             </div>
             <div class="max-w-2xl mb-12 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="how.h2">Your device as a digital goniometer</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="how.p">A physiotherapist reads the angle off a goniometer. Gio+ reads it from the camera image, with the iPhone sensor or with the Apple Watch. You can also take it from a photo or enter it by hand.</p>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="how.p">A goniometer is an angle gauge for joints. Gio+ reads the angle from the camera image, with the iPhone sensor or with the Apple Watch. You can also take it from a photo or enter it by hand.</p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-px bg-line border border-line rounded-lg overflow-hidden">
@@ -933,7 +933,7 @@
                 <div class="p-6 flex flex-col bg-ink reveal">
                     <div class="lbl mb-4"><span data-i18n="feat.pLabel">K · People</span> <span class="text-brand">· Pro</span></div>
                     <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="ppl.h3">Several people in one app</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="ppl.p">Add more people, such as family members or the patients of a practice. Measurements, photos and achievements always belong to one person.</p>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="ppl.p">Add more people, for example family members, training partners or the members of a sports group. Measurements, photos and achievements always belong to one person.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-2" aria-hidden="true">
                         <div class="app-card rounded-xl px-3 py-2 flex items-center gap-3">
                             <img src="/media/faces/avatar-1.jpg" alt="" width="192" height="192" loading="lazy" class="w-9 h-9 rounded-full object-cover shrink-0">
@@ -956,8 +956,8 @@
                 <!-- Export (DataTransferFeature in the app) -->
                 <div class="p-6 flex flex-col bg-ink reveal">
                     <div class="lbl mb-4" data-i18n="feat.xLabel">L · Export</div>
-                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="x.h3">Your data for the physiotherapist</h3>
-                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="x.p">Export your measurements as a table or as a Gio+ backup, for example to hand them to your physiotherapist.</p>
+                    <h3 class="text-lg font-semibold text-strong mb-2" data-i18n="x.h3">Your data to take with you</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6 flex-grow" data-i18n="x.p">Export your measurements as a table or as a Gio+ backup, for your own analysis or another device.</p>
                     <div class="app-screen aspect-4/3 overflow-hidden p-4 flex flex-col justify-center gap-2" aria-hidden="true">
                         <div class="app-card rounded-xl px-3 py-2.5 flex items-center gap-3">
                             <i class="ph ph-table text-xl text-brand"></i>
@@ -978,7 +978,7 @@
                 <div class="lbl" data-i18n="dev.label">In development</div>
                 <ul class="text-sm text-text space-y-1.5">
                     <li data-i18n="dev.report">A report of your measurements</li>
-                    <li data-i18n="dev.notes">Notes and a pain scale for each measurement</li>
+                    <li data-i18n="dev.notes">Notes for each measurement</li>
                 </ul>
             </div>
         </div>
@@ -1033,7 +1033,7 @@
 
                 <div class="lg:col-span-7 min-w-0">
                     <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5 reveal" data-i18n="range.h2">How far you are from the range everyday tasks need</h2>
-                    <p class="text-muted text-lg leading-relaxed mb-10 max-w-xl reveal" data-i18n="range.p">Everyday tasks need less than the full range of a healthy joint. Gio+ shows your arc next to this functional range, and how many degrees are still missing.</p>
+                    <p class="text-muted text-lg leading-relaxed mb-10 max-w-xl reveal" data-i18n="range.p">Most everyday movements need less than the full range of motion. Gio+ shows your arc next to this everyday range and how many degrees are still missing.</p>
 
                     <!-- Reference ranges as used in the app (JointReference.swift) -->
                     <div class="border border-line rounded-lg overflow-x-auto bg-ink reveal">
@@ -1137,7 +1137,7 @@
         </div>
     </section>
     <!-- 04 Who it is for -->
-    <section id="injuries" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
+    <section id="who" class="py-20 lg:py-28 border-b border-line bg-panel/60 scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12 reveal">
                 <span class="font-mono text-xs text-brand">04</span>
@@ -1147,7 +1147,7 @@
 
             <div class="max-w-2xl mb-12 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="for.h2">When people keep track of their range of motion</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="for.p">After many injuries and operations the joint is stiff at first. In rehab, flexion and extension are measured again and again over weeks. With Gio+ you can keep your own record of these values.</p>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="for.p">While stretching, in strength training, in yoga or out of curiosity: measuring your range of motion regularly shows what changes over the weeks.</p>
             </div>
 
             <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-panel/60">
@@ -1172,11 +1172,11 @@
                     </div>
                     <h3 class="text-lg font-semibold text-strong mb-4" data-i18n="joint.elbowPlain">Elbow</h3>
                     <ul class="text-sm text-text border-t border-line">
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow1">Elbow fracture: radial head, olecranon, distal humerus</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow2">Elbow dislocation</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow3">Ligament tear and ligament surgery</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow4">Stiff elbow after a cast or immobilisation</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow5">After arthrolysis</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow1">Stretching and mobility training</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow2">Climbing and bouldering</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow3">Strength training: pull-ups, dips, push-ups</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow4">Throwing and racket sports</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.elbow5">Yoga and martial arts</li>
                     </ul>
                 </div>
                 <div class="p-6 reveal">
@@ -1200,12 +1200,12 @@
                     </div>
                     <h3 class="text-lg font-semibold text-strong mb-4" data-i18n="joint.kneePlain">Knee</h3>
                     <ul class="text-sm text-text border-t border-line">
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee1">ACL tear and ACL reconstruction</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee2">Collateral ligament injury (MCL, LCL)</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee3">Meniscus tear and meniscus surgery</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee4">Knee replacement</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee5">Patella fracture, tibial plateau fracture</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee6">Arthrofibrosis</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee1">Deep squat</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee2">Running and cycling</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee3">Yoga: heel sit and squat</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee4">Football, handball, basketball</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee5">Dance and gymnastics</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.knee6">Daily life: stairs, squatting, kneeling</li>
                     </ul>
                 </div>
                 <div class="p-6 reveal">
@@ -1230,11 +1230,11 @@
                     </div>
                     <h3 class="text-lg font-semibold text-strong mb-4" data-i18n="joint.shoulderPlain">Shoulder</h3>
                     <ul class="text-sm text-text border-t border-line">
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder1">Frozen shoulder (adhesive capsulitis)</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder2">Rotator cuff tear and rotator cuff repair</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder3">Proximal humerus fracture</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder4">Shoulder dislocation</li>
-                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder5">Shoulder replacement</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder1">Overhead position in strength training</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder2">Swimming</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder3">Climbing and gymnastics</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder4">Throwing and racket sports</li>
+                        <li class="py-2.5 border-b border-line last:border-b-0" data-i18n="for.shoulder5">Yoga and mobility training</li>
                     </ul>
                     <p class="text-xs text-dim mt-4 leading-relaxed" data-i18n="for.shoulderNote">Gio+ measures raising the arm to the front.</p>
                 </div>
@@ -1244,7 +1244,7 @@
                 <div class="lbl flex items-start gap-2"><i class="ph ph-info text-base text-brand"></i> <span data-i18n="notice.label">Notice</span></div>
                 <div>
                     <p class="text-sm text-text leading-relaxed max-w-3xl mb-3" data-i18n="for.more">Gio+ also measures the cervical spine, trunk, forearm, wrist, hand and fingers, hip, and ankle and foot.</p>
-                    <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="for.notice">Gio+ only measures. How far you may move the joint is up to your doctor or physiotherapist, especially in the first weeks after an operation.</p>
+                    <p class="text-sm text-muted leading-relaxed max-w-3xl" data-i18n="for.notice">Gio+ only measures. The app does not recommend training or exercises. If you have complaints or are coming back from an injury, talk to a professional before you push your limits.</p>
                 </div>
             </div>
         </div>
@@ -1260,7 +1260,7 @@
 
             <div class="max-w-2xl mb-12 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-strong mb-5" data-i18n="priv.h2">Where your data is stored</h2>
-                <p class="text-muted text-lg leading-relaxed" data-i18n="priv.p">Your measurements are health data. They stay on your devices and, if you want, in your private iCloud.</p>
+                <p class="text-muted text-lg leading-relaxed" data-i18n="priv.p">Your measurements belong to you. They stay on your devices and, if you want, in your private iCloud.</p>
             </div>
 
             <div class="grid md:grid-cols-3 border border-line rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-line bg-ink">
@@ -1368,7 +1368,7 @@
                         <img src="/AppIcon.png" alt="Gio+" class="w-7 h-7 rounded-md object-cover">
                         <span>Gio<span class="text-brand">+</span></span>
                     </a>
-                    <p class="text-muted max-w-sm text-sm leading-relaxed" data-i18n="footer.tagline">The goniometer app that documents your rehab. For iPhone, iPad, Mac and Apple Watch.</p>
+                    <p class="text-muted max-w-sm text-sm leading-relaxed" data-i18n="footer.tagline">The goniometer app for flexibility and mobility training. For iPhone, iPad, Mac and Apple Watch.</p>
                 </div>
                 <div>
                     <h4 class="lbl mb-4">App</h4>
@@ -1376,7 +1376,7 @@
                         <li><a href="#features" class="hover:text-strong transition-colors" data-i18n="nav.features">Features</a></li>
                         <li><a href="#reference" class="hover:text-strong transition-colors" data-i18n="nav.range">Functional range</a></li>
                         <li><a href="#devices" class="hover:text-strong transition-colors" data-i18n="nav.devices">Devices</a></li>
-                        <li><a href="#injuries" class="hover:text-strong transition-colors" data-i18n="for.label">Who it is for</a></li>
+                        <li><a href="#who" class="hover:text-strong transition-colors" data-i18n="for.label">Who it is for</a></li>
                         <li><a href="#pro" class="hover:text-strong transition-colors" data-i18n="pro.label">Free and Pro</a></li>
                     </ul>
                 </div>
